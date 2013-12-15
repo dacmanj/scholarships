@@ -2,4 +2,41 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  simple_form:
+    labels:
+      user:
+        username: 'User name'
+        password: 'Password'
+      application:
+        phone: 'Phone Number'
+        street_address: 'Street Address'
+        city: 'City'
+        state: 'State'
+        zip: 'Zip'
+        are_you_a_graduating_high_school_senior: 'Are you a graduating high school senior?'
+        identify_lgbt: 'Do you identify as Gay, Lesbian, Bisexual or Transgender?'
+        out_and_open: 'If yes, are you "out and open in the community?"'
+        identify_supporter: 'Are you a supporter of the LGBT Community?'
+        supportive_parents: 'If you are LGBT, are your parents aware of your LGBT Status?'
+        how_did_you_learn_about_the_scholarship: 'How did you learn about the scholarship?'
+        honors_or_awards: 'School Honors or Recognitions Received:'
+        please_lists_schools_where_you_will_be_applying: 'Where are you applying?'
+        date_of_birth: 'Date of Birth'
+        date_of_graduation: 'Date of Graduation'
+        name_of_high_school: 'Name of High School'
+        hs_street_address: 'Street Address'
+        hs_city: 'City'
+        hs_state: 'State'
+        hs_zip: 'Zip'
+        cumulative_gpa: 'Cumulative GPA'
+        describe_community_service_activities: 'Please briefly describe any community service activities that you have been involved with.  You should describe only those activities which have been of the highest importance to you. You do not have to describe every activity that you have undertaken. Be sure to mention any activities in which you played a leadership role.'
+        release_high_school: 'I grant permission to the PFLAG National Scholarships Program to approach my high school principal regarding recognition of my scholarship award by the high school.'
+        release_local_media: 'I grant permission to the PFLAG National Scholarships Program to publish an announcement of my scholarship award and in the local news media.'
+        release_national_media: 'I grant permission to the PFLAG National Scholarships Program to publish an announcement of my scholarship award in the national news media.'
+        release_local_chapter: 'I grant permission to the PFLAG National Scholarships Program to release information about my scholarship award to the local PFLAG Chapter.'
+        release_photograph: 'I grant permission to the PFLAG National Scholarships Program to use my photograph in their publicity releases about my scholarship award.'
+        release_essay_collection: 'I grant permission to the PFLAG National Scholarships Program to use my scholarship essay in an anthology of stories to be compiled for publication or for promotion of the scholarship program.'
+        release_picture_bio_on_website: 'I grant permission to the PFLAG National Scholarships Program to include my picture and bio in their national newsletter or on their website.'
+        signature_stamp: 'Signature Time Stamp'
+        signature_ip: 'IP Address of Signer'
+        essay: 'Please submit a one-page essay on your involvement in the LGBT community as a member or ally and what obstacles you have had to overcome in order to be an active member or ally.'

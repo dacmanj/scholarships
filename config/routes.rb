@@ -1,4 +1,6 @@
 Scholarships::Application.routes.draw do
+  resources :applications
+
   authenticated :user do
     root :to => 'home#index'
   end

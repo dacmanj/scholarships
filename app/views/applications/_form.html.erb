@@ -1,0 +1,56 @@
+<%= simple_form_for(@application, :html => { :class => "form-vertical" }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="well">
+        <h2>Applicant Information</h2>
+        <%= f.input :user_id, :readonly => true %>
+        <%= f.input :phone %>
+        <%= f.input :date_of_birth %>
+        <%= f.input :date_of_graduation %>
+        <%= f.input :street_address, :as => :text %>
+        <%= f.input :city %>
+        <%= f.input :state, :collection => us_states_long %>
+        <%= f.input :zip %>
+        <%= f.input :are_you_a_graduating_high_school_senior %>
+        <%= f.input :identify_lgbt %>
+        <%= f.input :out_and_open %>
+        <%= f.input :identify_supporter %>
+        <%= f.input :supportive_parents %>
+        <%= f.input :how_did_you_learn_about_the_scholarship %>
+    </div>
+    <div class="well">
+    <h2>Academic Status And High School Information</h2>
+    <%= f.input :name_of_high_school %>
+    <%= f.input :hs_street_address, :as => :text %>
+    <%= f.input :hs_city, :label => "City" %>
+    <%= f.input :hs_state, :collection => us_states_long %>
+    <%= f.input :hs_zip, :label => "Zip" %>
+    <%= f.input :cumulative_gpa %>
+
+    <%= f.input :honors_or_awards, :as => :tinymce %>
+    <%= f.input :please_lists_schools_where_you_will_be_applying, :as => :tinymce %>
+    <%= f.input :describe_community_service_activities, :as => :tinymce %>
+    <%= f.input :essay, :as => :tinymce %>
+    </div>
+    <div class="well">
+    <h2>Waiver and Personal Information Releases</h2>
+        <%= f.input :release_high_school, :as => :radio, :required => true %>
+        <%= f.input :release_local_media, :as => :radio, :required => true   %>
+        <%= f.input :release_national_media, :as => :radio, :required => true   %>
+        <%= f.input :release_local_chapter, :as => :radio, :required => true   %>
+        <%= f.input :release_photograph, :as => :radio, :required => true   %>
+        <%= f.input :release_essay_collection, :as => :radio, :required => true   %>
+        <%= f.input :release_picture_bio_on_website, :as => :radio, :required => true   %>
+        <%= f.input :reference_id, :readonly => true %>
+        <%= f.input :signature_stamp, :as => :radio, :required => true   %>
+        <%= f.input :signature_ip, :as => :radio, :required => true   %>
+    </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+  <%= tinymce %>
+
+<% end %>
