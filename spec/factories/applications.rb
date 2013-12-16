@@ -12,7 +12,6 @@
 #  state                                           :string(255)
 #  zip                                             :string(255)
 #  are_you_a_graduating_high_school_senior         :boolean
-#  indentify_lgbt                                  :boolean
 #  out_and_open                                    :boolean
 #  identify_supporter                              :boolean
 #  supportive_parents                              :boolean
@@ -39,6 +38,12 @@
 #  created_at                                      :datetime         not null
 #  updated_at                                      :datetime         not null
 #  honors_or_awards                                :text
+#  identify_lgbt                                   :boolean
+#  stem                                            :boolean
+#  major                                           :string(255)
+#  admission_status                                :string(255)
+#  employment_history                              :text
+#  how_did_you_learn_explanation                   :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

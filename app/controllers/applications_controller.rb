@@ -1,6 +1,8 @@
 class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
+  load_and_authorize_resource
+
   def index
     @applications = Application.all
 
@@ -25,6 +27,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/new.json
   def new
     @application = Application.new
+    @application.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb

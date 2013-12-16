@@ -12,7 +12,6 @@
 #  state                                           :string(255)
 #  zip                                             :string(255)
 #  are_you_a_graduating_high_school_senior         :boolean
-#  indentify_lgbt                                  :boolean
 #  out_and_open                                    :boolean
 #  identify_supporter                              :boolean
 #  supportive_parents                              :boolean
@@ -39,8 +38,18 @@
 #  created_at                                      :datetime         not null
 #  updated_at                                      :datetime         not null
 #  honors_or_awards                                :text
+#  identify_lgbt                                   :boolean
+#  stem                                            :boolean
+#  major                                           :string(255)
+#  admission_status                                :string(255)
+#  employment_history                              :text
+#  how_did_you_learn_explanation                   :string(255)
 #
 
 class Application < ActiveRecord::Base
-  attr_accessible :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :indentify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip
+  belongs_to :user
+  accepts_nested_attributes_for :user
+  attr_accessible :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :identify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip, :honors_or_awards, :stem, :major, :admission_status, :employment_history, :how_did_you_learn_explanation
+  ADMISSION_STATUS = ['Planning to apply', 'Waiting for reponse', 'Admitted']
+  HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP = ['Internet (please provide url)', 'PFLAG Chapter (please list)', 'GSA', 'Counselor', 'Friend', 'Other (please list)', ]
 end
