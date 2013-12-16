@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
-  skip_authorize_resource :only => :index
+  skip_authorization_check :only => :index
 
   def index
-    @users = User.all
+
   end
 end

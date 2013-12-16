@@ -9,32 +9,34 @@
             <%= u.input :name %>
             <%= u.input :email %>
         <% end %>
-                    <% raise "u"%>
-
         <%= f.input :phone %>
         <%= f.input :date_of_birth %>
-        <%= f.input :identify_lgbt %>
-        <%= f.input :out_and_open %>
-        <%= f.input :identify_supporter %>
-        <%= f.input :supportive_parents %>
-        <div class="well">
-            <%= f.input :how_did_you_learn_about_the_scholarship, :collection => Application::HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP %>
-            <%= f.input :how_did_you_learn_explanation %>
         </div>
-    </div>
     <div class="well">
-    <h2>Address Information</h2>
+      <h2>Address Information</h2>
         <%= f.input :street_address, :as => :text %>
         <%= f.input :city %>
         <%= f.input :state, :collection => us_states_long %>
         <%= f.input :zip %>
 
+        </div>
+    <div class="well">
+
+        <%= f.input :identify_lgbt, :as => :radio %>
+        <%= f.input :out_and_open, :as => :radio %>
+        <%= f.input :identify_supporter, :as => :radio %>
+        <%= f.input :supportive_parents, :as => :radio %>
+        <div class="well">
+            <%= f.input :how_did_you_learn_about_the_scholarship, :collection => Application::HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP %>
+            <%= f.input :how_did_you_learn_explanation %>
+        </div>
     </div>
+
     <div class="well">
         <h2>Academic Status And High School Information</h2>
         <%= f.input :name_of_high_school %>
         <%= f.input :date_of_graduation %>
-        <%= f.input :are_you_a_graduating_high_school_senior %>
+        <%= f.input :are_you_a_graduating_high_school_senior, :as => :radio %>
         <%= f.input :hs_street_address, :as => :text %>
         <%= f.input :hs_city, :label => "City" %>
         <%= f.input :hs_state, :collection => us_states_long %>
@@ -49,7 +51,7 @@
         <%= f.input :please_lists_schools_where_you_will_be_applying, :as => :tinymce %>
         <%= f.input :major %>
         <%= f.input :admission_status, :collection => Application::ADMISSION_STATUS %>
-        <%= f.input :stem %>
+        <%= f.input :stem, :as => :radio %>
         <%= t("application.form.stem_description")%>
 
         
@@ -71,7 +73,7 @@
         <%= f.input :release_essay_collection, :as => :radio, :required => true   %>
         <%= f.input :release_picture_bio_on_website, :as => :radio, :required => true   %>
         <%= f.input :reference_id, :readonly => true %>
-        <%= f.input :signature_stamp, :as => :radio, :required => true   %>
+        <%= f.input :signature_stamp, :readonly => true, :as => :string %>
         <%= f.input :signature_ip, :readonly => true %>
     </div>
 

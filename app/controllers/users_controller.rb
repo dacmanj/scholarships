@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
 #  before_filter :authenticate_user!
-
+  skip_authorization_check :only => [:new, :create]
+  load_and_authorize_resource
+  
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all

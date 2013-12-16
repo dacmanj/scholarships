@@ -2,40 +2,8 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Phone</th>
-    <th>Date of birth</th>
-    <th>Date of graduation</th>
-    <th>Street address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Are you a graduating high school senior</th>
-    <th>Indentify lgbt</th>
-    <th>Out and open</th>
-    <th>Identify supporter</th>
-    <th>Supportive parents</th>
-    <th>How did you learn about the scholarship</th>
-    <th>Name of high school</th>
-    <th>Hs street address</th>
-    <th>Hs city</th>
-    <th>Hs state</th>
-    <th>Hs zip</th>
-    <th>Cumulative gpa</th>
-    <th>Please list an honors or awards</th>
-    <th>Please lists schools where you will be applying</th>
-    <th>Describe community service activities</th>
-    <th>Essay</th>
-    <th>Release high school</th>
-    <th>Release local media</th>
-    <th>Release national media</th>
-    <th>Release local chapter</th>
-    <th>Release photograph</th>
-    <th>Release essay collection</th>
-    <th>Release picture bio on website</th>
-    <th>Reference</th>
-    <th>Signature stamp</th>
-    <th>Signature ip</th>
+    <th>Name</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -43,40 +11,8 @@
 
 <% @applications.each do |application| %>
   <tr>
-    <td><%= application.user_id %></td>
-    <td><%= application.phone %></td>
-    <td><%= application.date_of_birth %></td>
-    <td><%= application.date_of_graduation %></td>
-    <td><%= application.street_address %></td>
-    <td><%= application.city %></td>
-    <td><%= application.state %></td>
-    <td><%= application.zip %></td>
-    <td><%= application.are_you_a_graduating_high_school_senior %></td>
-    <td><%= application.indentify_lgbt %></td>
-    <td><%= application.out_and_open %></td>
-    <td><%= application.identify_supporter %></td>
-    <td><%= application.supportive_parents %></td>
-    <td><%= application.how_did_you_learn_about_the_scholarship %></td>
-    <td><%= application.name_of_high_school %></td>
-    <td><%= application.hs_street_address %></td>
-    <td><%= application.hs_city %></td>
-    <td><%= application.hs_state %></td>
-    <td><%= application.hs_zip %></td>
-    <td><%= application.cumulative_gpa %></td>
-    <td><%= application.please_list_an_honors_or_awards %></td>
-    <td><%= application.please_lists_schools_where_you_will_be_applying %></td>
-    <td><%= application.describe_community_service_activities %></td>
-    <td><%= application.essay %></td>
-    <td><%= application.release_high_school %></td>
-    <td><%= application.release_local_media %></td>
-    <td><%= application.release_national_media %></td>
-    <td><%= application.release_local_chapter %></td>
-    <td><%= application.release_photograph %></td>
-    <td><%= application.release_essay_collection %></td>
-    <td><%= application.release_picture_bio_on_website %></td>
-    <td><%= application.reference_id %></td>
-    <td><%= application.signature_stamp %></td>
-    <td><%= application.signature_ip %></td>
+    <td><%= application.user.name unless application.user.blank? %></td>
+    <td></td>
     <td><%= link_to 'Show', application %></td>
     <td><%= link_to 'Edit', edit_application_path(application) %></td>
     <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
