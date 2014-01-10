@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
              email: data["email"],
              password: Devise.friendly_token[0,20]
             )
+        user.add_role :user
+
     end
     user
   end

@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  check_authorization :unless => :devise_controller?
-  skip_authorization_check :only => [:new, :create]
-
+#  check_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message

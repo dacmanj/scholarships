@@ -1,10 +1,11 @@
 class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
+  skip_authorization_check :only => [:new, :create]
   load_and_authorize_resource
 
   def index
-    @applications = Application.all
+    @applications = Application.accessible_by(current_ability)
 
     respond_to do |format|
       format.html # index.html.erb
