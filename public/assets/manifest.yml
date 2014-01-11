@@ -1,15 +1,11 @@
 ---
-application.js: application-45852396197a6005952fca397a314c15.js
-application/index.js: application-45852396197a6005952fca397a314c15.js
-application.css: application-46bf4623dad49ec1b664692792c37e9f.css
-application/index.css: application-46bf4623dad49ec1b664692792c37e9f.css
-glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
-glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
-glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
-glyphicons-halflings/index.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
-jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
-jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
-tinymce.js: tinymce-ede2033180c03267c9a3279ee827e7b5.js
+application.js: application.js
+application/index.js: application.js
+application.css: application.css
+application/index.css: application.css
+jquery.min.map: jquery.min.map
+jquery/index.min.map: jquery.min.map
+tinymce.js: tinymce.js
 tinymce/langs/readme.md: tinymce/langs/readme.md
 tinymce/langs/readme/index.md: tinymce/langs/readme/index.md
 tinymce/license.txt: tinymce/license.txt
@@ -76,6 +72,14 @@ tinymce/skins/lightgray/img/trans.gif: tinymce/skins/lightgray/img/trans.gif
 tinymce/skins/lightgray/img/trans/index.gif: tinymce/skins/lightgray/img/trans/index.gif
 tinymce/skins/lightgray/img/wline.gif: tinymce/skins/lightgray/img/wline.gif
 tinymce/skins/lightgray/img/wline/index.gif: tinymce/skins/lightgray/img/wline/index.gif
+bootstrap/glyphicons-halflings-regular.eot: bootstrap/glyphicons-halflings-regular.eot
+bootstrap/glyphicons-halflings-regular/index.eot: bootstrap/glyphicons-halflings-regular.eot
+bootstrap/glyphicons-halflings-regular.svg: bootstrap/glyphicons-halflings-regular.svg
+bootstrap/glyphicons-halflings-regular/index.svg: bootstrap/glyphicons-halflings-regular.svg
+bootstrap/glyphicons-halflings-regular.ttf: bootstrap/glyphicons-halflings-regular.ttf
+bootstrap/glyphicons-halflings-regular/index.ttf: bootstrap/glyphicons-halflings-regular.ttf
+bootstrap/glyphicons-halflings-regular.woff: bootstrap/glyphicons-halflings-regular.woff
+bootstrap/glyphicons-halflings-regular/index.woff: bootstrap/glyphicons-halflings-regular.woff
 tinymce/jquery.tinymce.js: tinymce/jquery.tinymce.js
 tinymce/plugins/advlist/plugin.js: tinymce/plugins/advlist/plugin.js
 tinymce/plugins/anchor/plugin.js: tinymce/plugins/anchor/plugin.js

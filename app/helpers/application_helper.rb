@@ -125,5 +125,8 @@ def us_states
     ]
   end
 
+  def glyph(g)
+    content_tag(:i,"",:class=>"glyphicon glyphicon-"+g)
+  end
 
 end

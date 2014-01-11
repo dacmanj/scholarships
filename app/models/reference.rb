@@ -20,4 +20,10 @@ class Reference < ActiveRecord::Base
   attr_accessible :application_id, :email, :how_long_have_you_known, :name, :phone_number, :references_essay, :relationship
   belongs_to :application
   belongs_to :user
+  before_save :downcase_email
+
+  def downcase_email
+  	self.email = self.email.downcase
+  end
+
 end

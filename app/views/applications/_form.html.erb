@@ -14,7 +14,7 @@
         </div>
     <div class="well">
       <h2>Address Information</h2>
-        <%= f.input :street_address, :as => :text %>
+        <%= f.input :street_address, :as => :text, :input_html => {rows: "3", cols: "100"} %>
         <%= f.input :city %>
         <%= f.input :state, :collection => us_states_long %>
         <%= f.input :zip %>
@@ -37,7 +37,7 @@
         <%= f.input :name_of_high_school %>
         <%= f.input :date_of_graduation %>
         <%= f.input :are_you_a_graduating_high_school_senior, :as => :radio %>
-        <%= f.input :hs_street_address, :as => :text %>
+        <%= f.input :hs_street_address, :as => :text,  :input_html => {rows: "3", cols: "100"}  %>
         <%= f.input :hs_city, :label => "City" %>
         <%= f.input :hs_state, :collection => us_states_long %>
         <%= f.input :hs_zip, :label => "Zip" %>
@@ -64,6 +64,15 @@
         <%= f.input :essay, :as => :tinymce %>
     </div>
     <div class="well">
+    <h2>Reference Letter</h2>
+    <%if @application.references.select{ |r| r.completed.present? }.count > 0 %>
+        Reference Complete
+    <% else %>
+        Your reference is not yet complete. You must obtain a professional or academic reference letter. To send (or resend) the electronic reference form, <%=link_to "click here", references_path %>.
+    <% end %>
+    </div>
+
+    <div class="well">
     <h2>Waiver and Personal Information Releases</h2>
         <%= f.input :release_high_school, :as => :radio, :required => true %>
         <%= f.input :release_local_media, :as => :radio, :required => true   %>
@@ -72,13 +81,12 @@
         <%= f.input :release_photograph, :as => :radio, :required => true   %>
         <%= f.input :release_essay_collection, :as => :radio, :required => true   %>
         <%= f.input :release_picture_bio_on_website, :as => :radio, :required => true   %>
-        <%= f.input :reference_id, :readonly => true %>
         <%= f.input :signature_stamp, :readonly => true, :as => :string %>
         <%= f.input :signature_ip, :readonly => true %>
     </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-default" %>
   </div>
 
   <%= tinymce %>

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  skip_authorization_check :only => :index
-
+  skip_authorization_check
+  
   def index
 
   end

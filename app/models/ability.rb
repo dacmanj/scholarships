@@ -10,7 +10,8 @@ class Ability
     if user.has_role? :student
       can :create, Application
       can [:index, :destroy], Reference, :user_id => user.id
-      can :send_reference_request, Reference
+#      can :resend
+#      can :send,:reference, :request
       can :manage, Application, :user_id => user.id
     end
     # Define abilities for the passed in user here. For example:

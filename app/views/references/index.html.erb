@@ -2,24 +2,27 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Name</th>
     <th>Email</th>
+    <th>Name</th>
     <th>Completed</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<h2>Completed References: <%= @references.count %></h2>
+<h2>Completed References: <%= @references.select{|s| s.completed.present? }.count %></h2>
 
 <% @references.each do |reference| %>
   <tr>
-    <td><%= reference.name %></td>
     <td><%= reference.email %></td>
-    <td><%= reference.completed || false %></td>
-    <td><%= link_to 'Show', reference %></td>
-    <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
-    <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= reference.name %></td>
+    <td><% if reference.completed %>
+            <%=glyph("ok") %>
+          <% else %>
+            <%=glyph("exclamation-sign") %>
+          <% end %>
+    </td>
+    <td><%= link_to glyph("send"), reference, action: :resend, method: :resend %></td>
+    <td><%= link_to glyph("trash"), reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

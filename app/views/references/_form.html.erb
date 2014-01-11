@@ -2,16 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :application_id %>
+    <div>
+      <b>Student Name: </b><%= @reference.user.name unless @reference.user.blank? %>
+    </div>
     <%= f.input :name %>
     <%= f.input :email %>
     <%= f.input :phone_number %>
-    <%= f.input :how_long_have_you_known %>
-    <%= f.input :relationship %>
+    <%= f.input :how_long_have_you_known%>
+    <%= f.input :relationship, :as => :string  %>
     <%= f.input :references_essay, :as => :tinymce %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-default" %>
   </div>
 <% end %>
