@@ -44,6 +44,10 @@ en:
         signature_ip: 'IP Address of Signer'
         employment_history: 'What jobs, if any, have you held? Please list both volunteer and paid positions as appropriate.'
         essay: 'Please submit a one-page essay on your involvement in the LGBT community as a member or ally and what obstacles you have had to overcome in order to be an active member or ally.'
+      reference:
+        how_long_have_you_known: 'How long have you known the student?'
+        relationship: 'What is your relationship with this student? (teacher, advisor, minister, school counselor, school administrator, coach, etc.):'
+        references_essay: 'Would you recommend this student for a PFLAG National Scholarship? Why or why not? Are there any specific obstacles this candidate has had to overcome in order to succeed?'
   application:
     form:
       stem_description: 'Identifying your interest in studying science, technology, engineering, and/or math (STEM) will give you additionally enhanced eligible for scholarship funding from Gays, Lesbians, and Allies at Dow (GLAD). Successful candidates will demonstrate a particular interest and expertise in the STEM fields and is supported by donations from employees of the Dow Chemical Company.'

@@ -1,0 +1,32 @@
+<h1>My References</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Completed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<h2>Completed References: <%= @references.count %></h2>
+
+<% @references.each do |reference| %>
+  <tr>
+    <td><%= reference.name %></td>
+    <td><%= reference.email %></td>
+    <td><%= reference.completed || false %></td>
+    <td><%= link_to 'Show', reference %></td>
+    <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
+    <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<div class="well">
+<%= simple_form_for :reference, :url => references_send_email_path, :method => :post do |f| %>
+  <%= f.input :email %>
+  <%= f.submit "Send Reference Request", :class => "btn btn-primary" %>
+<% end %>
+</div>

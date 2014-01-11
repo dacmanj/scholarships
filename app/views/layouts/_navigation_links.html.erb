@@ -1,4 +1,12 @@
 <%# add navigation links to this file %>
+<% if user_signed_in? and current_user.has_role? :student %>
+	<% if current_user.application.present? %>
+   		<li><%= link_to 'My Application', edit_application_path(current_user.application.id) %></li>
+   	<% else %>
+	   	<li><%= link_to 'My Application', new_application_path %></li>
+   	<% end %>
+    <li><%= link_to 'My References', references_path %></li>
+<% end %>
 <% if user_signed_in? %>
   <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
@@ -10,6 +18,9 @@
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
 <% if user_signed_in? %>
+  <% if current_user.has_role? :reviewer or current_user.has_role? :admin %>
+   	<li><%= link_to 'Applications', applications_path %></li>
+  <% end %>
   <% if current_user.has_role? :admin %>
     <li><%= link_to 'Admin', users_path %></li>
   <% end %>

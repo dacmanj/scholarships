@@ -1,0 +1,17 @@
+<%= simple_form_for(@reference) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :application_id %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :phone_number %>
+    <%= f.input :how_long_have_you_known %>
+    <%= f.input :relationship %>
+    <%= f.input :references_essay, :as => :tinymce %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
