@@ -73,14 +73,22 @@
     </div>
 
     <div class="well">
+    <h2>Attach Transcript</h2>
+    <% if @application.transcript.present? %>
+        <%= link_to @application.transcript_file_name, @application.transcript.url %>
+    <% end %>
+        <%= f.input :transcript, :label => "" %>
+    </div>
+
+    <div class="well">
     <h2>Waiver and Personal Information Releases</h2>
-        <%= f.input :release_high_school, :as => :radio, :required => true %>
-        <%= f.input :release_local_media, :as => :radio, :required => true   %>
-        <%= f.input :release_national_media, :as => :radio, :required => true   %>
-        <%= f.input :release_local_chapter, :as => :radio, :required => true   %>
-        <%= f.input :release_photograph, :as => :radio, :required => true   %>
-        <%= f.input :release_essay_collection, :as => :radio, :required => true   %>
-        <%= f.input :release_picture_bio_on_website, :as => :radio, :required => true   %>
+        <%= f.input :release_high_school, :as => :radio %>
+        <%= f.input :release_local_media, :as => :radio %>
+        <%= f.input :release_national_media, :as => :radio %>
+        <%= f.input :release_local_chapter, :as => :radio %>
+        <%= f.input :release_photograph, :as => :radio %>
+        <%= f.input :release_essay_collection, :as => :radio %>
+        <%= f.input :release_picture_bio_on_website, :as => :radio %>
         <%= f.input :signature_stamp, :readonly => true, :as => :string %>
         <%= f.input :signature_ip, :readonly => true %>
     </div>

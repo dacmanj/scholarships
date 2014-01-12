@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<div>
+<%= image_tag @application.transcript.url(:square) %>
+</div>
+
 <%= @application.attributes.reject{|h| h == "user_id" }.each_pair do |name, value| %>
 <p>
   <b><%= t("simple_form.labels.application.#{name}") %></b>
   <%= value %>
 </p>
 <% end %>
+
 
 
 <%= link_to 'Edit', edit_application_path(@application) %> |

@@ -49,6 +49,9 @@
 class Application < ActiveRecord::Base
   belongs_to :user
   has_many :references
+  attr_accessible :transcript
+  has_attached_file :transcript
+
   accepts_nested_attributes_for :user
   attr_accessible :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :identify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip, :honors_or_awards, :stem, :major, :admission_status, :employment_history, :how_did_you_learn_explanation, :user_attributes
   ADMISSION_STATUS = ['Planning to apply', 'Waiting for reponse', 'Admitted']

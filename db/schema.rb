@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110233252) do
+ActiveRecord::Schema.define(:version => 20140112013851) do
 
   create_table "applications", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(:version => 20140110233252) do
     t.string   "admission_status"
     t.text     "employment_history"
     t.string   "how_did_you_learn_explanation"
+    t.string   "transcript_file_name"
+    t.string   "transcript_content_type"
+    t.integer  "transcript_file_size"
+    t.datetime "transcript_updated_at"
   end
 
   create_table "references", :force => true do |t|

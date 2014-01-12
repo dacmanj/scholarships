@@ -7,6 +7,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 3.0.3.0'
 end
+
+gem 'paperclip'
+gem 'aws-sdk'
+
 gem 'tinymce-rails'
 gem 'jquery-rails'
 gem 'annotate'
