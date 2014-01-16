@@ -97,7 +97,7 @@ class ApplicationsController < ApplicationController
 
     respond_to do |format|
       if @application.update_attributes(params[:application])
-        format.html { redirect_to @application, notice: 'Application was successfully updated.' }
+        format.html { redirect_to edit_application_path, notice: t("application.message.save_success") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

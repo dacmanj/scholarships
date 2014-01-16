@@ -51,7 +51,7 @@ class Application < ActiveRecord::Base
   has_many :references
   attr_accessible :transcript
   has_attached_file :transcript
-#  validates_attachment_content_type :image, :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif|pdf|tif|tiff)$/, :message => 'file type is not allowed (only pdf/tif/jpeg/png/gif images)'
+  validates_attachment_content_type :transcript, :content_type => /^(application\/pdf|image\/(jpg|jpeg|pjpeg|png|x-png|gif|pdf|tif|tiff))$/, :message => 'file type is not allowed (only pdf/tif/jpeg/png/gif images)'
 
 
   accepts_nested_attributes_for :user

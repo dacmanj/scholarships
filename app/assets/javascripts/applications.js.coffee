@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  autodismiss = () ->
-    $(".alert-dismissable").alert('close')
+
+  $(".alert-dismissable").delay(10000).fadeOut("slow")
+
   flash_success = (msg) ->
     "<div class=\"alert alert-dismissable alert-success\"><a class=\"close\" data-dismiss=\"alert\">&times;</a><div id=\"flash_success\">#{msg}</div></div>"
 
@@ -16,6 +17,9 @@ $ ->
   signed = signature_stamp? && signature_stamp != ""
 
   $('main.applications.edit form').submit () ->   
+    if $("#application_transcript").val() != ""
+      return true
+
     valuesToSubmit = $(this).serialize()
     $.ajax({
       url: $(this).attr('action'),
@@ -24,7 +28,7 @@ $ ->
       dataType: "JSON" 
     }).success (json) ->
       $("body").scrollTop(0);
-      $("#flash_message").html(flash_success(I18n.t("application.message.saved"))).trigger("autodismiss")
+      $("#flash_message").append(flash_success(I18n.t("application.message.save_success"))).delay(3000).fadeOut("slow")
     false
 
   if signed
