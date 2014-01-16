@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require tinymce-jquery
+//= require jquery-fileupload
+//= require i18n
+//= require i18n/translations
 //= require_tree .

@@ -125,6 +125,16 @@ def us_states
     ]
   end
 
+  def flash_message(flash)
+    flash_html = ""
+    flash.each do |name, msg|
+      if msg.is_a?(String)
+        flash_html += "<div class=\"alert alert-dismissable alert-" + (name == :notice ? "success" : "danger") + "\"><a class=\"close\" data-dismiss=\"alert\">&times;</a>" + (content_tag :div, msg, :id => "flash_#{name}")
+      end
+    end
+    flash_html.html_safe
+  end
+
   def glyph(g)
     content_tag(:i,"",:class=>"glyphicon glyphicon-"+g)
   end

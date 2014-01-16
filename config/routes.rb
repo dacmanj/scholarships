@@ -3,9 +3,12 @@ Scholarships::Application.routes.draw do
 
 
   resources :applications
+  match '/applications/:id/sign', to: 'applications#sign', as: :sign_application
+  match '/applications/:id/unsign', to: 'applications#unsign', as: :unsign_application
+
 
   authenticated :user do
-    root :to => 'home#index#index'
+    root :to => 'home#index'
   end
   root :to => "home#index"
 
@@ -15,6 +18,7 @@ Scholarships::Application.routes.draw do
   match '/references/send_email' => 'references#send_reference_request'
   match '/references/:id', to: 'references#resend', via: :post
   match '/references/token/:token' => 'references#edit'
+  
  # match '/login' => "devise/sessions#new"
 
 end

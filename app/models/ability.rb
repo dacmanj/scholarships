@@ -9,6 +9,7 @@ class Ability
 
     if user.has_role? :student
       can :create, Application
+      can :sign, :unsign, Application
       can [:index, :destroy], Reference, :user_id => user.id
 #      can :resend
 #      can :send,:reference, :request

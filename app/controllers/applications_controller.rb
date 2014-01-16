@@ -57,6 +57,39 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def sign
+    @application = Application.find(params[:id])
+    authorize! :manage, @application
+    @application.signature_stamp = DateTime.now
+    @application.signature_ip = request.remote_ip
+
+    respond_to do |format|
+      if @application.save
+        flash[:notice] = t("application.message.sign_success")
+        format.js
+      else
+        flash[:danger] = t("application.message.sign_failed")
+        format.js
+      end
+    end
+  end
+
+  def unsign
+    @application = Application.find(params[:id])
+    authorize! :manage, @application
+    @application.signature_stamp = nil
+    @application.signature_ip = nil
+    respond_to do |format|
+      if @application.save
+        flash[:notice] = t("application.message.unsign_success")
+        format.js 
+      else
+        flash[:danger] = t("application.message.unsign_failed")
+        format.js
+      end
+    end
+  end
+
   # PUT /applications/1
   # PUT /applications/1.json
   def update

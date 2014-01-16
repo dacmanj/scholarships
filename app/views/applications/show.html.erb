@@ -11,7 +11,11 @@
 </p>
 <% end %>
 
-
-
-<%= link_to 'Edit', edit_application_path(@application) %> |
-<%= link_to 'Back', applications_path %>
+<ul class="nav nav-pills">
+<li>
+	<%= link_to 'Edit', edit_application_path(@application) %>
+</li>
+<li>
+	<%= link_to 'Back', applications_path %>
+</li>
+</ul>
