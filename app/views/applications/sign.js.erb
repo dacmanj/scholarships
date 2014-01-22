@@ -1,0 +1,9 @@
+$("#signature_status").html('<%=glyph("ok") %>');
+$.each(tinyMCE.editors, function(i,v) {v.getBody().setAttribute('contenteditable',false)  });
+$("#sign_action_button").attr("href","<%=unsign_application_path%>").html("Unsign Application");
+$("#flash_message").html('<%=flash_message(flash)%>');
+$("body").scrollTop(0);
+$("input,select,textarea").attr("disabled","true")
+$("#sign_action_button").removeAttr("disabled")
+window.setTimeout(function() { $(".alert-dismissable").alert('close'); }, 2000);
+signed = true;

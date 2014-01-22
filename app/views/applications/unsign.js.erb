@@ -1,0 +1,8 @@
+$("#signature_status").html('<%=glyph("exclamation-sign") %>');
+$("#sign_action_button").attr("href","<%=sign_application_path%>").html("Sign Application");
+$("#flash_message").html('<%=flash_message(flash)%>');
+$("body").scrollTop(0);
+$.each(tinyMCE.editors, function(i,v) {v.getBody().setAttribute('contenteditable',true)  });
+$("input,select,textarea").removeAttr("disabled");
+window.setTimeout(function() { $(".alert-dismissable").alert('close'); }, 2000);
+signed = false;
