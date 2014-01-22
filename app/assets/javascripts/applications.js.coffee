@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+delay = (ms, func) -> setTimeout func, ms
+
 $ ->
 
   $(".alert-dismissable").delay(10000).fadeOut("slow")
@@ -16,15 +18,19 @@ $ ->
   signature_stamp = $("#application_signature_stamp").val();
   signed = signature_stamp? && signature_stamp != ""
 
-  $('main.applications.edit form').submit () ->   
+  submit_application = ->
+    save_application
+    $("#sign_action_button").click();
+
+  save_application = ->    
     if $("#application_transcript").val() != ""
       return true
 
     valuesToSubmit = $(this).serialize()
     $.ajax({
-      url: $(this).attr('action'),
+      url: $('main.applications.edit form').attr('action'),
       data: valuesToSubmit,
-      type: "POST",
+      type: "PUT",
       dataType: "JSON" 
     }).success (json) ->
       $("body").scrollTop(0);
@@ -34,3 +40,22 @@ $ ->
   if signed
     $("input,select,textarea").attr("disabled","true")
     $("#sign_action_button").removeAttr("disabled")
+
+  errorPlace = (error, element) ->
+    element.closest("div.form-group").addClass("error").attr("title",error.html()).tooltip("show")
+    delay 2000, ->
+      element.closest("div.form-group").tooltip("hide")
+
+  errorHighlight = (element, errorClass, validClass) ->
+    $(element).closest("div.form-group").addClass(errorClass)
+    $(element).addClass(errorClass).removeClass(validClass)
+
+  errorUnhighlight = (element, errorClass, validClass) ->
+    console.log(element)
+    console.log($(element))    
+    $(element).closest("div.form-group").removeClass(errorClass).attr("title","").attr("data-original-title","")
+    $(element).removeClass(errorClass).addClass(validClass)
+
+
+  $('#save_action_button').click(save_application);
+#  $('main.applications.edit form').validate({ debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application })

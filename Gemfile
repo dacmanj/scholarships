@@ -7,7 +7,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 3.0.3.0'
   gem 'i18n-js'
+  gem "jquery-validation-rails"
 end
+
 
 gem 'paperclip'
 gem 'aws-sdk'

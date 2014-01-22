@@ -51,7 +51,7 @@ en:
         references_essay: 'Would you recommend this student for a PFLAG National Scholarship? Why or why not? Are there any specific obstacles this candidate has had to overcome in order to succeed?'
   application:
     message:
-      save_success: 'Application saved successfully!'
+      save_success: Application saved successfully! Don't forget to complete your application.
       save_failed: 'Application save failed!'
       sign_success: 'Application signed. You can no longer make changes. You must unsign your application before making edits.'
       unsign_success: 'Application unsigned. Please remember to sign your application before the deadline.'
