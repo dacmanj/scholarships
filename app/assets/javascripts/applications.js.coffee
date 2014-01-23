@@ -4,6 +4,12 @@
 
 delay = (ms, func) -> setTimeout func, ms
 
+tinyMCEvalidTemplate = jQuery.validator.format("{0} is a required field.")
+tinyMCEvalid = (value, element) ->
+  return tinyMCE.get($(element).attr("id")).getContent().length > 2
+
+jQuery.validator.addMethod "tinymce", tinyMCEvalid, tinyMCEvalidTemplate
+
 $ ->
 
   $(".alert-dismissable").delay(10000).fadeOut("slow")
@@ -23,10 +29,11 @@ $ ->
     $("#sign_action_button").click();
 
   save_application = ->    
+    tinyMCE.triggerSave()
     if $("#application_transcript").val() != ""
       return true
 
-    valuesToSubmit = $(this).serialize()
+    valuesToSubmit = $("main.applications.edit form").serialize()
     $.ajax({
       url: $('main.applications.edit form').attr('action'),
       data: valuesToSubmit,
@@ -58,4 +65,4 @@ $ ->
 
 
   $('#save_action_button').click(save_application);
-#  $('main.applications.edit form').validate({ debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application })
+  $('main.applications.edit form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application,  rules: { 'tinymce': { tinymce:true } } })
