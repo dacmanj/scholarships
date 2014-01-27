@@ -139,4 +139,18 @@ def us_states
     content_tag(:i,"",:class=>"glyphicon glyphicon-"+g)
   end
 
+  def rating_row (field,f)
+    html = "<tr>"
+    html += "<td>"
+    html += f.label(field).html_safe
+    html += "</td>"
+    Reference::RATING_SCALE.each do |rating|
+      html += "<td>"
+      html += f.radio_button(field, rating[1]).html_safe
+      html += "</td>"
+    end
+    html += "</tr>"
+    html.html_safe
+  end
+
 end

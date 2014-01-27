@@ -10,7 +10,28 @@
     <%= f.input :phone_number %>
     <%= f.input :how_long_have_you_known%>
     <%= f.input :relationship, :as => :string  %>
+    <h3>Please Rank The Applicant In Each of The Following Areas</h3>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+      <th>
+        &nbsp;
+      </th>
+      <% Reference::RATING_SCALE.each do |rating| %>
+        <th><%= rating[0] %></th>
+      <% end %>
+      </tr>
+    </thead>
+    <tbody>
+    <% rating_fields = [:maturity, :leadership_ability, :self_confidence, :self_awareness, :intellectual_curiosity, :initiative, :adaptability, :personal_integrity, :respect_for_different_viewpoints]; %>
+    <% rating_fields.each do |field| %>
+      <%= rating_row(field,f) %>
+    <% end %>
+    </tbody>
+    </table>
+
     <%= f.input :references_essay, :as => :tinymce %>
+
   </div>
 
   <div class="form-actions">

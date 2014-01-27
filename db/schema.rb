@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115195030) do
+ActiveRecord::Schema.define(:version => 20140127183424) do
 
   create_table "applications", :force => true do |t|
     t.integer  "user_id"
@@ -69,11 +69,20 @@ ActiveRecord::Schema.define(:version => 20140115195030) do
     t.string   "how_long_have_you_known"
     t.text     "relationship"
     t.text     "references_essay"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
     t.datetime "completed"
     t.string   "token"
+    t.integer  "maturity"
+    t.integer  "leadership_ability"
+    t.integer  "self_confidence"
+    t.integer  "self_awareness"
+    t.integer  "intellectual_curiosity"
+    t.integer  "initiative"
+    t.integer  "adaptability"
+    t.integer  "personal_integrity"
+    t.integer  "respect_for_different_viewpoints"
   end
 
   create_table "roles", :force => true do |t|
