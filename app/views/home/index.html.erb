@@ -23,4 +23,8 @@
 <p><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></p>
 <p></p>
 
-<%= link_to "To begin your application click here.", new_user_session_path %>
+<% if current_user %>
+	<%= link_to "To begin/continue your application click here.", edit_application_path(current_user.application.id) %>
+<% else %>
+	<%= link_to "To begin your application click here.", new_user_session_path %>
+<% end %>
