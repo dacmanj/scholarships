@@ -24,8 +24,9 @@ gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
+gem 'pg'
+
 group :development do
-  gem 'pg'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
@@ -36,7 +37,6 @@ group :development, :test do
   gem 'rspec-rails'
 end
 group :production do
-  gem 'pg'
   gem 'thin'
 end
 group :test do
