@@ -4,11 +4,19 @@
 
 delay = (ms, func) -> setTimeout func, ms
 
-tinyMCEvalidTemplate = jQuery.validator.format("{0} is a required field.")
-tinyMCEvalid = (value, element) ->
-  return tinyMCE.get($(element).attr("id")).getContent().length > 2
 
-jQuery.validator.addMethod "tinymce", tinyMCEvalid, tinyMCEvalidTemplate
+transcriptValid = (value, element) ->
+  $("a.attached_transcript").length > 0
+
+referenceValid = (value, element) ->
+  references > 0
+
+
+jQuery.validator.addMethod "transcript", transcriptValid, "Transcript must be attached."
+jQuery.validator.addMethod "reference", referenceValid, "You must obtain a reference."
+
+glyph_ok = $("<i/>").addClass("glyphicon glyphicon-ok");
+glyph_exclaimation = $("<i/>").addClass("glyphicon glyphicon-exclamation-sign");
 
 $ ->
 
@@ -20,10 +28,18 @@ $ ->
   $('#flash-message').delegate '.alert-dismissable', 'autodismiss', () -> 
     window.setTimeout autodismiss, 2000
 
-  application_form = ($("main.applications.edit").length == 1)
-  signature_stamp = $("#application_signature_stamp").val();
-  signed = signature_stamp? && signature_stamp != ""
+  $("#validate_application_button").click ->
+    tinyMCE.triggerSave()
+    $("#application_reference_completed").removeAttr("disabled")
+    valid = $("form").valid()
+    $("#application_reference_completed").attr("disabled","disabled")
+    if valid
+        $("#sign_action_button").removeAttr("disabled","disabled")
 
+  application_form = ($("main.applications").length == 1)
+  signature_stamp = $("#application_signature_stamp").val()
+  signed = signature_stamp? && signature_stamp != ""
+  $("#sign_action_button").attr("disabled","disabled")
   submit_application = ->
     save_application
     $("#sign_action_button").click();
@@ -33,9 +49,9 @@ $ ->
     if $("#application_transcript").val() != ""
       return true
 
-    valuesToSubmit = $("main.applications.edit form").serialize()
+    valuesToSubmit = $("main.applications form").serialize()
     $.ajax({
-      url: $('main.applications.edit form').attr('action'),
+      url: $('main.applications form').attr('action'),
       data: valuesToSubmit,
       type: "PUT",
       dataType: "JSON" 
@@ -58,11 +74,20 @@ $ ->
     $(element).addClass(errorClass).removeClass(validClass)
 
   errorUnhighlight = (element, errorClass, validClass) ->
-    console.log(element)
-    console.log($(element))    
     $(element).closest("div.form-group").removeClass(errorClass).attr("title","").attr("data-original-title","")
     $(element).removeClass(errorClass).addClass(validClass)
 
+  errorList = (e, validator) ->
+    application_status = $("#application_status")
+    application_status.html("<h2>Application Status</h2><dl/>").append($("<p style='color:red'>Errors Detected </p>").append(glyph_exclaimation))
+    application_status_dl = $("dl",application_status)
+    $("sign_action_button").attr("disabled","disabled")
+
+    for error in validator.errorList
+      label = $(error.element).closest("div.form-group").find("label:first").text().replace("* ","")
+      application_status_dl.append $("<dt data-id='#{error.element.id}' style='color: red'>#{label}</dt><dd>#{error.message}</dd>").click ->
+        $("#"+$(this).attr("data-id")).focus()
+
 
   $('#save_action_button').click(save_application);
-  $('main.applications.edit form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application,  rules: { 'tinymce': { tinymce:true } } })
+  $('main.applications form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true} } })

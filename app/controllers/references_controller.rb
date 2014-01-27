@@ -69,7 +69,8 @@ class ReferencesController < ApplicationController
 
     respond_to do |format|
       if @reference.update_attributes(params[:reference])
-        format.html { redirect_to root_url, notice: 'Reference was successfully saved.' }
+        ReferenceMailer.reference_confirmation_email(@reference).deliver
+        format.html { redirect_to root_url, notice: 'Thank you for submitting your reference.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -107,6 +108,7 @@ class ReferencesController < ApplicationController
 
     respond_to do |format|
       if @reference.save
+          ReferenceMailer.send_reference_request_confirmation_email(@reference).deliver
           ReferenceMailer.send_reference_request_email(@reference).deliver
           format.html { redirect_to references_url, notice: 'Reference request was successfully sent.'  }
       else

@@ -26,7 +26,7 @@ var signed = <%= signed %>;
         </dl>
         <%= f.fields_for :user do |u| %>
             <%= u.input :name, required: true, :title => "This is my image's tooltip message!" %>
-            <%= u.input :email, required: true %>
+            <%= u.input :email, required: true, :readonly => true %>
         <% end %>
         <%= f.input :phone, required: true %>
         <%= f.input :date_of_birth, required: true %>
@@ -83,10 +83,14 @@ var signed = <%= signed %>;
     </div>
     <div class="well">
         <h2>Essay</h2>
-        <%= f.input :essay, :as => :tinymce, required: true %>
+        <%= f.input :essay, :as => :tinymce %>
     </div>
     <div class="well">
     <h2>Reference Letter</h2>
+    <%= f.fields_for :reference do |r| %>
+        <%= r.input :name, required: true, :disabled => true %>
+        <%= r.input :completed, :as => :boolean, :label => 'Reference', :disabled => true %>
+    <% end %>
     <%if @application.references.select{ |r| r.completed.present? }.count > 0 %>
         Reference Complete
     <% else %>
@@ -97,9 +101,9 @@ var signed = <%= signed %>;
     <div class="well">
     <h2>Attach Transcript</h2>
     <% if @application.transcript.present? %>
-        <%= link_to @application.transcript_file_name, @application.transcript.url %>
+        <%= link_to @application.transcript_file_name, @application.transcript.url, :class => "attached_transcript" %>
     <% end %>
-        <%= f.input :transcript, :label => "", required: true %>
+        <%= f.input :transcript, :label => "Transcript", required: true,  :html => { :class => "form-vertical" } %>
     </div>
 
     <div class="well">
@@ -116,8 +120,8 @@ var signed = <%= signed %>;
     <%= f.input :signature_ip, :as => :hidden %>
 
   <div class="form-actions">
-    <%#= f.button :submit, :class => "btn btn-default", :id=>"save_button" %>
-    <%= link_to "Save Application", "#", :class => "btn btn-default", :id=>"save_action_button" %>
+    <%= f.button :submit, "Save Application", :class => "btn btn-primary", :id=>"save_button" %>
+    <%#= link_to "Save Application", "#", :class => "btn btn-default", :id=>"save_action_button" %>
 
   </div>
 <% end %>
@@ -129,21 +133,24 @@ var signed = <%= signed %>;
             <dd id="signature_status">
             <% if signed %>
                 <%=glyph("ok") %>   
-            <% else %>
+            <% else %><p style="color: red">
                 You must complete all parts of the application, attach your transcript, obtain your references and sign electronically in order for it to be considered for the scholarship.<br>
+                Before you sign, you must click "Validate Application."</p>
             <% end %>
             </dd>
-        <dt>Application Status</dt>
-        <dd id="application_status">
+    </dl>
+    <div id="application_status">
+    <h2>Application Status</h2>
+
+        <dd id="application_glyph">
             <% if signed %>
                 <%=glyph("ok") %>   
             <% else %>
-                <%=glyph("exclamation-sign")%>
+                Application has not been validated <%=glyph("exclamation-sign")%>
             <% end %>
         </dd>
+        </div>
 
-
-    </dl>
-
-        <%= link_to "#{sign_action.titleize} Application",  {:id => @application.id, :action => sign_action}, :method => "put", :remote => true, :class => "btn btn-default", :id=>"sign_action_button" %>
+        <%= link_to "Validate Application", "#", :class => "btn btn-default", :id=>"validate_application_button"  %>
+        <%= link_to "#{sign_action.titleize} Application",  {:id => @application.id, :action => sign_action}, :method => "put", :remote => true, :class => "btn btn-default", :id=>"sign_action_button" unless @application.id.blank?%>
 </div>

@@ -32,9 +32,19 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, 
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
+  after_create :default_role_and_create_blank_application
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name
+
+
+  private
+  def default_role_and_create_blank_application
+    self.roles << Role.find_by_name("student")
+    self.application = Application.new({:user_id => self.id})
+  end
+
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first
@@ -44,8 +54,6 @@ class User < ActiveRecord::Base
              email: data["email"],
              password: Devise.friendly_token[0,20]
             )
-        user.add_role :user
-
     end
     user
   end

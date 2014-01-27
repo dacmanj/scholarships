@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     redirect_path = root_path
     if current_user.has_role? :student
       if current_user.application.blank?
-        redirect_path = new_applications_path
+        redirect_path = new_application_path
       else
         redirect_path = edit_application_path current_user.application.id
       end
