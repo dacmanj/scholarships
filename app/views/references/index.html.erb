@@ -1,5 +1,5 @@
 <h1>My References</h1>
-
+<p>You may send more than one reference request, but only one reference will be accepted.</p><p>You may cancel a reference request by clicking the <%=glyph("trash")%> icon.</p>
 <table class="table table-striped">
   <tr>
     <th>Email</th>
@@ -13,7 +13,7 @@
 
 <% @references.each do |reference| %>
   <tr>
-    <td><%= reference.email %></td>
+    <td><%= link_to reference.email, "mailto:#{reference.email}" %></td>
     <td><%= reference.name %></td>
     <td><% if reference.completed %>
             <%=glyph("ok") %>
@@ -21,15 +21,17 @@
             <%=glyph("exclamation-sign") %>
           <% end %>
     </td>
-    <td><%= link_to glyph("send"), reference, action: :resend, method: :resend %></td>
+    <td><%= (link_to glyph("send"), reference, action: :resend, method: :resend) unless reference.completed.present? %></td>
     <td><%= link_to glyph("trash"), reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<div class="well">
-<%= simple_form_for :reference, :url => references_send_email_path, :method => :post do |f| %>
-  <%= f.input :email %>
-  <%= f.submit "Send Reference Request", :class => "btn btn-primary" %>
+<% if (@references.select{|s| s.completed.present? }.count == 0) %>
+  <div class="well">
+  <%= simple_form_for :reference, :url => references_send_email_path, :method => :post do |f| %>
+    <%= f.input :email %>
+    <%= f.submit "Send Reference Request", :class => "btn btn-primary" %>
+  <% end %>
+  </div>
 <% end %>
-</div>
