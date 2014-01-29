@@ -44,6 +44,10 @@
 #  admission_status                                :string(255)
 #  employment_history                              :text
 #  how_did_you_learn_explanation                   :string(255)
+#  transcript_file_name                            :string(255)
+#  transcript_content_type                         :string(255)
+#  transcript_file_size                            :integer
+#  transcript_updated_at                           :datetime
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
