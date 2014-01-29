@@ -2,8 +2,8 @@ class ReferencesController < ApplicationController
   # GET /references
   # GET /references.json
   load_and_authorize_resource
-  skip_authorize_resource :only => [:edit, :update, :send_reference_request, :resend]
-  skip_authorization_check :only => [:edit, :update, :send_reference_request, :resend]
+  skip_authorize_resource :only => [:edit, :update]
+  skip_authorization_check :only => [:edit, :update]
 
   def index
     @references = Reference.accessible_by(current_ability)
