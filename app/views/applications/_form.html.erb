@@ -29,7 +29,7 @@ var signed = <%= signed %>;
             <%= u.input :email, required: true, :readonly => true %>
         <% end %>
         <%= f.input :phone, required: true %>
-        <%= f.input :date_of_birth, required: true %>
+        <%= f.input :date_of_birth, start_year: Date.today.year - 90, required: true %>
         </div>
     <div class="well">
       <h2>Address Information</h2>
@@ -54,7 +54,7 @@ var signed = <%= signed %>;
     <div class="well">
         <h2>Academic Status And High School Information</h2>
         <%= f.input :name_of_high_school, required: true %>
-        <%= f.input :date_of_graduation, required: true %>
+        <%= f.input :date_of_graduation, start_year: Date.today.year, end_year: Date.today.year + 1, required: true %>
         <%= f.input :are_you_a_graduating_high_school_senior, :as => :radio_buttons, required: true %>
         <%= f.input :hs_street_address, :as => :text,  :input_html => {rows: "3", cols: "100"}, required: true  %>
         <%= f.input :hs_city, :label => "City", required: true %>
