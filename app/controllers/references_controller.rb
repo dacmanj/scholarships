@@ -6,8 +6,7 @@ class ReferencesController < ApplicationController
   skip_authorization_check :only => [:edit, :update, :send_reference_request, :resend]
 
   def index
-    @references = Reference.all
-    @applications = Application.accessible_by(current_ability)
+    @references = Reference.accessible_by(current_ability)
 
     respond_to do |format|
       format.html # index.html.erb
