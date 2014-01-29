@@ -100,13 +100,17 @@ var signed = <%= signed %>;
 
     <div class="well">
     <h2>Attach Transcript</h2>
-    <p>Please obtain a copy of your transcript from your school and upload it here.</p>
     <% if @application.transcript.present? %>
-        <%= link_to @application.transcript_file_name, @application.transcript.url, :class => "attached_transcript" %>
-        <%= f.button :submit, "Upload Transcript", :class => "btn btn-primary" %>
+        <p>Transcript Attached:</p>
+        <p><%= link_to @application.transcript_file_name, @application.transcript.url, :class => "attached_transcript" %></p>
+        <%= hidden_field_tag(:delete_transcript, "0") %>
+        <%= f.button :submit, "Delete Transcript", :class => "btn btn-primary", :id=>"delete_transcript_button" %>
 
-    <% end %>
+    <%else %>
+        <p>Please obtain a copy of your transcript from your school and upload it here.</p>
         <%= f.input :transcript, :label => "Transcript", required: true,  :html => { :class => "form-vertical" } %>
+        <%= f.button :submit, "Upload Transcript", :class => "btn btn-primary", :id=> "upload_transcript_button", :disabled => true %>
+    <% end %>
     </div>
 
     <div class="well">

@@ -94,10 +94,16 @@ class ApplicationsController < ApplicationController
   # PUT /applications/1.json
   def update
     @application = Application.find(params[:id])
+    notice = nil
+    if (params[:delete_transcript] == "1")
+      @application.transcript = nil
+      notice = "Transcript deleted."
+      @application.save
+    end
 
     respond_to do |format|
       if @application.update_attributes(params[:application])
-        format.html { redirect_to edit_application_path, notice: t("application.message.save_success") }
+        format.html { redirect_to edit_application_path, notice: (notice || t("application.message.save_success")) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

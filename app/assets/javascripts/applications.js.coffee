@@ -6,11 +6,13 @@ delay = (ms, func) -> setTimeout func, ms
 
 
 transcriptValid = (value, element) ->
-  $("a.attached_transcript").length > 0
+  $("a.attached_transcript").length > 0 || $("#application_transcript").val() != ""
 
 referenceValid = (value, element) ->
   references > 0
 
+set_delete_transcript = (e) ->
+  $("#delete_transcript").val(1);
 
 jQuery.validator.addMethod "transcript", transcriptValid, "Transcript must be attached."
 jQuery.validator.addMethod "reference", referenceValid, "You must obtain a reference."
@@ -43,6 +45,11 @@ $ ->
   submit_application = ->
     save_application
     $("#sign_action_button").click();
+
+  enable_upload_button = (e) ->
+    if $("#application_transcript").val() != ""
+      $('#upload_transcript_button').removeAttr("disabled")
+  $("#application_transcript").bind "change", enable_upload_button
 
   save_application = ->    
     tinyMCE.triggerSave()
@@ -89,5 +96,6 @@ $ ->
         $("#"+$(this).attr("data-id")).focus()
 
 
-  $('#save_action_button').click(save_application);
+  $('#save_action_button').click(save_application)
+  $('#delete_transcript_button').click(set_delete_transcript)
   $('main.applications form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true} } })
