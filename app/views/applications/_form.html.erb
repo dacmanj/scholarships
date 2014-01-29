@@ -87,15 +87,19 @@ var signed = <%= signed %>;
     </div>
     <div class="well">
     <h2>Reference Letter</h2>
+    <%if @application.references.select{ |r| r.completed.present? }.count > 0 %>
+        Reference Complete
+    <% else %>
+        Your reference is not yet complete. You must obtain a professional or academic reference letter.
+        <div class="form-group">
+            <%=link_to "Send Reference Request", references_path, :class=>"btn btn-primary", :target=>"_BLANK" %>
+        </div>
+    <% end %>
     <%= f.fields_for :reference do |r| %>
         <%= r.input :name, required: true, :disabled => true %>
         <%= r.input :completed, :as => :boolean, :label => 'Reference', :disabled => true %>
     <% end %>
-    <%if @application.references.select{ |r| r.completed.present? }.count > 0 %>
-        Reference Complete
-    <% else %>
-        Your reference is not yet complete. You must obtain a professional or academic reference letter. To send (or resend) the electronic reference form, <%=link_to "click here", references_path %>.
-    <% end %>
+
     </div>
 
     <div class="well">

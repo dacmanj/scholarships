@@ -24,7 +24,7 @@
 <div class="col-md-12">
 
 <% if current_user.present? && current_user.application.present? %>
-	<%= link_to "To begin/continue your application click here.", edit_application_path(current_user.application.id) %>
+	<%= link_to "Return To Your Application", edit_application_path(current_user.application.id), :class=>"btn btn-primary" %>
 <% else %>
-	<%= link_to "To begin your application click here.", new_user_session_path %>
+	<%= link_to "Begin your application", new_user_session_path, :class=>"btn btn-primary" %>
 <% end %>
