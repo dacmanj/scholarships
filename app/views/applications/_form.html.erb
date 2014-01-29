@@ -42,9 +42,9 @@ var signed = <%= signed %>;
     <div class="well">
 
         <%= f.input :identify_lgbt, :as => :radio_buttons, required: true %>
-        <%= f.input :out_and_open, :as => :radio_buttons, required: true %>
+        <%= f.input :out_and_open, :as => :radio_buttons, required: false %>
+        <%= f.input :supportive_parents, :as => :radio_buttons, required: false %>
         <%= f.input :identify_supporter, :as => :radio_buttons, required: true %>
-        <%= f.input :supportive_parents, :as => :radio_buttons, required: true %>
         <div class="well">
             <%= f.input :how_did_you_learn_about_the_scholarship, :collection => Application::HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP, required: true %>
             <%= f.input :how_did_you_learn_explanation, required: true %>
@@ -100,8 +100,11 @@ var signed = <%= signed %>;
 
     <div class="well">
     <h2>Attach Transcript</h2>
+    <p>Please obtain a copy of your transcript from your school and upload it here.</p>
     <% if @application.transcript.present? %>
         <%= link_to @application.transcript_file_name, @application.transcript.url, :class => "attached_transcript" %>
+        <%= f.button :submit, "Upload Transcript", :class => "btn btn-primary" %>
+
     <% end %>
         <%= f.input :transcript, :label => "Transcript", required: true,  :html => { :class => "form-vertical" } %>
     </div>
@@ -135,7 +138,7 @@ var signed = <%= signed %>;
                 <%=glyph("ok") %>   
             <% else %><p style="color: red">
                 You must complete all parts of the application, attach your transcript, obtain your references and sign electronically in order for it to be considered for the scholarship.<br>
-                Before you sign, you must click "Validate Application."</p>
+                Before you sign, you must click "Validate Application" to make sure that you have completed all required fields.</p>
             <% end %>
             </dd>
     </dl>
