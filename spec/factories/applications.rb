@@ -24,7 +24,7 @@
 #  cumulative_gpa                                  :string(255)
 #  please_lists_schools_where_you_will_be_applying :text
 #  describe_community_service_activities           :text
-#  essay                                           :string(255)
+#  essay                                           :text
 #  release_high_school                             :boolean
 #  release_local_media                             :boolean
 #  release_national_media                          :boolean

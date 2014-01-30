@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140127183424) do
+ActiveRecord::Schema.define(:version => 20140130144718) do
 
   create_table "applications", :force => true do |t|
     t.integer  "user_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20140127183424) do
     t.string   "cumulative_gpa"
     t.text     "please_lists_schools_where_you_will_be_applying"
     t.text     "describe_community_service_activities"
-    t.string   "essay"
+    t.text     "essay"
     t.boolean  "release_high_school"
     t.boolean  "release_local_media"
     t.boolean  "release_national_media"
@@ -95,6 +95,22 @@ ActiveRecord::Schema.define(:version => 20140127183424) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "scores", :force => true do |t|
+    t.integer  "application_id"
+    t.integer  "user_id"
+    t.boolean  "lgbt"
+    t.boolean  "ally"
+    t.boolean  "stem"
+    t.boolean  "community_college"
+    t.integer  "essay"
+    t.integer  "academics"
+    t.integer  "activities"
+    t.integer  "lgbt_advocacy"
+    t.boolean  "discretionary"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

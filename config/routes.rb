@@ -1,4 +1,7 @@
 Scholarships::Application.routes.draw do
+  resources :scores
+
+
   resources :references
 
 

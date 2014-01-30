@@ -1,21 +1,49 @@
-<p id="notice"><%= notice %></p>
 
 <div>
-<%= image_tag @application.transcript.url(:square) %>
+  <b><%= t "simple_form.labels.user.name" %></b>
+</div>
+<div>
+	<%= @application.user.name unless @application.user.blank? %>
 </div>
 
-<%= @application.attributes.reject{|h| h == "user_id" }.each_pair do |name, value| %>
-<p>
-  <b><%= t("simple_form.labels.application.#{name}") %></b>
-  <%= value %>
-</p>
+<% applications_fields_for_reviewers = ["are_you_a_graduating_high_school_senior",
+"identify_lgbt","out_and_open","supportive_parents","identify_supporter",
+"how_did_you_learn_about_the_scholarship","how_did_you_learn_explanation",
+"name_of_high_school","cumulative_gpa","transcript_file_name",
+"honors_or_awards","please_lists_schools_where_you_will_be_applying","major",
+"admission_status","stem","describe_community_service_activities",
+"employment_history","essay"] %>
+
+<% applications_fields_for_reviewers.each do |name| %>
+<div style="margin-top: 15px;">
+  <b><%= t "simple_form.labels.application.#{name}" %></b>
+</div>
+<div>
+	<% if name.eql? "transcript_file_name" %>
+	  <% type = :transcript %>
+	<% elsif name.eql? "reference_id" %>
+	  <% type = :reference %>
+	<% else %>
+      <% type = @application.column_for_attribute(name).type %>
+	<% end %>
+	<% value = @application[name.to_sym] %>
+	<%= format_field(type,value) %>
+
+</div>
 <% end %>
 
+<div class="well">
+	<h2>Reference</h2>
+	<%= render partial: 'reference' %>
+</div>
+
 <ul class="nav nav-pills">
+<% if can? :edit, @application %>
 <li>
-	<%= link_to 'Edit', edit_application_path(@application) %>
+	<%= link_to 'Edit', edit_application_path(@application), :class => "btn btn-default" %>
 </li>
+<% end %>
 <li>
-	<%= link_to 'Back', applications_path %>
+	<%= link_to 'Back', applications_path, :class => "btn btn-default"%>
 </li>
 </ul>

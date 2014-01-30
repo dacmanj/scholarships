@@ -30,13 +30,16 @@ $ ->
   $('#flash-message').delegate '.alert-dismissable', 'autodismiss', () -> 
     window.setTimeout autodismiss, 2000
 
-  $("#validate_application_button").click ->
+  $("#validate_application_button").click (e) ->
     tinyMCE.triggerSave()
     $("#application_reference_completed").removeAttr("disabled")
     valid = $("form").valid()
     $("#application_reference_completed").attr("disabled","disabled")
     if valid
-        $("#sign_action_button").removeAttr("disabled","disabled")
+      $("#sign_action_button").removeAttr("disabled","disabled")
+      $("#application_status").html("<p>Application validated! You can now sign the application. <i class='glyphicon glyphicon-ok'/>")
+    e.preventDefault()
+
 
   application_form = ($("main.applications").length == 1)
   signature_stamp = $("#application_signature_stamp").val()

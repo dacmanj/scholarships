@@ -1,6 +1,6 @@
 <h1>Applications</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Status</th>
@@ -11,7 +11,7 @@
 <% @applications.each do |application| %>
   <tr>
     <td><%= application.user.name unless application.user.blank? %></td>
-    <td></td>
+    <td><%=link_to 'Show', application_path(application) %> </td>
     <td><%= link_to 'Edit', edit_application_path(application) %></td>
     <td><%= link_to 'Delete', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

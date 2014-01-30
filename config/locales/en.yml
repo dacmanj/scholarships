@@ -2,6 +2,13 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  "true": "Yes"
+  "false": "No"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
   google_oauth2: 'Google'
   simple_form:
     labels:
@@ -49,6 +56,18 @@ en:
         how_long_have_you_known: 'How long have you known the student?'
         relationship: 'What is your relationship with this student? (teacher, advisor, minister, school counselor, school administrator, coach, etc.):'
         references_essay: 'Would you recommend this student for a PFLAG National Scholarship? Why or why not? Are there any specific obstacles this candidate has had to overcome in order to succeed?'
+      score:
+        user_id: "Reviewer"
+        application_id: "Applicant"
+        lgbt: "Does the applicant identify as LGBT?"
+        ally: "Is the applicant a straight ally?"
+        stem: "Is the applicant majoring in a science related field?"
+        community_college: "Is the applicant attending a community college?"
+        essay_instructions: "The highest number of points possible for the essay is 4. Please use your best judgment to reflect the content, appropriateness, editing and over-all impact of the essay."
+        academics_instructions: "The highest number of points possible is 3. Academics include Grade Point Average (GPA), awards, honors, recognitions and challenges faced by a student."
+        activities_instructions: "The highest number of points possible is 3."
+        lgbt_advocacy_instructions: "The highest number of points possible is 2."
+        discretionary_instructions: "The highest number of points possible is 3. This category allows you to look at need, perseverance, and intangible qualities in a candidate that are not covered by another scoring category."
   application:
     message:
       save_success: Application saved successfully! Don't forget to complete your application.

@@ -47,7 +47,7 @@ var signed = <%= signed %>;
         <%= f.input :identify_supporter, :as => :radio_buttons, required: true %>
         <div class="well">
             <%= f.input :how_did_you_learn_about_the_scholarship, :collection => Application::HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP, required: true %>
-            <%= f.input :how_did_you_learn_explanation, required: true %>
+            <%= f.input :how_did_you_learn_explanation, required: false %>
         </div>
     </div>
 
@@ -88,16 +88,22 @@ var signed = <%= signed %>;
     <div class="well">
     <h2>Reference Letter</h2>
     <%if @application.references.select{ |r| r.completed.present? }.count > 0 %>
-        Reference Complete
+        Reference Complete <%= glyph("ok")%><br><br>
+        <dl>
+            <dt>
+                Reference Name</dt>
+            <dd><%=@application.references.first.name%></dd>
+        </dl>
+
     <% else %>
         Your reference is not yet complete. You must obtain a professional or academic reference letter.
         <div class="form-group">
             <%=link_to "Send Reference Request", references_path, :class=>"btn btn-primary", :target=>"_BLANK" %>
         </div>
-    <% end %>
-    <%= f.fields_for :reference do |r| %>
-        <%= r.input :name, required: true, :disabled => true %>
-        <%= r.input :completed, :as => :boolean, :label => 'Reference', :disabled => true %>
+        <%= f.fields_for :reference do |r| %>
+            <%= r.input :name, required: true, :disabled => true %>
+             <%= r.input :completed, :as => :boolean, :label => 'Reference', :disabled => true %>
+        <% end %>
     <% end %>
 
     </div>
@@ -143,6 +149,7 @@ var signed = <%= signed %>;
         <dt>Signature</dt>
             <dd id="signature_status">
             <% if signed %>
+                Signed: <%= @application.signature_stamp.getlocal.strftime "%r" %><br>
                 <%=glyph("ok") %>   
             <% else %><p style="color: red">
                 You must complete all parts of the application, attach your transcript, obtain your references and sign electronically in order for it to be considered for the scholarship.<br>
@@ -150,16 +157,16 @@ var signed = <%= signed %>;
             <% end %>
             </dd>
     </dl>
-    <div id="application_status">
     <h2>Application Status</h2>
+    <div id="application_status">
 
-        <dd id="application_glyph">
+        <p id="application_glyph">
             <% if signed %>
-                <%=glyph("ok") %>   
+                You application is complete. Congratulations! We'll notify all applicants of their status in the fall. If you need to make changes, you must "unsign" your application, make the changes, revalidate it and sign it again.   
             <% else %>
                 Application has not been validated <%=glyph("exclamation-sign")%>
             <% end %>
-        </dd>
+        </p>
         </div>
 
         <%= link_to "Validate Application", "#", :class => "btn btn-default", :id=>"validate_application_button"  %>

@@ -24,7 +24,7 @@
 #  cumulative_gpa                                  :string(255)
 #  please_lists_schools_where_you_will_be_applying :text
 #  describe_community_service_activities           :text
-#  essay                                           :string(255)
+#  essay                                           :text
 #  release_high_school                             :boolean
 #  release_local_media                             :boolean
 #  release_national_media                          :boolean
@@ -52,6 +52,7 @@
 
 class Application < ActiveRecord::Base
   belongs_to :user
+  has_many :scores
   has_many :references
   attr_accessible :transcript
   has_attached_file :transcript
