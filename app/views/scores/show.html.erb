@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Application:</b>
+  <%= @score.application_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @score.user_id %>
+</p>
+
+<p>
+  <b>Lgbt:</b>
+  <%= @score.lgbt %>
+</p>
+
+<p>
+  <b>Ally:</b>
+  <%= @score.ally %>
+</p>
+
+<p>
+  <b>Stem:</b>
+  <%= @score.stem %>
+</p>
+
+<p>
+  <b>Community college:</b>
+  <%= @score.community_college %>
+</p>
+
+<p>
+  <b>Essay:</b>
+  <%= @score.essay %>
+</p>
+
+<p>
+  <b>Academics:</b>
+  <%= @score.academics %>
+</p>
+
+<p>
+  <b>Activities:</b>
+  <%= @score.activities %>
+</p>
+
+<p>
+  <b>Lgbt advocacy:</b>
+  <%= @score.lgbt_advocacy %>
+</p>
+
+<p>
+  <b>Discretionary:</b>
+  <%= @score.discretionary %>
+</p>
+
+<div style="margin-top: 20px;">
+<%= link_to 'Edit', edit_score_path(@score), :class=>"btn" %> <%= link_to 'Back', scores_path, :class=>"btn btn-default" %>
+</div>

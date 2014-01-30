@@ -1,0 +1,40 @@
+<%= simple_form_for(@score) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  <% if @application.blank? or @application.user.blank?  %>
+    <%= f.input :application_id, collection: @applications.map{|a| ["#{a.user.name} (##{a.id})", a.id]} %>
+  <% else %>
+    <dl>
+      <dt><%= t("simple_form.labels.score.applicant") %></dt>
+      <dd><%= @application.user.name %></dd>
+      <%= f.input :application_id, :as => :hidden, :input_html => { :value => @application.id } %>
+
+    </dl>
+  <%end %>
+    <dl>
+      <dt><%= t("simple_form.labels.score.user_id") %></dt>
+      <dd><%= @score.user.name %></dd>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+
+    </dl>
+    <%= f.input :lgbt %>
+    <%= f.input :ally %>
+    <%= f.input :stem %>
+    <%= f.input :community_college %>
+    <%= f.input :essay, collection: 0..4, :label => t("simple_form.labels.score.essay") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.essay_instructions")}</p>".html_safe
+     %>
+    <%= f.input :academics, collection: 0..3, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
+    <%= f.input :activities, collection: 0..3, :label => t("simple_form.labels.score.activities") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.activities_instructions")}</p>".html_safe
+     %>
+    <%= f.input :lgbt_advocacy, collection: 0..2, :label => t("simple_form.labels.score.lgbt_advocacy") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.lgbt_advocacy_instructions")}</p>".html_safe
+     %>
+    <%= f.input :discretionary, collection: 0..3,  :label => t("simple_form.labels.score.discretionary") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.discretionary_instructions")}</p>".html_safe
+     %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Submit Score", :class => "btn btn-primary" %>
+  </div>
+<% end %>
