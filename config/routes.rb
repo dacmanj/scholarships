@@ -5,7 +5,12 @@ Scholarships::Application.routes.draw do
   resources :references
 
 
-  resources :applications
+  resources :applications do
+    collection do
+      post :edit_multiple
+    end
+  end
+
   match '/applications/:id/sign', to: 'applications#sign', as: :sign_application
   match '/applications/:id/unsign', to: 'applications#unsign', as: :unsign_application
 

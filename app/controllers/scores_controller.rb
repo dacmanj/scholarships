@@ -28,7 +28,15 @@ class ScoresController < ApplicationController
   def new
     @score = Score.new
     @applications = Application.accessible_by(current_ability)
+
     @application = @applications.find(params[:application_id]) unless params[:application_id].nil?
+    if @application.present?
+      @score.ally = @application.identify_supporter
+      @score.lgbt = @application.identify_lgbt
+      @score.stem = @application.stem
+    end
+
+
     @score.user = current_user
 
     respond_to do |format|

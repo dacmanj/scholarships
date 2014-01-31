@@ -86,6 +86,21 @@ class Application < ActiveRecord::Base
     self.applicant_user_id = value
   end
 
+  def add_reviewer(reviewer)
+    if reviewer.present?
+      self.users << reviewer unless self.users.exists?(:id => reviewer.id)
+    end
+  end
+
+  def replace_reviewers(reviewer)
+    self.users.reject{|u| u.id == self.applicant_user_id }.each do |u|
+      self.users.delete(u)
+    end
+    if reviewer.present?
+      self.users << reviewer
+    end
+  end
+
   def reviewers
     self.users.reject{|h| h.id == self.applicant_user_id}
   end

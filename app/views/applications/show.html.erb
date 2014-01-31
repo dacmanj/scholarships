@@ -1,4 +1,15 @@
 
+<% if params[:iframe] != '1' %>
+<h2>Scoring</h2>
+<% @application.scores.accessible_by(current_ability).each do |s| %>
+      <%= link_to (glyph("pencil") + "Edit Score").html_safe, edit_score_path(s.id), :target => "_BLANK" %>
+      <% end %>
+      <% if @application.scores.accessible_by(current_ability).count == 0 %>
+        <%= glyph("exclamation-sign") %>
+        <%= link_to "New Score", new_score_path(:application_id => @application.id), :target => "_BLANK" %>
+      <% end %>
+<% end %>
+<h2>Application</h2>
 <div>
   <b><%= t "simple_form.labels.user.name" %></b>
 </div>
@@ -37,6 +48,7 @@
 	<%= render partial: 'reference' unless @reference.blank? %>
 </div>
 
+<% if params[:iframe] != '1' %>
 <ul class="nav nav-pills">
 <% if can? :edit, @application %>
 <li>
@@ -47,3 +59,4 @@
 	<%= link_to 'Back', applications_path, :class => "btn btn-default"%>
 </li>
 </ul>
+<% end %>

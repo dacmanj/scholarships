@@ -108,6 +108,34 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def edit_multiple
+    @applications = Application.find_all_by_id(params[:application_ids])
+    errors = Array.new
+    reviewer = nil
+    if params[:reviewer].blank? && params[:replace_reviewers] == '1'
+      errors.push "Reviewers removed."
+    else
+      reviewer = User.find(params[:reviewer])
+    end
+    replace = params[:replace_reviewers] == '1'
+    @applications.each do |a| 
+      params[:reviewers]
+      if replace
+        a.replace_reviewers reviewer
+      else
+        if params[:reviewer].blank? 
+           errors.push "No reviewer selected. Check replace if you meant to remove all reviewers assigned."
+        else
+          a.add_reviewer reviewer
+        end
+      end
+      a.save!
+    end
+    message =  (errors.length > 0) ? errors.join(", ") : "Applications successfully updated."
+    redirect_to applications_path, notice: message
+
+  end
+
   # DELETE /applications/1
   # DELETE /applications/1.json
   def destroy

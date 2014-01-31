@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 
   REVIEWERS = ['dcmanueljr@gmail.com']
   
+  def is?(role)
+    self.has_role?(role)
+  end
+  
   def application
     if self.has_role? :student
       Application.find_by_uid(self.id)

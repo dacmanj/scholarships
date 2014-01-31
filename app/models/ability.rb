@@ -6,7 +6,7 @@ class Ability
     if user.has_role? :admin
         can :manage, :all
     elsif user.has_role? :reviewer
-      can [:index, :show], Application
+      can [:index, :show], Application, :id => user.application_ids
       can :show, Reference
       can :manage, Score, :user_id => user.id
     elsif user.has_role? :student

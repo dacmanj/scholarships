@@ -9,6 +9,8 @@
       <dt><%= t("simple_form.labels.score.applicant") %></dt>
       <dd><%= @application.user.name %></dd>
       <%= f.input :application_id, :as => :hidden, :input_html => { :value => @application.id } %>
+     <%= link_to ("Show Application In New Window " + glyph("file")).html_safe, application_path(@application), :target => "_blank" %> 
+     <iframe src="<%=application_path(@application, :iframe => '1')%>" width="100%" height="400px"></iframe>
 
     </dl>
   <%end %>
@@ -22,8 +24,13 @@
     <%= f.input :ally %>
     <%= f.input :stem %>
     <%= f.input :community_college %>
+
     <%= f.input :essay, collection: 0..4, :label => t("simple_form.labels.score.essay") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.essay_instructions")}</p>".html_safe
      %>
+
+    <% if @application.present? && @application.transcript_file_name.present? %>
+      Transcript: <%=link_to glyph("file"), @application.transcript.url, :target => "_BLANK" %> 
+    <% end %>
     <%= f.input :academics, collection: 0..3, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
     <%= f.input :activities, collection: 0..3, :label => t("simple_form.labels.score.activities") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.activities_instructions")}</p>".html_safe
      %>

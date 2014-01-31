@@ -1,25 +1,57 @@
 <h1>Applications</h1>
 
+
+<%= simple_form_for '', :url => edit_multiple_applications_path, :html => { :class => "form-inline", :role => "form" } do |f| %>
+
+<% if current_user.is? :admin %>
+<div class="well">
+  <%= f.input :reviewer, :collection => User.with_role(:reviewer), required: true, :label_html => {:style => "display: none;"}, :wrapper_html => {:class=> "col-md-3"}, prompt: "Assign reviewer..." %>
+Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
+  <%= f.button :submit, 'Apply', :class => "btn btn-primary" %>
+</div>
+<% end %>
+
 <table class="table table-striped">
   <tr>
+    <% if current_user.is? :admin %>
+    <th><%= check_box_tag 'select_all_application_id', '', false %></th>
+    <%end %>
     <th>Name</th>
+    <% if current_user.is? :admin %>
     <th>Reviewers</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Scores<br>Submitted</th>
+    <% end %>
+    <th>Scored?</th>
+    <th>Application</th>
   </tr>
 
 <% @applications.each do |application| %>
   <tr>
-    <td><%= application.applicant.name unless application.applicant.blank? %></td>
-    <td><%= User.find(application.reviewers.first).name unless application.reviewers.first.blank? %></td>
-    <td><%=link_to glyph("file"), application_path(application) %> </td>
-    <td><%= link_to glyph("pencil"), edit_application_path(application) if can? :edit, application %></td>
-    <td><%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %></td>
+    <% if current_user.is? :admin %>
+    <td><%= check_box_tag 'application_ids[]', application.id, false %></td>
+    <%end%>
+    <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %></td>
+    <% if current_user.has_role? :admin %>
+    <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
+    <td><%= application.scores.count %></td>
+    <% end %>
+    <td><% application.scores.accessible_by(current_ability).each do |s| %>
+      <%= link_to glyph("pencil"), edit_score_path(s.id) %>
+      <% end %>
+      <% if application.scores.accessible_by(current_ability).count == 0 %>
+        <%= glyph("exclamation-sign") %>
+        <%= link_to "New Score", new_score_path(:application_id => application.id) %>
+      <% end %>
+    </td>
+    <td>
+    <%= link_to glyph("pencil"), edit_application_path(application) if can? :edit, application %>
+    <%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %></td>
   </tr>
 <% end %>
 </table>
+<% end %>
 
 <br />
 
-<%= link_to 'New Application', new_application_path unless current_user.has_role? :student && @applications.length > 0 %>
+<%= link_to 'New Application', new_application_path, :class => 'btn btn-primary' unless current_user.has_role? :student && @applications.length > 0 %>
+
