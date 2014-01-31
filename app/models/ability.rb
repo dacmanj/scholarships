@@ -5,22 +5,17 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
         can :manage, :all
-    end
-
-    if user.has_role? :student
-      can :create, Application
-      can :sign, :unsign, Application
-      can [:index, :destroy, :resend, :send_reference_request], Reference, :user_id => user.id
-#      can :resend
-#      can :send,:reference, :request
-      can :manage, Application, :user_id => user.id
-    end
-
-    if user.has_role? :reviewer
-      can :show, Application
+    elsif user.has_role? :reviewer
+      can [:index, :show], Application
       can :show, Reference
       can :manage, Score, :user_id => user.id
+    elsif user.has_role? :student
+      can :create, Application
+      can [:sign, :unsign], Application, :applicant_user_id => user.id
+      can [:index, :destroy, :resend, :send_reference_request], Reference, :user_id => user.id
+      can :manage, Application, :applicant_user_id => user.id
     end
+
 
     # Define abilities for the passed in user here. For example:
     #

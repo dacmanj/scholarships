@@ -3,21 +3,23 @@
 <table class="table table-striped">
   <tr>
     <th>Name</th>
-    <th>Status</th>
+    <th>Reviewers</th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @applications.each do |application| %>
   <tr>
-    <td><%= application.user.name unless application.user.blank? %></td>
-    <td><%=link_to 'Show', application_path(application) %> </td>
-    <td><%= link_to 'Edit', edit_application_path(application) %></td>
-    <td><%= link_to 'Delete', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= application.applicant.name unless application.applicant.blank? %></td>
+    <td><%= User.find(application.reviewers.first).name unless application.reviewers.first.blank? %></td>
+    <td><%=link_to glyph("file"), application_path(application) %> </td>
+    <td><%= link_to glyph("pencil"), edit_application_path(application) if can? :edit, application %></td>
+    <td><%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Application', new_application_path unless current_user.has_role(:user) && @applications.length > 0 %>
+<%= link_to 'New Application', new_application_path unless current_user.has_role? :student && @applications.length > 0 %>

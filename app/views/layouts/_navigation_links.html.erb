@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? and current_user.has_role? :student %>
-	<% if current_user.application.present? %>
-   		<li><%= link_to 'My Application', edit_application_path(current_user.application.id) %></li>
+	<% if Application.find_by_uid(current_user.id).present? %>
+   		<li><%= link_to 'My Application', edit_application_path(Application.find_by_uid(current_user.id)) %></li>
    	<% else %>
 	   	<li><%= link_to 'My Application', new_application_path %></li>
    	<% end %>

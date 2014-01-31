@@ -34,7 +34,7 @@
 
 <div class="well">
 	<h2>Reference</h2>
-	<%= render partial: 'reference' %>
+	<%= render partial: 'reference' unless @reference.blank? %>
 </div>
 
 <ul class="nav nav-pills">

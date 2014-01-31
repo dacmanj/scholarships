@@ -22,7 +22,7 @@
 
 class User < ActiveRecord::Base
   rolify
-  has_one :application
+  has_and_belongs_to_many :applications
   has_many :references
   has_many :scores
   
@@ -39,13 +39,31 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name
 
+  REVIEWERS = ['dcmanueljr@gmail.com']
+  
+  def application
+    if self.has_role? :student
+      Application.find_by_uid(self.id)
+    end
+  end
 
   private
   def default_role_and_create_blank_application
-    self.roles << Role.find_by_name("student")
-    self.application = Application.new({:user_id => self.id})
-  end
+    domain = /@(.+$)/.match(self.email)[1]
+    admin = domain.casecmp("pflag.org") != 0 ? false : true
+    reviewer = self.email.downcase.in? User::REVIEWERS 
 
+    if reviewer
+      remove_role :student
+      add_role :reviewer
+    elsif admin
+      add_role :admin
+    else
+      add_role :student
+      self.applications.push Application.new({:applicant_user_id => self.id})
+    end 
+  end
+    
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first

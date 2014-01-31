@@ -48,6 +48,7 @@
 #  transcript_content_type                         :string(255)
 #  transcript_file_size                            :integer
 #  transcript_updated_at                           :datetime
+#  applicant_user_id                               :integer
 #
 
 require 'spec_helper'

@@ -9,12 +9,11 @@
   </tr>
 
 <% @scores.each do |score| %>
-<% name = (score.application.user.name unless application.blank? or score.application.user.blank) || "" %>
   <tr>
-    <td><%= link_to name application_path score.application_id %></td>
+    <td><%= score.application.user.name unless score.application.blank? or score.application.user.blank? %></td>
     <td><%= link_to 'Show', score %></td>
-    <td><%= link_to 'Edit', edit_score_path(score) %></td>
-    <td><%= link_to 'Destroy', score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to glyph("pencil"), edit_score_path(score) %></td>
+    <td><%= link_to glyph("trash"), score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

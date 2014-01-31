@@ -24,10 +24,8 @@ var signed = <%= signed %>;
             <dt>Application ID</dt>
             <dd><%= @application.id %></dd>
         </dl>
-        <%= f.fields_for :user do |u| %>
-            <%= u.input :name, required: true, :title => "This is my image's tooltip message!" %>
-            <%= u.input :email, required: true, :readonly => true %>
-        <% end %>
+        <%= f.input :name, required: true %>
+        <%= f.input :email, required: true, :readonly => true %>
         <%= f.input :phone, required: true %>
         <%= f.input :date_of_birth, start_year: Date.today.year - 90, required: false %>
         </div>

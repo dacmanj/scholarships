@@ -5,8 +5,6 @@ class ApplicationsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @applications = Application.accessible_by(current_ability)
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applications }
@@ -59,7 +57,6 @@ class ApplicationsController < ApplicationController
 
   def sign
     @application = Application.find(params[:id])
-    authorize! :manage, @application
     @application.signature_stamp = DateTime.now
     @application.signature_ip = request.remote_ip
 
@@ -76,7 +73,6 @@ class ApplicationsController < ApplicationController
 
   def unsign
     @application = Application.find(params[:id])
-    authorize! :manage, @application
     @application.signature_stamp = nil
     @application.signature_ip = nil
     respond_to do |format|

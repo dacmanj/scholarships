@@ -19,6 +19,7 @@
 #
 
 class Score < ActiveRecord::Base
+  resourcify
   belongs_to :user
   belongs_to :application
   attr_accessible :academics, :activities, :ally, :application_id, :community_college, :discretionary, :essay, :lgbt, :lgbt_advocacy, :stem, :user_id

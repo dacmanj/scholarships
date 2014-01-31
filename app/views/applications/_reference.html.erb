@@ -1,29 +1,29 @@
-<p>
-  <b>Name:</b>
-  <%= @reference.name %>
-</p>
+<dl>
+  <dt>Name:</dt>
+  <dd><%= @reference.name %></dd>
+</dl>
 
-<p>
-  <b>Email:</b>
-  <%= @reference.email %>
-</p>
+<dl>
+  <dt>Email:</dt>
+  <dd><%= @reference.email %></dd>
+</dl>
 
-<p>
-  <b>Phone number:</b>
-  <%= @reference.phone_number %>
-</p>
+<dl>
+  <dt>Phone number:</dt>
+  <dd><%= @reference.phone_number %></dd>
+</dl>
 
-<p>
-  <b>How long have you known:</b>
-  <%= @reference.how_long_have_you_known %>
-</p>
+<dl>
+  <dt>How long have you known:</dt>
+  <dd><%= @reference.how_long_have_you_known %></dd>
+</dl>
 
-<p>
-  <b>Relationship:</b>
-  <%= @reference.relationship %>
-</p>
+<dl>
+  <dt>Relationship:</dt>
+  <dd><%= @reference.relationship.html_safe %></dd>
+</dl>
 
-<p>
-  <b>References essay:</b>
-  <%= @reference.references_essay %>
-</p>
+<dl>
+  <dt>References essay:</dt>
+  <dd><%= @reference.references_essay.html_safe %></dd>
+</dl>

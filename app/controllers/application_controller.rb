@@ -5,14 +5,16 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     redirect_path = root_path
     if current_user.has_role? :student
-      if current_user.application.blank?
+      if (Application.find_by_applicant_user_id current_user.id).blank?
         redirect_path = new_application_path
       else
-        redirect_path = edit_application_path current_user.application.id
+        redirect_path = edit_application_path Application.find_by_applicant_user_id current_user.id
       end
     end
     if current_user.has_role? :admin
       redirect_path = users_path
+    elsif current_user.has_role? :reviewer
+      redirect_path = applications_path
     end
     redirect_path
   end

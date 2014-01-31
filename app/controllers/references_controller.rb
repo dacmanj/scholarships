@@ -102,7 +102,7 @@ class ReferencesController < ApplicationController
       @reference.token = Array.new(32){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
       @reference.user = current_user
       @reference.email = params[:reference]["email"]
-      @reference.application = current_user.application
+      @reference.application = Application.find_by_applicant_user_id(current_user.id)
     end
 
     respond_to do |format|
