@@ -1,5 +1,5 @@
 <%# Rails flash messages styled for Bootstrap 2.3 %>
-<div id="flash_message">
+<div id="flash_message" class="col-md-12">
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-dismissable alert-<%= name == :notice ? "success" : "danger" %>">
