@@ -27,6 +27,9 @@ var signed = <%= signed %>;
         <%= f.input :name, required: true %>
         <%= f.input :email, required: true, :readonly => true %>
         <%= f.input :phone, required: true %>
+        <%= f.input :residency_status, :collection => Application::RESIDENCY_STATUS, :as => :radio_buttons, required: true %>
+        <%= f.input :residency_status_other, required: false %>
+
         <%= f.input :date_of_birth, start_year: Date.today.year - 90, required: false %>
         </div>
     <div class="well">

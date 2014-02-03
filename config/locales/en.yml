@@ -21,6 +21,8 @@ en:
         city: 'City'
         state: 'State'
         zip: 'Zip'
+        residency_status: 'Residency Status'
+        residency_status_other: 'If other, please explain'
         are_you_a_graduating_high_school_senior: 'Are you a graduating high school senior?'
         identify_lgbt: 'Do you identify as Gay, Lesbian, Bisexual or Transgender?'
         out_and_open: 'If yes, are you "out and open in the community?"'

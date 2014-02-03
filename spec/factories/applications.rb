@@ -3,7 +3,6 @@
 # Table name: applications
 #
 #  id                                              :integer          not null, primary key
-#  user_id                                         :integer
 #  phone                                           :string(255)
 #  date_of_birth                                   :date
 #  date_of_graduation                              :date
@@ -49,6 +48,8 @@
 #  transcript_file_size                            :integer
 #  transcript_updated_at                           :datetime
 #  applicant_user_id                               :integer
+#  residency_status                                :string(255)
+#  residency_status_other                          :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
