@@ -1,5 +1,6 @@
 class ReferenceMailer < ActionMailer::Base
   default from: "scholarships@pflag.org"
+  layout 'reference_mailer'
   def send_reference_request_email(reference)
     @reference = reference
     @user = @reference.user
