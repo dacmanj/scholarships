@@ -105,7 +105,7 @@ $ ->
 
   errorList = (e, validator) ->
     application_status = $("#application_status")
-    application_status.html("<h2>Application Status</h2><dl/>").append($("<p style='color:red'>Errors Detected </p>").append(glyph_exclaimation))
+    application_status.html("<dl/>").append($("<p style='color:red'>Errors Detected </p>").append(glyph_exclaimation))
     application_status_dl = $("dl",application_status)
     $("sign_action_button").attr("disabled","disabled")
 
