@@ -1,4 +1,3 @@
-
 <% if !@application.signature_stamp.blank?
 signed = true
 sign_action = "unsign"
@@ -6,6 +5,10 @@ else
 signed = false
 sign_action = "sign"
 end %>
+
+<% if !signed %>
+    <p style="font-style: italic; color: red;" ><%= t("application.message.deadline") %></p>
+<% end %>
 
 
 <script type="text/javascript">
@@ -68,10 +71,15 @@ var signed = <%= signed %>;
         <%= f.input :please_lists_schools_where_you_will_be_applying, :as => :tinymce, required: true %>
         <%= f.input :major, required: true %>
         <%= f.input :admission_status, :collection => Application::ADMISSION_STATUS, required: true %>
+        <%= f.input :first_generation, :as => :radio_buttons, required: true %>
         <%= f.input :stem, :as => :radio_buttons, required: true %>
-        <%= t("application.form.stem_description")%>
+        <p><%= t("simple_form.labels.application.stem_description")%><p>
 
         
+    </div>
+
+    <div class="well">
+        <%= f.input :why_do_you_want, label: t("simple_form.labels.application.why_do_you_want_html"), :as => :tinymce, required: true %>
     </div>
 
     <div class="well">
@@ -127,6 +135,7 @@ var signed = <%= signed %>;
         <%= f.input :release_local_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_national_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_local_chapter, :as => :radio_buttons, required: true  %>
+        <%= f.input :release_application_to_chapter, :as => :radio_buttons, required: true  %>
         <%= f.input :release_photograph, :as => :radio_buttons, required: true  %>
         <%= f.input :release_essay_collection, :as => :radio_buttons, required: true  %>
         <%= f.input :release_picture_bio_on_website, :as => :radio_buttons, required: true  %>
@@ -162,7 +171,8 @@ var signed = <%= signed %>;
             <% if signed %>
                 You application is complete. Congratulations! We'll notify all applicants of their status in the fall. If you need to make changes, you must "unsign" your application, make the changes, revalidate it and sign it again.   
             <% else %>
-                Application has not been validated <%=glyph("exclamation-sign")%>
+                Application has not been validated <%=glyph("exclamation-sign")%>.
+                <p style="font-style: italic"><%= t("application.message.deadline") %></p>
             <% end %>
         </p>
         </div>

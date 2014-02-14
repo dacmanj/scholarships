@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140203180133) do
+ActiveRecord::Schema.define(:version => 20140214205450) do
 
   create_table "applications", :force => true do |t|
     t.string   "phone"
@@ -59,8 +59,9 @@ ActiveRecord::Schema.define(:version => 20140203180133) do
     t.integer  "transcript_file_size"
     t.datetime "transcript_updated_at"
     t.integer  "applicant_user_id"
-    t.string   "residency_status"
-    t.string   "residency_status_other"
+    t.boolean  "first_generation"
+    t.boolean  "release_application_to_chapter"
+    t.text     "why_do_you_want"
   end
 
   create_table "applications_users", :force => true do |t|

@@ -24,16 +24,18 @@ en:
         residency_status: 'Residency Status'
         residency_status_other: 'If other, please explain'
         are_you_a_graduating_high_school_senior: 'Are you a graduating high school senior?'
-        identify_lgbt: 'Do you identify as Gay, Lesbian, Bisexual or Transgender?'
+        identify_lgbt: 'Do you identify as a member of the LGBTQ community?'
         out_and_open: 'If yes, are you "out and open in the community?"'
-        identify_supporter: 'Are you a supporter of the LGBT Community?'
-        supportive_parents: 'If you are LGBT, are your parents aware of your LGBT Status?'
+        identify_supporter: 'Are you a supporter of the LGBTQ Community?'
+        supportive_parents: 'If you are LGBTQ, are your parents aware of your LGBTQ Status?'
         how_did_you_learn_about_the_scholarship: 'How did you learn about the scholarship?'
         how_did_you_learn_explanation: 'Other/detail:'
         honors_or_awards: 'School Honors or Recognitions Received:'
         please_lists_schools_where_you_will_be_applying: 'Where are you applying?'
         major: 'If you have selected a major, what do you plan to study?'
-        stem: 'Do you plan to study a Science, Technology, Engineering or Math field?'
+        stem_html: 'Do you plan to study a Science, Technology, Engineering or Math field?'
+        stem_description: 'Identifying your interest in studying science, technology, engineering, and/or math (STEM) will give you additionally enhanced eligible for scholarship funding from Gays, Lesbians, and Allies at Dow (GLAD). Successful candidates will demonstrate a particular interest and expertise in the STEM fields and is supported by donations from employees of the Dow Chemical Company.'
+        first_generation: 'Are you the first generation in your family to attend college?'
         date_of_birth: 'Date of Birth'
         date_of_graduation: 'Date of Graduation'
         name_of_high_school: 'Name of High School'
@@ -47,13 +49,15 @@ en:
         release_local_media: 'I grant permission to the PFLAG National Scholarships Program to publish an announcement of my scholarship award and in the local news media.'
         release_national_media: 'I grant permission to the PFLAG National Scholarships Program to publish an announcement of my scholarship award in the national news media.'
         release_local_chapter: 'I grant permission to the PFLAG National Scholarships Program to release information about my scholarship award to the local PFLAG Chapter.'
+        release_application_to_chapter: 'I grant permission to the PFLAG National Scholarships Program to share my application with a PFLAG chapter in my area who might have available scholarship resources.'
         release_photograph: 'I grant permission to the PFLAG National Scholarships Program to use my photograph in their publicity releases about my scholarship award.'
         release_essay_collection: 'I grant permission to the PFLAG National Scholarships Program to use my scholarship essay in an anthology of stories to be compiled for publication or for promotion of the scholarship program.'
         release_picture_bio_on_website: 'I grant permission to the PFLAG National Scholarships Program to include my picture and bio in their national newsletter or on their website.'
         signature_stamp: 'Signature Time Stamp'
         signature_ip: 'IP Address of Signer'
+        why_do_you_want_html: 'Why do you want /need this scholarship?<br><br>Note: Some of our scholarship donors support scholarships based on financial need of the recipient due to individual circumstances.'
         employment_history: 'What jobs, if any, have you held? Please list both volunteer and paid positions as appropriate.'
-        essay: 'Please submit a one-page essay on your involvement in the LGBT community as a member or ally and what obstacles you have had to overcome in order to be an active member or ally.'
+        essay: 'Please submit a one-page essay on your involvement in the LGBTQ community as a member or ally. Please be sure to include any leadership role you have played or what obstacles you have had to overcome in order to be an active member of the LGBTQ or ally community.'
       reference:
         how_long_have_you_known: 'How long have you known the student?'
         relationship: 'What is your relationship with this student? (teacher, advisor, minister, school counselor, school administrator, coach, etc.):'
@@ -61,7 +65,7 @@ en:
       score:
         user_id: "Reviewer"
         application_id: "Applicant"
-        lgbt: "Does the applicant identify as LGBT?"
+        lgbt: "Does the applicant identify as LGBTQ?"
         ally: "Is the applicant a straight ally?"
         stem: "Is the applicant majoring in a science related field?"
         community_college: "Is the applicant attending a community college?"
@@ -72,14 +76,13 @@ en:
         discretionary_instructions: "The highest number of points possible is 3. This category allows you to look at need, perseverance, and intangible qualities in a candidate that are not covered by another scoring category."
   application:
     message:
+      deadline: 'All application materials must be completed and submitted by April 15, 2014.'
       save_success: Application saved successfully! Don't forget to complete your application.
       save_failed: 'Application save failed!'
       sign_success: 'Application signed. You can no longer make changes. You must unsign your application before making edits.'
       unsign_success: 'Application unsigned. Please remember to sign your application before the deadline.'
       sign_failed: 'Application could not be signed.'
       unsign_failed: 'Application could not be unsigned. Please email scholarships@pflag.org for help.'
-    form:
-      stem_description: 'Identifying your interest in studying science, technology, engineering, and/or math (STEM) will give you additionally enhanced eligible for scholarship funding from Gays, Lesbians, and Allies at Dow (GLAD). Successful candidates will demonstrate a particular interest and expertise in the STEM fields and is supported by donations from employees of the Dow Chemical Company.'
   devise:
     omniauth_providers:
       google_oauth2: 
