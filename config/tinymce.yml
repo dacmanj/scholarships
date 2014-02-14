@@ -11,4 +11,5 @@ plugins:
   - code
   - fullscreen
   - insertdatetime
-insertdate_dateformat: "%Y-%m-%d"
+  - wordcount
+insertdate_dateformat: "%m/%d/%Y"

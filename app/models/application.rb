@@ -48,8 +48,9 @@
 #  transcript_file_size                            :integer
 #  transcript_updated_at                           :datetime
 #  applicant_user_id                               :integer
-#  residency_status                                :string(255)
-#  residency_status_other                          :string(255)
+#  first_generation                                :boolean
+#  release_application_to_chapter                  :boolean
+#  why_do_you_want                                 :text
 #
 
 class Application < ActiveRecord::Base
@@ -63,7 +64,7 @@ class Application < ActiveRecord::Base
   validates_attachment_content_type :transcript, :content_type => /^(application\/pdf|image\/(jpg|jpeg|pjpeg|png|x-png|gif|pdf|tif|tiff))$/, :message => 'file type is not allowed (only pdf/tif/jpeg/png/gif images)'
 
 #  accepts_nested_attributes_for :user
-  attr_accessible :name, :email, :applicant_user_id, :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :identify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip, :honors_or_awards, :stem, :major, :admission_status, :employment_history, :how_did_you_learn_explanation, :user_attributes
+  attr_accessible :name, :email, :applicant_user_id, :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :identify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip, :honors_or_awards, :stem, :major, :admission_status, :employment_history, :how_did_you_learn_explanation, :user_attributes, :first_generation, :why_do_you_want, :release_application_to_chapter
   ADMISSION_STATUS = ['Planning to apply', 'Waiting for reponse', 'Admitted']
   HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP = ['Internet (please provide url)', 'PFLAG Chapter (please list)', 'GSA', 'Counselor', 'Friend', 'Other (please list)' ]
   RESIDENCY_STATUS = ['US Citizen','Permanent Resident', 'Deferred Action for Childhood Arrivals (DACA)', 'Other']

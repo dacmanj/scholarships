@@ -48,8 +48,9 @@
 #  transcript_file_size                            :integer
 #  transcript_updated_at                           :datetime
 #  applicant_user_id                               :integer
-#  residency_status                                :string(255)
-#  residency_status_other                          :string(255)
+#  first_generation                                :boolean
+#  release_application_to_chapter                  :boolean
+#  why_do_you_want                                 :text
 #
 
 require 'spec_helper'

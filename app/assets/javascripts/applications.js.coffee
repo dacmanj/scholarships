@@ -6,16 +6,33 @@ delay = (ms, func) -> setTimeout func, ms
 
 
 transcriptValid = (value, element) ->
+  console.log("transcript")
   $("a.attached_transcript").length > 0 || $("#application_transcript").val() != ""
 
 referenceValid = (value, element) ->
+  console.log("ref")
   references > 0
+
+count = 0
+wc = ->
+  count++
+  return ' '
+
+essayValid = (value,element) ->
+  tinyMCE.triggerSave()
+  text = $("#application_essay").html()
+  text = text.replace /[\s]+/ig, wc
+  words = count+1;
+  count = 0
+  console.log(words)
+  return words < 1050
 
 set_delete_transcript = (e) ->
   $("#delete_transcript").val(1);
 
 jQuery.validator.addMethod "transcript", transcriptValid, "Transcript must be attached."
 jQuery.validator.addMethod "reference", referenceValid, "You must obtain a reference."
+jQuery.validator.addMethod "essay", essayValid, "Essay must be approximately a page (no more than 1000 words)."
 
 glyph_ok = $("<i/>").addClass("glyphicon glyphicon-ok");
 glyph_exclaimation = $("<i/>").addClass("glyphicon glyphicon-exclamation-sign");
@@ -101,4 +118,4 @@ $ ->
 
   $('#save_action_button').click(save_application)
   $('#delete_transcript_button').click(set_delete_transcript)
-  $('main.applications form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true} } })
+  $('main.applications form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true}, 'application[essay]': {required:true; essay:true} } })
