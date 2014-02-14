@@ -14,13 +14,12 @@ referenceValid = (value, element) ->
   references > 0
 
 count = 0
-wc = ->
+wc = =>
   count++
   return ' '
 
 essayValid = (value,element) ->
-  tinyMCE.triggerSave()
-  text = $("#application_essay").html()
+  text = $(element).tinymce().getContent({format: "text"})
   text = text.replace /[\s]+/ig, wc
   words = count+1;
   count = 0
