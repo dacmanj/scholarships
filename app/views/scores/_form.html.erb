@@ -37,13 +37,17 @@
       Transcript: <%=link_to glyph("file"), @application.transcript.url, :target => "_BLANK" %> 
     <% end %>
     <%= f.input :academics, collection: 0..10, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
-    <%= f.input :activities, collection: 0..10, :label => t("simple_form.labels.score.activities") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.activities_instructions")}</p>".html_safe
+    <%= f.input :activities, collection: 0..10, :label => t("simple_form.labels.score.activities").html_safe
      %>
-    <%= f.input :lgbt_advocacy, collection: 0..10, :label => (t("simple_form.labels.score.lgbt_advocacy") + t("simple_form.labels.score.lgbt_advocacy_instructions")).html_safe
+    <%= f.input :lgbt_advocacy, collection: 0..10, :label => t("simple_form.labels.score.lgbt_advocacy").html_safe
      %>
     <%= f.input :discretionary, collection: 0..10,  :label => t("simple_form.labels.score.discretionary") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.discretionary_instructions")}</p>".html_safe
      %>
 
+     <dl>
+     <dt>Normalized Score (weighted -- 10 points max)</dt>
+     <dd id="normalized_score"><%= @score.normalized_score || 0 %></dd>
+     </dl>
 
 
 

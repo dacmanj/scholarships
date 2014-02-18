@@ -71,9 +71,8 @@ en:
         community_college: "Is the applicant attending a community college?"
         essay_instructions: "Please use your best judgment to reflect the content, appropriateness, editing and over-all impact of the essay."
         academics_instructions: "Academics include Grade Point Average (GPA), awards, honors, recognitions and challenges faced by a student."
-        activities_instructions: ""
+        activities: "Community Service/Extracurricular Activities"
         lgbt_advocacy: "LGBT Advocacy"
-        lgbt_advocacy_instructions: ""
         discretionary_instructions: "This category allows you to look at need, perseverance, and intangible qualities in a candidate that are not covered by another scoring category."
   application:
     message:

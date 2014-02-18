@@ -13,9 +13,9 @@
 #  academics         :integer
 #  activities        :integer
 #  lgbt_advocacy     :integer
-#  discretionary     :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  discretionary     :integer
 #
 
 require 'spec_helper'

@@ -13,9 +13,9 @@
 #  academics         :integer
 #  activities        :integer
 #  lgbt_advocacy     :integer
-#  discretionary     :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  discretionary     :integer
 #
 
 class Score < ActiveRecord::Base
@@ -23,4 +23,18 @@ class Score < ActiveRecord::Base
   belongs_to :user
   belongs_to :application
   attr_accessible :academics, :activities, :ally, :application_id, :community_college, :discretionary, :essay, :lgbt, :lgbt_advocacy, :stem, :user_id
+
+  def normalized_score
+	scores = [self.essay,self.academics,self.activities,self.lgbt_advocacy,self.discretionary]
+  	multipliers = [6.0,4.0,3.0,5.0,4.0]
+  	base = 22.0
+  	sum = 0.0
+  	i = 0 
+  	scores.each do |score|
+  	  sum += (score.to_d||0.0) * multipliers[i] / base
+  	  i += 1
+	end
+	raise "oops"
+	sum
+  end
 end
