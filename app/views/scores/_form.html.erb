@@ -46,7 +46,7 @@
 
      <dl>
      <dt>Normalized Score (weighted -- 10 points max)</dt>
-     <dd id="normalized_score"><%= @score.normalized_score || 0 %></dd>
+     <dd id="normalized_score"><%= number_with_precision @score.total, :precision => 2 %></dd>
      </dl>
 
 

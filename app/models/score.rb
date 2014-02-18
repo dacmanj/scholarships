@@ -23,6 +23,7 @@ class Score < ActiveRecord::Base
   belongs_to :user
   belongs_to :application
   attr_accessible :academics, :activities, :ally, :application_id, :community_college, :discretionary, :essay, :lgbt, :lgbt_advocacy, :stem, :user_id
+  before_save :set_total
 
   def normalized_score
 	scores = [self.essay,self.academics,self.activities,self.lgbt_advocacy,self.discretionary]
@@ -36,4 +37,10 @@ class Score < ActiveRecord::Base
 	end
 	sum
   end
+
+  protected
+	def set_total
+		self.total = normalized_score
+	end
+
 end
