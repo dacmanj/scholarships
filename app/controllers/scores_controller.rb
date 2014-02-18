@@ -49,7 +49,7 @@ class ScoresController < ApplicationController
   def edit
     @score = Score.find(params[:id])
     @applications = Application.accessible_by(current_ability)
-
+    @application = @score.application unless @score.blank?
   end
 
   # POST /scores

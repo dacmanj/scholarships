@@ -25,19 +25,27 @@
     <%= f.input :stem %>
     <%= f.input :community_college %>
 
-    <%= f.input :essay, collection: 0..4, :label => t("simple_form.labels.score.essay") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.essay_instructions")}</p>".html_safe
+    <dl>
+      <dt><h2>Scoring<h2></dt>
+      <dd>Please rank the candidate on the following on a scale of 1 to 10</dd>
+    </dl>
+
+    <%= f.input :essay, collection: 0..10, :label => t("simple_form.labels.score.essay") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.essay_instructions")}</p>".html_safe
      %>
 
     <% if @application.present? && @application.transcript_file_name.present? %>
       Transcript: <%=link_to glyph("file"), @application.transcript.url, :target => "_BLANK" %> 
     <% end %>
-    <%= f.input :academics, collection: 0..3, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
-    <%= f.input :activities, collection: 0..3, :label => t("simple_form.labels.score.activities") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.activities_instructions")}</p>".html_safe
+    <%= f.input :academics, collection: 0..10, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
+    <%= f.input :activities, collection: 0..10, :label => t("simple_form.labels.score.activities") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.activities_instructions")}</p>".html_safe
      %>
-    <%= f.input :lgbt_advocacy, collection: 0..2, :label => t("simple_form.labels.score.lgbt_advocacy") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.lgbt_advocacy_instructions")}</p>".html_safe
+    <%= f.input :lgbt_advocacy, collection: 0..10, :label => (t("simple_form.labels.score.lgbt_advocacy") + t("simple_form.labels.score.lgbt_advocacy_instructions")).html_safe
      %>
-    <%= f.input :discretionary, collection: 0..3,  :label => t("simple_form.labels.score.discretionary") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.discretionary_instructions")}</p>".html_safe
+    <%= f.input :discretionary, collection: 0..10,  :label => t("simple_form.labels.score.discretionary") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.discretionary_instructions")}</p>".html_safe
      %>
+
+
+
 
   </div>
 
