@@ -34,7 +34,6 @@ class Score < ActiveRecord::Base
   	  sum += (score.to_d||0.0) * multipliers[i] / base
   	  i += 1
 	end
-	raise "oops"
 	sum
   end
 end
