@@ -178,5 +178,9 @@ var signed = <%= signed %>;
         </div>
 
         <%= link_to "Validate Application", "#", :class => "btn btn-default", :id=>"validate_application_button"  %>
+        <div id="sign_disclaimer" style="color:red;"><br>
+            By clicking "sign application" below, I represent that all parts of the application are true to the best of my knowledge and agree that if any parts of the application are found to be false any scholarships awarded will be null and void. Further, I hereby give permission to PFLAG to use my application as specified in the release section.<br><br>
+        </div>
+
         <%= link_to "#{sign_action.titleize} Application",  {:id => @application.id, :action => sign_action}, :method => "put", :remote => true, :class => "btn btn-default", :id=>"sign_action_button" unless @application.id.blank?%>
 </div>
