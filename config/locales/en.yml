@@ -76,7 +76,7 @@ en:
         discretionary_instructions: "This category allows you to look at need, perseverance, and intangible qualities in a candidate that are not covered by another scoring category."
   application:
     message:
-      deadline: 'All application materials must be completed and submitted by April 15, 2014.'
+      deadline: 'All application materials must be completed and submitted by April 30, 2014.'
       save_success: Application saved successfully! Don't forget to complete your application.
       save_failed: 'Application save failed!'
       sign_success: 'Application signed. You can no longer make changes. You must unsign your application before making edits.'
