@@ -30,7 +30,7 @@ var signed = <%= signed %>;
         <%= f.input :name, required: true %>
         <%= f.input :email, required: true, :readonly => true %>
         <%= f.input :phone, required: true %>
-        <%= f.input :date_of_birth, start_year: Date.today.year - 90, required: false %>
+        <%= f.input :date_of_birth, start_year: Date.today.year - 40, end_year: Date.today.year - 15, required: false %>
         </div>
     <div class="well">
       <h2>Address Information</h2>

@@ -117,4 +117,5 @@ $ ->
 
   $('#save_action_button').click(save_application)
   $('#delete_transcript_button').click(set_delete_transcript)
-  $('main.applications form').validate({ ignore: '', debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true}, 'application[essay]': {required:true; essay:true} } })
+  $(".date").addClass("ignore")
+  $('main.applications form').validate({ ignore: ".ignore", debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true}, 'application[essay]': {required:true; essay:true}, '.date': {required: false; } } })
