@@ -16,6 +16,7 @@ en:
         username: 'User name'
         password: 'Password'
       application:
+        name: 'Full Name (first and last)'
         phone: 'Phone Number'
         street_address: 'Street Address'
         city: 'City'
