@@ -26,12 +26,17 @@ essayValid = (value,element) ->
   console.log(words)
   return words < 1050
 
+dateValid = (value, element) ->
+  return true
+
 set_delete_transcript = (e) ->
   $("#delete_transcript").val(1);
 
 jQuery.validator.addMethod "transcript", transcriptValid, "Transcript must be attached."
 jQuery.validator.addMethod "reference", referenceValid, "You must obtain a reference."
 jQuery.validator.addMethod "essay", essayValid, "Essay must be approximately a page (no more than 1000 words)."
+jQuery.validator.addMethod "date", dateValid, "Invalid date."
+
 
 glyph_ok = $("<i/>").addClass("glyphicon glyphicon-ok");
 glyph_exclaimation = $("<i/>").addClass("glyphicon glyphicon-exclamation-sign");
@@ -118,4 +123,4 @@ $ ->
   $('#save_action_button').click(save_application)
   $('#delete_transcript_button').click(set_delete_transcript)
   $(".date").addClass("ignore")
-  $('main.applications form').validate({ ignore: ".ignore", debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true}, 'application[essay]': {required:true; essay:true}, '.date': {required: false; } } })
+  $('main.applications form').validate({ ignore: ".ignore", debug: true, errorPlacement: errorPlace, unhighlight: errorUnhighlight, highlight: errorHighlight, submitFunction: submit_application, invalidHandler: errorList, onsubmit:false, rules: { 'application[transcript]': {required:false; transcript:true }, 'application[reference][completed]': {required:false; reference:true}, 'application[essay]': {required:true; essay:true}, '.date': {required: false; date:true } } })
