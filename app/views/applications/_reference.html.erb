@@ -20,10 +20,10 @@
 
 <dl>
   <dt>Relationship:</dt>
-  <dd><%= @reference.relationship.html_safe %></dd>
+  <dd><%= @reference.relationship.html_safe unless @reference.relationship.blank? %></dd>
 </dl>
 
 <dl>
   <dt>References essay:</dt>
-  <dd><%= @reference.references_essay.html_safe %></dd>
+  <dd><%= @reference.references_essay.html_safe unless @reference.references_essay.blank? %></dd>
 </dl>
