@@ -26,6 +26,9 @@ gem 'rolify'
 gem 'simple_form'
 gem 'pg'
 
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
+
 group :development do
   gem 'better_errors'
   gem "faker", "~> 1.2.0"

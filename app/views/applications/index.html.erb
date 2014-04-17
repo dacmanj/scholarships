@@ -1,6 +1,5 @@
 <h1>Applications</h1>
 
-
 <%= simple_form_for '', :url => edit_multiple_applications_path, :html => { :class => "form-inline", :role => "form" } do |f| %>
 
 <% if current_user.is? :admin %>
@@ -10,6 +9,9 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
   <%= f.button :submit, 'Apply', :class => "btn btn-primary" %>
 </div>
 <% end %>
+
+<%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
+
 
 <table class="table table-striped">
   <tr>
@@ -49,6 +51,9 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
+
 <% end %>
 
 <br />

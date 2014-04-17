@@ -5,6 +5,7 @@ class ApplicationsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @applications = Application.includes(:users).order("users.name").paginate(:page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applications }
