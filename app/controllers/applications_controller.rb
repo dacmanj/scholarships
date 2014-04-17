@@ -5,7 +5,11 @@ class ApplicationsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @applications = Application.includes(:users).order("users.name").paginate(:page => params[:page])
+    if params[:name].present?
+      @applications = Application.includes(:users).where("users.name ILIKE ?","%#{params[:name]}%").order("users.name").paginate(:page => params[:page])
+    else
+      @applications = Application.includes(:users).order("users.name").paginate(:page => params[:page])
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @applications }
