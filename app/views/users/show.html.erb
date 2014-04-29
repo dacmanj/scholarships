@@ -1,3 +1,10 @@
 <h3>User</h3>
 <p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<p>Email: <%= link_to "#{@user.email}", "mailto:#{@user.email}" if @user.email %></p>
+<p>Applications:
+<% @user.applications.each do |a| %>
+	<%= link_to a.id, application_path(a.id) %>&nbsp;
+<% end %>
+
+
+</p>

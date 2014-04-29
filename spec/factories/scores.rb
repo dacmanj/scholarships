@@ -16,6 +16,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  discretionary     :integer
+#  total             :decimal(, )
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

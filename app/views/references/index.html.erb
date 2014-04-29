@@ -27,7 +27,7 @@
 <% end %>
 </table>
 
-<% if (@references.select{|s| s.completed.present? }.count == 0) %>
+<% if (@references.select{|s| s.completed.present? }.count == 0 or current_user.has_role? :admin ) %>
   <div class="well">
   <%= simple_form_for :reference, :url => references_send_email_path, :method => :post do |f| %>
     <%= f.input :email %>

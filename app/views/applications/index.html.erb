@@ -28,6 +28,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%end %>
     <th>Name</th>
     <% if current_user.is? :admin %>
+    <th>Signed?</th>
+    <th>Reference?</th>
     <th>Reviewers</th>
     <th>Scores<br>Submitted</th>
     <% end %>
@@ -42,6 +44,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%end%>
     <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %></td>
     <% if current_user.has_role? :admin %>
+    <td><%= application.signature_stamp.present? ? glyph("ok") : glyph("remove") %></td>
+    <td><%= application.references.count %></td>
     <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
     <td><%= application.scores.count %></td>
     <% end %>
@@ -61,9 +65,11 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
 </table>
 
 <%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
-pflag<% end %>
-
+<% end %>
 <br />
 
 <%= link_to 'New Application', new_application_path, :class => 'btn btn-primary' unless current_user.has_role? :student && @applications.length > 0 %>
 
+<% if current_user.has_role? :admin %>
+    <%= link_to "Download CSV", applications_path(:format => :csv), :class => 'btn btn-primary'  %>
+<%end%>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218222106) do
+ActiveRecord::Schema.define(:version => 20140429150231) do
 
   create_table "applications", :force => true do |t|
     t.string   "phone"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20140218222106) do
     t.boolean  "release_photograph"
     t.boolean  "release_essay_collection"
     t.boolean  "release_picture_bio_on_website"
-    t.integer  "reference_id"
     t.datetime "signature_stamp"
     t.string   "signature_ip"
     t.datetime "created_at",                                      :null => false

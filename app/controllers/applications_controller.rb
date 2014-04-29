@@ -6,13 +6,19 @@ class ApplicationsController < ApplicationController
 
   def index
     if params[:name].present?
-      @applications = Application.includes(:users).where("users.name ILIKE ?","%#{params[:name]}%").order("users.name").paginate(:page => params[:page])
+      @applications = @applications.includes(:users).where("users.name ILIKE ?","%#{params[:name]}%").order("users.name")
     else
-      @applications = Application.includes(:users).order("users.name").paginate(:page => params[:page])
+      @applications = @applications.includes(:users).order("users.name")
     end
+
+    if request.format.to_sym == :html
+      @applications = @applications.paginate(:page => params[:page]) 
+    end
+
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @applications }
+      format.csv { render csv: @applications }
     end
   end
 

@@ -16,6 +16,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  discretionary     :integer
+#  total             :decimal(, )
 #
 
 class Score < ActiveRecord::Base

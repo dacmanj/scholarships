@@ -31,7 +31,6 @@
 #  release_photograph                              :boolean
 #  release_essay_collection                        :boolean
 #  release_picture_bio_on_website                  :boolean
-#  reference_id                                    :integer
 #  signature_stamp                                 :datetime
 #  signature_ip                                    :string(255)
 #  created_at                                      :datetime         not null
