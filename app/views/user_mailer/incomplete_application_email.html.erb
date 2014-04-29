@@ -1,0 +1,75 @@
+<h2>PFLAG National Scholarship Application</h2>
+<p>Dear <%=@name%>,<br>
+Our records indicate that you have started an application for a PFLAG National Scholarship. Unfortunately, your application is not yet complete. The deadline for the application is <span style="color: red">April 30, 2014</span></p>
+
+<h3>Please login at <a href="<%= @url %>"><%= @url %></a> to complete your application.</h3>
+
+<h3>As a reminder, in order to be considered for a scholarship:<h3>
+<h4>You must complete all fields of the application</h4>
+
+<p>Status: <% if @blank_fields_count == 0 %> OK <% else %> 
+			    <span style="color: red">
+			    	Incomplete (see list below)
+		    	</span>
+			<% end %>
+</p>
+<h4>You must obtain one reference</h4>
+<p>Status: 
+<% if @references == 1 %>
+				OK
+<%elsif @references > 0 %>
+	<span style="color: red">Warning: Multiple references, only the last reference will be used. Please email us if you'd prefer that we use a different reference.</span>
+<% else %>
+    <span style="color: red">
+    	Incomplete
+   	</span>
+<% end %>
+</p>
+
+<h4>You must upload a copy of your academic transcript</h4>
+<p>Status: 
+				<% if @transcript %>
+					OK
+			    <% else %>
+				    <span style="color: red">
+				    	Incomplete
+			    	</span>
+		    	<% end %>
+</p>
+
+
+<h4>You must sign your application electronically</h4>
+<p>Status: 
+<% if @signed %>
+	OK
+<% else %>
+    <span style="color: red">
+    	Incomplete
+	</span>
+<% end %>
+</p>
+
+<% if @blank_fields_count != 0 %>
+	<h4>Missing Fields</h4>
+	<% if @signed %>
+		<strong><i>NOTE: You will need to un-sign your application to complete these missing fields and re-sign the application.</i></strong>
+	<% end %>
+	<ul>
+	<% @blank_fields[0..9].each do |b| %>
+	<li>
+	<%= begin
+	  		I18n.t!("simple_form.labels.application.#{b}_html").html_safe
+		rescue I18n::MissingTranslationData
+			t("simple_form.labels.application.#{b}")
+		end
+	%>
+	</li>
+	<% end %>
+	<% if @blank_fields_count > 10 %>
+		<li>and other fields (login to see complete list)...</li>
+	<% end %>
+	</ul>
+<% end %>
+
+<h3>Please login at <a href="<%= @url %>"><%= @url %></a> to complete your application.</h3>
+
