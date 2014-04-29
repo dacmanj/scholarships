@@ -18,7 +18,7 @@ Our records indicate that you have started an application for a PFLAG National S
 <% if @references == 1 %>
 				OK
 <%elsif @references > 0 %>
-	<span style="color: red">Warning: Multiple references, only the last reference will be used. Please email us if you'd prefer that we use a different reference.</span>
+	<span style="color: red">Warning: Multiple references, only the last reference will be used. Please reply to this email if you'd prefer that we use a different reference.</span>
 <% else %>
     <span style="color: red">
     	Incomplete
@@ -52,7 +52,7 @@ Our records indicate that you have started an application for a PFLAG National S
 <% if @blank_fields_count != 0 %>
 	<h4>Missing Fields</h4>
 	<% if @signed %>
-		<strong><i>NOTE: You will need to un-sign your application to complete these missing fields and re-sign the application.</i></strong>
+		<strong><i><span style="style="color: red">NOTE: You will need to un-sign your application to complete these missing fields and re-sign the application.</span></i></strong>
 	<% end %>
 	<ul>
 	<% @blank_fields[0..9].each do |b| %>

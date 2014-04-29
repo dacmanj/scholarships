@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
     @blank_fields_count = @application.attributes.select { |k,v| v.blank? }.count
 
     ##{root_url}
-    @url  = "https://pflag-scholarships/applications/#{@id}"
+    @url  = "https://pflag-scholarship.herokuapp.com/applications/#{@id}"
     mail(to: "dmanuel@pflag.org", subject: 'Your Application for the PFLAG National Scholarship is not yet complete.')
   end
 end
