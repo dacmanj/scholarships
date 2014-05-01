@@ -85,6 +85,8 @@ en:
       sign_failed: 'Application could not be signed.'
       unsign_failed: 'Application could not be unsigned. Please email scholarships@pflag.org for help.'
   devise:
+    failure:
+      deadline_has_already_passed: "Sorry. The deadline has already passed."
     omniauth_providers:
       google_oauth2: 
         name: 'Google'

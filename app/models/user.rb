@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name
 
   REVIEWERS = ['dcmanueljr@gmail.com','dtepfer@ameritech.net','sthoron@aol.com']
-  
+  DEADLINE = Date::strptime("30-04-2014","%d-%m-%Y")
+
   def is?(role)
     self.has_role?(role)
   end
@@ -56,7 +57,14 @@ class User < ActiveRecord::Base
     !@email.in? REVIEWERS and self.application.incomplete? unless self.application.blank?
   end
 
+  def active_for_authentication?
+    super and !(self.is? :student and Date.today > DEADLINE )
+  end
 
+  def inactive_message
+    Date.today <= DEADLINE ? super : :deadline_has_already_passed
+  end
+  
   private
   def default_role_and_create_blank_application
     domain = /@(.+$)/.match(self.email)[1]
