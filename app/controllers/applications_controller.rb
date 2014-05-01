@@ -164,7 +164,6 @@ require 'will_paginate/array'
     @applications = @applications.is_signed if params[:signed] == '1'
     @applications = @applications.has_essay if params[:essay] == '1'
     @applications = @applications.has_reference if params[:reference] == '1'
-    @applications = @applications.has_transcript.is_signed.has_essay.has_reference if params[:completed] == '1'
     @applications = @applications.select{|d| d.blank_fields_count == 0} if params[:completed] == '1'
   end
 
