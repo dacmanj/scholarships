@@ -14,6 +14,7 @@ end %>
 <script type="text/javascript">
 var references = <%= @application.references.select{ |r| r.completed.present? }.count %>;
 var signed = <%= signed %>;
+var admin = <%=current_user.has_role? :admin %>;
 </script>
 
 

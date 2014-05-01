@@ -92,7 +92,7 @@ $ ->
     false
 
   if signed
-    $("input,select,textarea").attr("disabled","true")
+    $("input,select,textarea").attr("disabled","true") unless admin
     $("#sign_action_button").removeAttr("disabled")
 
   errorPlace = (error, element) ->
