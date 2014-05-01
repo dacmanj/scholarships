@@ -73,7 +73,7 @@ class Application < ActiveRecord::Base
   ADMISSION_STATUS = ['Planning to apply', 'Waiting for reponse', 'Admitted']
   HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP = ['Internet (please provide url)', 'PFLAG Chapter (please list)', 'GSA', 'Counselor', 'Friend', 'Other (please list)' ]
   RESIDENCY_STATUS = ['US Citizen','Permanent Resident', 'Deferred Action for Childhood Arrivals (DACA)', 'Other']
-  SKIP_INCOMPLETE_CHECK = ["how_did_you_learn_explanation"]
+  SKIP_INCOMPLETE_CHECK = ["how_did_you_learn_explanation","out_and_open","supportive_parents"]
 
   def self.find_by_uid(uid)
     Application.find_by_applicant_user_id(uid)
