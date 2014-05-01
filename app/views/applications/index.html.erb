@@ -10,7 +10,7 @@
   Signed <%= f.check_box :signed, :checked => (params[:signed] == '1') %> &nbsp;
   Essay <%= f.check_box :essay, :checked => (params[:essay] == '1') %> &nbsp;
   Reference <%= f.check_box :reference, :checked => (params[:reference] == '1') %> &nbsp;
-  Completed <%= f.check_box :completed, :checked => (params[:completed] == '1') %> &nbsp;
+  No Blanks <%= f.check_box :completed, :checked => (params[:completed] == '1') %> &nbsp;
   <%= f.button :submit, 'Search', :class => "btn btn-primary" %>
 <p><br>
 Showing <%= @applications.count %> records
