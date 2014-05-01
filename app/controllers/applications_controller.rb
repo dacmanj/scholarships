@@ -1,16 +1,13 @@
 class ApplicationsController < ApplicationController
+require 'will_paginate/array'
   # GET /applications
   # GET /applications.json
   skip_authorization_check :only => [:new, :create]
   load_and_authorize_resource
+  before_filter :filter_applications, :only => :index
+
 
   def index
-    if params[:name].present?
-      @applications = @applications.includes(:users).where("users.name ILIKE ?","%#{params[:name]}%").order("users.name")
-    else
-      @applications = @applications.includes(:users).order("users.name")
-    end
-
     if request.format.to_sym == :html
       @applications = @applications.paginate(:page => params[:page]) 
     end
@@ -158,4 +155,17 @@ class ApplicationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def filter_applications
+    @applications = Application.includes(:users)
+    @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%").order("users.name") if params[:name].present?
+    @applications = @applications.has_transcript if params[:transcript] == '1'
+    @applications = @applications.is_signed if params[:signed] == '1'
+    @applications = @applications.has_essay if params[:essay] == '1'
+    @applications = @applications.has_reference if params[:reference] == '1'
+    @applications = @applications.has_transcript.is_signed.has_essay.has_reference if params[:completed] == '1'
+    @applications = @applications.select{|d| d.blank_fields_count == 0} if params[:completed] == '1'
+  end
+
 end

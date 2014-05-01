@@ -6,7 +6,17 @@
 <div class="well">
 <%= simple_form_for '', :url => applications_path, :method => :get, :html => { :class => "form-inline", :role => "form" } do |f| %>
   <%= f.input :name, :label => false, :wrapper_html => {:class=> "col-md-3"}, input_html: { value: params[:name], :placeholder => "Name"} %>
+  Transcript <%= f.check_box :transcript, :checked => (params[:transcript] == '1') %> &nbsp;
+  Signed <%= f.check_box :signed, :checked => (params[:signed] == '1') %> &nbsp;
+  Essay <%= f.check_box :essay, :checked => (params[:essay] == '1') %> &nbsp;
+  Reference <%= f.check_box :reference, :checked => (params[:reference] == '1') %> &nbsp;
+  Completed <%= f.check_box :completed, :checked => (params[:completed] == '1') %> &nbsp;
   <%= f.button :submit, 'Search', :class => "btn btn-primary" %>
+<p><br>
+Showing <%= @applications.count %> records
+</p>
+
+
 <%end%>
 </div>
 <div class="well">
@@ -20,7 +30,6 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
 
 <%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
 
-
 <table class="table table-striped">
   <tr>
     <% if current_user.is? :admin %>
@@ -28,8 +37,11 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%end %>
     <th>Name</th>
     <% if current_user.is? :admin %>
+    <th>Complete?</th>
     <th>Signed?</th>
+    <th>Transcript?</th>
     <th>Reference?</th>
+    <th>Blank<br>Fields?</th>
     <th>Reviewers</th>
     <th>Scores<br>Submitted</th>
     <% end %>
@@ -44,8 +56,11 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%end%>
     <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %></td>
     <% if current_user.has_role? :admin %>
-    <td><%= application.signature_stamp.present? ? glyph("ok") : glyph("remove") %></td>
-    <td><%= application.references.count %></td>
+    <td><%= application.incomplete? ? glyph("remove") : glyph("ok") %></td>
+    <td><%= application.signed? ? glyph("ok") : glyph("remove") %></td>
+    <td><%= application.transcript? ? glyph("ok") : glyph("remove") %> </td>
+    <td><%= application.references.select{|s| s.completed.present? }.count  %></td>
+    <td><span title="<%=application.blank_fields.join(", ") %>"><%= application.blank_fields_count %></span></td>
     <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
     <td><%= application.scores.count %></td>
     <% end %>

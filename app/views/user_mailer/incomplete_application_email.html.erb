@@ -1,6 +1,6 @@
 <h2>PFLAG National Scholarship Application</h2>
 <p>Dear <%=@name%>,<br>
-Our records indicate that you have started an application for a PFLAG National Scholarship. Unfortunately, your application is not yet complete. The deadline for the application is <span style="color: red">April 30, 2014</span></p>
+Our records indicate that you have started an application for a PFLAG National Scholarship. Unfortunately, your application is not yet complete (or has an issue as described below). The deadline for the application is <span style="color: red">April 30, 2014</span></p>
 
 <h3>Please login at <a href="<%= @url %>"><%= @url %></a> to complete your application.</h3>
 
@@ -18,7 +18,7 @@ Our records indicate that you have started an application for a PFLAG National S
 <% if @references == 1 %>
 				OK
 <%elsif @references > 0 %>
-	<span style="color: red">Warning: Multiple references, only the last reference will be used. Please reply to this email if you'd prefer that we use a different reference.</span>
+	<span style="color: red">Warning: Multiple references, only the last reference (from <%= @reference_name %>) will be used. Please reply to this email if you'd prefer that we use a different reference.</span>
 <% else %>
     <span style="color: red">
     	Incomplete

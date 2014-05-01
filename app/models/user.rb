@@ -53,27 +53,7 @@ class User < ActiveRecord::Base
 
 
   def incomplete_application?
-    @user = self
-    @application = @user.application
-    if application.blank?
-      return false
-    end
-    @applications = @user.applications
-    @id = @application.id
-    @name = @user.name
-    @email = @user.email
-    @signed = @application.signature_stamp.present?
-    if @application.references.present?
-      @references = @application.references.select{|s| s.completed.present? }.count 
-    else
-      @references = 0
-    end
-
-    @transcript = @application.transcript.present?
-    @essay = @application.essay.present?
-    @blank_fields = @application.attributes.select { |k,v| v.blank? }.keys
-    @blank_fields_count = @application.attributes.select { |k,v| v.blank? }.count
-    !@email.in? REVIEWERS and @user.has_role? :student and (@references ==0 or !@signed or !@transcript or !@essay or @blank_fields_count > 0)
+    !@email.in? REVIEWERS and self.application.incomplete? unless self.application.blank?
   end
 
 
