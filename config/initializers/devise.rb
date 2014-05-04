@@ -3,7 +3,7 @@
 Devise.setup do |config|
 
   require 'omniauth-google-oauth2'
-  config.omniauth :google_oauth2, "1061348227214.apps.googleusercontent.com", "r7MDKiz6cw1BMIwptfGaVVhC", { access_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, "1061348227214.apps.googleusercontent.com", "r7MDKiz6cw1BMIwptfGaVVhC", { access_type: "", approval_prompt: "" }
 
 
   # The secret key used by Devise. Devise uses this key to generate
