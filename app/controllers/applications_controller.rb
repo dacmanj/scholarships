@@ -9,6 +9,11 @@ require 'will_paginate/array'
 
   def index
     if request.format.to_sym == :html
+      if (params.length == 2)
+        params[:reference] = '1'
+        params[:essay] = '1'
+      end
+
       @applications = @applications.paginate(:page => params[:page]) 
     end
 
@@ -140,7 +145,7 @@ require 'will_paginate/array'
       a.save!
     end
     message =  (errors.length > 0) ? errors.join(", ") : "Applications successfully updated."
-    redirect_to applications_path, notice: message
+    redirect_to applications_path({essay: '1', reference: '1'}), notice: message
 
   end
 
