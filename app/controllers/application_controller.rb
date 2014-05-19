@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       end
     end
     if current_user.is? :admin
-      redirect_path = users_path
+      redirect_path = applications_path
     elsif current_user.is? :reviewer
       redirect_path = applications_path
     end
