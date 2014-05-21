@@ -4,10 +4,16 @@ require 'will_paginate/array'
   # GET /applications.json
   skip_authorization_check :only => [:new, :create]
   load_and_authorize_resource
-  before_filter :filter_applications, :only => :index
+#  before_filter :filter_applications, :only => :index
 
 
   def index
+    if (params.count == 2)
+      params[:essay]='1'
+      params[:reference]='1'
+    end
+
+    filter_applications
     if request.format.to_sym == :html
       @applications = @applications.paginate(:page => params[:page]) 
     end
