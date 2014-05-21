@@ -15,7 +15,7 @@ require 'will_paginate/array'
 
     filter_applications
     if request.format.to_sym == :html
-      @applications = @applications.paginate(:page => params[:page]) 
+      @applications = @applications.paginate(:page => params[:page], :per_page => params[:per_page] || 15 ) 
     end
 
     respond_to do |format|
