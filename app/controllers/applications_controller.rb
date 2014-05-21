@@ -9,11 +9,6 @@ require 'will_paginate/array'
 
   def index
     if request.format.to_sym == :html
-      if (params.length == 2)
-        params[:reference] = '1'
-        params[:essay] = '1'
-      end
-
       @applications = @applications.paginate(:page => params[:page]) 
     end
 
@@ -163,7 +158,8 @@ require 'will_paginate/array'
 
   private
   def filter_applications
-    @applications = Application.includes(:users).order("users.name")
+
+    @applications = @applications.includes(:users).order("users.name")
     @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%").order("users.name") if params[:name].present?
     @applications = @applications.has_transcript if params[:transcript] == '1'
     @applications = @applications.is_signed if params[:signed] == '1'

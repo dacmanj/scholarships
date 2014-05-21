@@ -16,17 +16,18 @@
 Showing <%= @applications.count %> records
 </p>
 
+</div>
 
 <%end%>
-</div>
-<div class="well">
+<%end%>
 <%= simple_form_for '', :url => edit_multiple_applications_path, :html => { :class => "form-inline", :role => "form" } do |f| %>
-
+<% if current_user.is? :admin %>
+<div class="well">
   <%= f.input :reviewer, :collection => User.with_role(:reviewer), required: true, :label_html => {:style => "display: none;"}, :wrapper_html => {:class=> "col-md-3"}, prompt: "Assign reviewer..." %>
 Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
   <%= f.button :submit, 'Apply', :class => "btn btn-primary" %>
 </div>
-
+<% end %>
 <%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
 
 <table class="table table-striped">
@@ -53,10 +54,10 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% if current_user.is? :admin %>
     <td><%= check_box_tag 'application_ids[]', application.id, false %></td>
     <%end%>
-    <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %></td>
-    <td>
+    <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %>
     <%= link_to glyph("pencil"), edit_application_path(application) if can? :edit, application %>
-    <%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %></td>
+    <%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %>
+    </td>
 
     <% if current_user.has_role? :admin %>
     <td><%= application.incomplete? ? glyph("remove") : glyph("ok") %></td>
@@ -89,4 +90,3 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%= link_to "Download CSV", applications_path(:format => :csv), :class => 'btn btn-primary'  %>
 <%end%>
 
-<% end %>

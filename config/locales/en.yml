@@ -85,6 +85,9 @@ en:
       sign_failed: 'Application could not be signed.'
       unsign_failed: 'Application could not be unsigned. Please email scholarships@pflag.org for help.'
   devise:
+    registrations:
+      user:
+        signed_up_but_deadline_has_already_passed: "The deadline has already passed. Only reviewers may create new accounts. If you're a reviewer, your registration has been received."
     failure:
       deadline_has_already_passed: "Sorry. The deadline has already passed."
     omniauth_providers:
