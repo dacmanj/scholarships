@@ -8,7 +8,7 @@ require 'will_paginate/array'
 
 
   def index
-    if (params.count == 2)
+    if (current_user.is? :admin and params.count == 2)
       params[:essay]='1'
       params[:reference]='1'
     end
