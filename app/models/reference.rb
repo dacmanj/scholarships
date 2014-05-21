@@ -32,7 +32,7 @@ class Reference < ActiveRecord::Base
   belongs_to :user
   before_save :downcase_email
   RATING_SCALE = [['Excellent',4],['Above Average',3],['Average',2], ['Below Average',1], ['Inadequate Opportunity to Observe',0]]
-
+  RATINGS_HASH = {4=>"Excellent", 3=>"Above Average", 2=>"Average", 1=>"Below Average", 0=>"Inadequate Opportunity to Observe"}
   def downcase_email
   	self.email = self.email.downcase
   end

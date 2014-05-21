@@ -40,12 +40,16 @@
 
     <%= f.input :reference, collection: 0..10, :label => (t("simple_form.labels.score.reference") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.reference_instructions")}</p>").html_safe
      %>
+    <% if @application.present? && @application.references.first.present? %>
+    <p> <%= link_to "Open the Reference (reference is also at the end of the application at the top of the page)", reference_path(@application.references.first.id), :target => "_BLANK" %></p>
+    <% end %>
+
     <%= f.input :reference_comment, :input_html => { :cols => 5, :rows => 3 } %>
 
 
 
     <% if @application.present? && @application.transcript_file_name.present? %>
-      Transcript: <%=link_to glyph("file"), @application.transcript.url, :target => "_BLANK" %> 
+    <p><%=link_to "Open the Transcript", @application.transcript.url, :target => "_BLANK" %></p>
     <% end %>
     <%= f.input :academics, collection: 0..10, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
     <%= f.input :academics_comment, :input_html => { :cols => 5, :rows => 3 } %>

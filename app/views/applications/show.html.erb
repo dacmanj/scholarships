@@ -45,7 +45,7 @@
 
 <div class="well">
 	<h2>Reference</h2>
-	<%= render partial: 'reference' unless @reference.blank? %>
+	<%= render 'references/fields' unless @reference.blank? %>
 </div>
 
 <% if params[:iframe] != '1' %>
