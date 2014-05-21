@@ -1,4 +1,9 @@
-<%= simple_form_for(@score) do |f| %>
+
+     <%= link_to ("Show Application In New Window " + glyph("file")).html_safe, application_path(@application), :target => "_blank" %> 
+     <iframe src="<%=application_path(@application, :iframe => '1')%>" width="100%" height="400px"></iframe>
+<div class="container">
+
+<%= simple_form_for(@score, :html => { :class => 'form-horizontal col-md-6' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -9,8 +14,6 @@
       <dt><%= t("simple_form.labels.score.applicant") %></dt>
       <dd><%= @application.user.name %></dd>
       <%= f.input :application_id, :as => :hidden, :input_html => { :value => @application.id } %>
-     <%= link_to ("Show Application In New Window " + glyph("file")).html_safe, application_path(@application), :target => "_blank" %> 
-     <iframe src="<%=application_path(@application, :iframe => '1')%>" width="100%" height="400px"></iframe>
 
     </dl>
   <%end %>
@@ -26,23 +29,35 @@
     <%= f.input :community_college %>
 
     <dl>
-      <dt><h2>Scoring<h2></dt>
-      <dd>Please rank the candidate on the following on a scale of 1 to 10</dd>
+      <dt><h2>Scoring</h2></dt>
+      <dd>Please rank the candidate on the following on a scale of 0 to 10</dd>
     </dl>
 
     <%= f.input :essay, collection: 0..10, :label => t("simple_form.labels.score.essay") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.essay_instructions")}</p>".html_safe
      %>
+    <%= f.input :essay_comment, :input_html => { :cols => 5, :rows => 3 } %>
+
+
+    <%= f.input :reference, collection: 0..10, :label => (t("simple_form.labels.score.reference") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.reference_instructions")}</p>").html_safe
+     %>
+    <%= f.input :reference_comment, :input_html => { :cols => 5, :rows => 3 } %>
+
+
 
     <% if @application.present? && @application.transcript_file_name.present? %>
       Transcript: <%=link_to glyph("file"), @application.transcript.url, :target => "_BLANK" %> 
     <% end %>
     <%= f.input :academics, collection: 0..10, :label => t("simple_form.labels.score.academics") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.academics_instructions")}</p>".html_safe %>
+    <%= f.input :academics_comment, :input_html => { :cols => 5, :rows => 3 } %>
     <%= f.input :activities, collection: 0..10, :label => t("simple_form.labels.score.activities").html_safe
      %>
+     <%= f.input :activities_comment, :input_html => { :cols => 5, :rows => 3 } %>
     <%= f.input :lgbt_advocacy, collection: 0..10, :label => t("simple_form.labels.score.lgbt_advocacy").html_safe
      %>
+     <%= f.input :lgbt_advocacy_comment, :input_html => { :cols => 5, :rows => 3 } %>
     <%= f.input :discretionary, collection: 0..10,  :label => t("simple_form.labels.score.discretionary") + "<p style='font-weight: normal'>#{t("simple_form.labels.score.discretionary_instructions")}</p>".html_safe
      %>
+     <%= f.input :discretionary_comment, :input_html => { :cols => 5, :rows => 3 } %>
 
      <dl>
      <dt>Normalized Score (weighted -- 10 points max)</dt>
@@ -52,7 +67,7 @@
 
 
   </div>
-
+</div>
   <div class="form-actions">
     <%= f.button :submit, "Submit Score", :class => "btn btn-primary" %>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429150231) do
+ActiveRecord::Schema.define(:version => 20140521164408) do
 
   create_table "applications", :force => true do |t|
     t.string   "phone"
@@ -114,10 +114,17 @@ ActiveRecord::Schema.define(:version => 20140429150231) do
     t.integer  "academics"
     t.integer  "activities"
     t.integer  "lgbt_advocacy"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.integer  "discretionary"
     t.decimal  "total"
+    t.text     "essay_comment"
+    t.text     "academics_comment"
+    t.text     "activities_comment"
+    t.integer  "reference"
+    t.text     "lgbt_advocacy_comment"
+    t.text     "discretionary_comment"
+    t.text     "reference_comment"
   end
 
   create_table "sessions", :force => true do |t|

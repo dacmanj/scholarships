@@ -71,10 +71,18 @@ en:
         stem: "Is the applicant majoring in a science related field?"
         community_college: "Is the applicant attending a community college?"
         essay_instructions: "Please use your best judgment to reflect the content, appropriateness, editing and over-all impact of the essay."
+        essay_comments: "Comment"
+        reference: "Reference"
+        reference_instructions: "Supportiveness of the reference and overall quality of the reference provided."
+        reference_comment: "Comment"
         academics_instructions: "Academics include Grade Point Average (GPA), awards, honors, recognitions and challenges faced by a student."
+        academics_comment: "Comment"
         activities: "Community Service/Extracurricular Activities"
+        activities_comment: "Comment"
         lgbt_advocacy: "LGBT Advocacy"
+        lgbt_advocacy_comment: "Comment"
         discretionary_instructions: "This category allows you to look at need, perseverance, and intangible qualities in a candidate that are not covered by another scoring category."
+        discretionary_comment: "Comment"
   application:
     message:
       deadline: 'All application materials must be completed and submitted by April 30, 2014.'

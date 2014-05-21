@@ -7,12 +7,13 @@ $ ->
   totalScore = () ->
     sum = 0
     essay = $("#score_essay").val()
+    reference = $("#score_reference").val()
     academics = $("#score_academics").val()
     activities = $("#score_activities").val()
     lgbt_advocacy = $("#score_lgbt_advocacy").val()
     discretionary = $("#score_discretionary").val()
-    scores = [essay,academics,activities,lgbt_advocacy,discretionary]
-    multipliers = [6/22,4/22,3/22,5/22,4/22]
+    scores = [essay,reference,academics,activities,lgbt_advocacy,discretionary]
+    multipliers = [6/25,3/25,4/25,3/25,5/25,4/25]
     sum += score*multipliers[i] for score, i in scores
     $("#normalized_score").html(sum.toFixed(2))
 
