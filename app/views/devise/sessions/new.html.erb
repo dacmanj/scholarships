@@ -1,6 +1,7 @@
 <div class="row">
 <h2>Sign in</h2>
-<p>You must create an account to apply for the PFLAG Scholarship. If you have already started an application, log in to continue.</p>
+<!--<p>You must create an account to apply for the PFLAG Scholarship. If you have already started an application, log in to continue.</p>-->
+<p>Reviewers must create an account before reviewing applications. Create an account below and you will be assigned applications once approved by PFLAG National.</p>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical col-md-4' }) do |f| %>
   <%= f.input :email, :autofocus => true %>
   <%= f.input :password %>

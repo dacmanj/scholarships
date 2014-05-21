@@ -63,12 +63,14 @@
      %>
      <%= f.input :discretionary_comment, :input_html => { :cols => 5, :rows => 3 } %>
 
+     <% if current_user.is? :admin %>
+
      <dl>
      <dt>Normalized Score (weighted -- 10 points max)</dt>
      <dd id="normalized_score"><%= number_with_precision @score.total, :precision => 2 %></dd>
      </dl>
 
-
+     <%end %>
 
   </div>
 </div>

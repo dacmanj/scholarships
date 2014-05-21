@@ -28,7 +28,7 @@
 
 <p>
   <b>References essay:</b>
-  <%= @reference.references_essay.html_safe %>
+  <%= @reference.references_essay.html_safe unless @reference.references_essay.blank? %>
 </p>
 
 <h3>Reference Ratings</h3>

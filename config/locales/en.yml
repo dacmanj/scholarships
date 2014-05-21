@@ -95,7 +95,7 @@ en:
   devise:
     registrations:
       user:
-        signed_up_but_deadline_has_already_passed: "The deadline has already passed. Only reviewers may create new accounts. If you're a reviewer, your registration has been received."
+        signed_up_but_deadline_has_already_passed: "Your registration has been received, but you will need to be assigned applications."
     failure:
       deadline_has_already_passed: "Sorry. The deadline has already passed."
     omniauth_providers:
