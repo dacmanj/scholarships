@@ -2,10 +2,13 @@ class UsersController < ApplicationController
 #  before_filter :authenticate_user!
   skip_authorize_resource :only => [:new, :create]
   load_and_authorize_resource
+  before_filter :filter_users, :only => :index
+
   
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @users = User.find(:all, :order => "name")
+    @users = @users.paginate(:page => params[:page]) 
+
   end
 
   def show
@@ -31,6 +34,17 @@ class UsersController < ApplicationController
     else
       redirect_to users_path, :notice => "Can't delete yourself."
     end
+  end
+  private
+  def filter_users
+    @users = @users.where("name ILIKE ?","%#{params[:name]}%") if params[:name].present?
+    @users = @users.where("email ILIKE ?","%#{params[:email]}%") if params[:email].present?
+
+    @users = @users.order("created_at desc") if params[:order] == 'registered_desc'
+    @users = @users.order("created_at asc") if params[:order] == 'registered_asc'
+    @users = @users.order("name asc") if params[:order] == 'name_asc'
+    @users = @users.order("name desc") if params[:order] == 'name_desc'
+
   end
 end
 

@@ -1,11 +1,27 @@
 <h3>Users</h3>
 <div class="span8">
+
+<div class="well">
+<%= simple_form_for '', :url => users_path, :method => :get, :html => { :class => "form-inline", :role => "form" } do |f| %>
+  <%= f.input :name, :label => false, :wrapper_html => {:class=> "col-md-3"}, input_html: { value: params[:name], :placeholder => "Name"}, :required => false %>
+  <%= f.input :email, :label => false, :wrapper_html => {:class=> "col-md-3"}, input_html: { value: params[:email], :placeholder => "Email"},  :required => false %>
+  <%= f.button :submit, 'Search', :class => "btn btn-primary" %>
+<p><br>
+Showing <%= @users.count %> records
+</p>
+
+</div>
+
+<%end%>
+
+<%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
+
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>Username</th>
+      <th><%= link_to "Name", :order => (params[:order] == 'name_asc' ? 'name_desc' : "name_asc") %></th>
       <th>Email</th>
-      <th>Registered</th>
+      <th><%= link_to "Registered", :order => (params[:order] == 'registered_desc' ? 'registered_asc' : "registered_desc") %></th>
       <th>Role</th>
       <th></th>
       <th></th>
@@ -27,4 +43,6 @@
   <% end %>
   </tbody>
 </table>
+<%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
+
 </div>

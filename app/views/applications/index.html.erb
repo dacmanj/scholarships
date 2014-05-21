@@ -55,11 +55,15 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <td><%= check_box_tag 'application_ids[]', application.id, false %></td>
     <%end%>
     <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %>
+    </td>
+
+    <% if current_user.has_role? :admin %>
+
+    <td>
     <%= link_to glyph("pencil"), edit_application_path(application) if can? :edit, application %>
     <%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %>
     </td>
 
-    <% if current_user.has_role? :admin %>
     <td><%= application.incomplete? ? glyph("remove") : glyph("ok") %></td>
     <td><%= application.signed? ? glyph("ok") : glyph("remove") %></td>
     <td><%= application.transcript? ? glyph("ok") : glyph("remove") %> </td>
