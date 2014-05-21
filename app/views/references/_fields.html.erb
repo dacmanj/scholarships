@@ -1,0 +1,50 @@
+<p>
+  <b>Name:</b>
+  <%= @reference.name %>
+</p>
+
+
+<% if current_user.is? :admin %>
+
+<p>
+  <b>Email:</b>
+  <%= @reference.email %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @reference.phone_number %>
+</p>
+<% end %>
+<p>
+  <b>How long have you known:</b>
+  <%= @reference.how_long_have_you_known %>
+</p>
+
+<p>
+  <b>Relationship:</b>
+  <%= @reference.relationship %>
+</p>
+
+<p>
+  <b>References essay:</b>
+  <%= @reference.references_essay.html_safe %>
+</p>
+
+<h3>Reference Ratings</h3>
+<p>References are asked to rate the applicant on the qualities below. They are able to select Excellent, Above Average, Average, Below Average or Inadequate Opportunity to Observe in their ratings.</p>
+<table class="table-striped table">
+<thead><tr><th>Category</th><th>Rating</th></tr></thead>
+<tbody>
+<tr><td>Maturity</td><td><%=Reference::RATINGS_HASH[@reference.maturity]%></td></tr>
+<tr><td>Leadership Ability</td><td><%=Reference::RATINGS_HASH[@reference.leadership_ability]%></td></tr>
+<tr><td>Self Confidence</td><td><%=Reference::RATINGS_HASH[@reference.self_confidence]%></td></tr>
+<tr><td>Self Awareness</td><td><%=Reference::RATINGS_HASH[@reference.self_awareness]%></td></tr>
+<tr><td>Intellectual Curiosity</td><td><%=Reference::RATINGS_HASH[@reference.intellectual_curiosity]%></td></tr>
+<tr><td>Initiative</td><td><%=Reference::RATINGS_HASH[@reference.initiative]%></td></tr>
+<tr><td>Adaptability</td><td><%=Reference::RATINGS_HASH[@reference.adaptability]%></td></tr>
+<tr><td>Personal Integrity</td><td><%=Reference::RATINGS_HASH[@reference.personal_integrity]%></td></tr>
+<tr><td>Respect for Different Viewpoints</td><td><%=Reference::RATINGS_HASH[@reference.respect_for_different_viewpoints]%></td></tr>
+
+</tbody>
+</table>
