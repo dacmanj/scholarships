@@ -52,7 +52,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
 <% @applications.each do |application| %>
   <tr>
     <% if current_user.is? :admin %>
-    <td><%= check_box_tag 'application_ids[]', application.id, false %><%=application.id %></td>
+    <td><%= check_box_tag 'application_ids[]', application.id, false %></td>
     <%end%>
     <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %>
     </td>
