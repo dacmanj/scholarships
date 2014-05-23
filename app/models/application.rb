@@ -111,7 +111,7 @@ class Application < ActiveRecord::Base
   end
 
   def reviewers
-    self.users.reject{|h| h.id == self.applicant_user_id}
+    Application.find(self.id).users.reject{|h| h.id == self.applicant_user_id}
   end
 
   def name
@@ -125,7 +125,7 @@ class Application < ActiveRecord::Base
 
   def name=(value)
     u = self.applicant
-    u.email = value
+    u.name = value
     u.save
   end
   def email=(value)
@@ -176,7 +176,14 @@ class Application < ActiveRecord::Base
     @essay = @application.essay?
     @blank_fields = self.blank_fields
     @blank_fields_count =  self.blank_fields_count
-    @user.has_role? :student and (@references ==0 or !@signed or !@transcript or !@essay or @blank_fields_count > 0)
+    @user.has_role? :student and (@references ==0 or !@signed or !@transcript or !@essay or @blank_fields_count > 0) unless @user.blank?
+  end
+
+  def self.search(params)
+    page = params[:page]
+    name = params[:name]
+    Application.has_reference.has_essay.paginate :per_page => 15, :page => page,
+             :conditions => ['name like ?', "%#{name}%"], :order => 'name'
   end
 
 

@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-require 'will_paginate/array'
+#require 'will_paginate/array'
   # GET /applications
   # GET /applications.json
   skip_authorization_check :only => [:new, :create]
@@ -15,7 +15,8 @@ require 'will_paginate/array'
 
     filter_applications
     if request.format.to_sym == :html
-      @applications = @applications.paginate(:page => params[:page], :per_page => params[:per_page] || 15 ) 
+      @applications = @applications.paginate(:page => params[:page], :per_page => (params[:per_page] || 15))
+#      @applications = Application.search(params)
     end
 
     respond_to do |format|
@@ -146,7 +147,7 @@ require 'will_paginate/array'
       a.save!
     end
     message =  (errors.length > 0) ? errors.join(", ") : "Applications successfully updated."
-    redirect_to applications_path({essay: '1', reference: '1'}), notice: message
+    redirect_to applications_path({essay: '1', reference: '1', page: params[:page]}), notice: message
 
   end
 
@@ -164,9 +165,8 @@ require 'will_paginate/array'
 
   private
   def filter_applications
-
-    @applications = @applications.includes(:users).order("users.name")
-    @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%").order("users.name") if params[:name].present?
+    @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
+    @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
     @applications = @applications.has_transcript if params[:transcript] == '1'
     @applications = @applications.is_signed if params[:signed] == '1'
     @applications = @applications.has_essay if params[:essay] == '1'

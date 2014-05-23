@@ -48,11 +48,11 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% end %>
     <th>Scored?</th>
   </tr>
-
+<%= hidden_field_tag :page, params[:page] %>
 <% @applications.each do |application| %>
   <tr>
     <% if current_user.is? :admin %>
-    <td><%= check_box_tag 'application_ids[]', application.id, false %></td>
+    <td><%= check_box_tag 'application_ids[]', application.id, false %><%=application.id %></td>
     <%end%>
     <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %>
     </td>
