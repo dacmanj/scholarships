@@ -40,8 +40,9 @@ class ApplicationsController < ApplicationController
   # GET /applications/new
   # GET /applications/new.json
   def new
-    @application = Application.new
-    @application.user = current_user
+    @application = Application.new({:applicant_user_id => current_user.id})
+    
+    current_user.applications.push @application
 
     respond_to do |format|
       format.html # new.html.erb
