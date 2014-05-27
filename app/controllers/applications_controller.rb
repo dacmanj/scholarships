@@ -108,7 +108,8 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     notice = nil
     if (params[:delete_transcript] == "1")
-      @application.transcript = nil
+      @application.transcript.destroy
+      @application.transcript.clear
       notice = "Transcript deleted."
       @application.save
     end
