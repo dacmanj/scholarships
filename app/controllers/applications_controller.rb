@@ -13,6 +13,10 @@ class ApplicationsController < ApplicationController
       params[:reference]='1'
     end
 
+    if (current_user.is? :reviewer and @applications.count == 0)
+      flash[:alert] = "You have not yet been assigned applications to review. Please check back shortly"
+    end
+
     filter_applications
     if request.format.to_sym == :html
       @applications = @applications.paginate(:page => params[:page], :per_page => (params[:per_page] || 15))
@@ -20,7 +24,7 @@ class ApplicationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html #{ render action: "index", notice: @message}
       format.json { render json: @applications }
       format.csv { render csv: @applications }
     end
