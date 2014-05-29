@@ -155,7 +155,7 @@ class Application < ActiveRecord::Base
   end
 
   def reference?
-    self.references.first.complete? unless self.references.first.blank?
+    self.references.completed.count > 0 
   end
 
   def incomplete?
@@ -166,12 +166,7 @@ class Application < ActiveRecord::Base
     @id = @application.id
     @user = @application.user
     @signed = @application.signed?
-    if @application.references.present?
-      @references = @application.references.select{|s| s.completed.present? }.count 
-    else
-      @references = 0
-    end
-
+    @references = self.references.completed.count 
     @transcript = @application.transcript?
     @essay = @application.essay?
     @blank_fields = self.blank_fields
