@@ -68,7 +68,7 @@ en:
         application_id: "Applicant"
         lgbt: "Does the applicant identify as LGBTQ?"
         ally: "Is the applicant a straight ally?"
-        stem: "Is the applicant majoring in a science related field?"
+        stem: "Is the applicant majoring in a Science, Technology, Engineering or Math (STEM) field?"
         community_college: "Is the applicant attending a community college?"
         essay_instructions: "Please use your best judgment to reflect the content, appropriateness, editing and over-all impact of the essay."
         essay_comments: "Comment"
