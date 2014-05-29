@@ -121,7 +121,7 @@ var admin = <%=current_user.has_role? :admin %>;
         <p>Transcript Attached:</p>
         <p><%= link_to @application.transcript_file_name, @application.transcript.url, :class => "attached_transcript" %></p>
         <%= hidden_field_tag(:delete_transcript, "0") %>
-        <%= f.button :submit, "Delete Transcript", :class => "btn btn-primary", :id=>"delete_transcript_button" %>
+        <%= f.button :submit, "Delete Transcript", :class => "btn btn-primary", :id=>"delete_transcript_button", confirm: "Are you sure you want to delete the transcript?" %>
 
     <%else %>
         <p>Please obtain a copy of your transcript from your school and upload it here.</p>
