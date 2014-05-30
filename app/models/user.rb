@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
                 'mosestorreblanca@gmail.com','katynelsen71@gmail.com','lynne_490@hotmail.com','madams4@hotmail.com','kt6565@yahoo.com','hrickerl1@gmail.com',
                 'laurie.mayers@gmail.com','thom3308@msn.com','arthurfreeheart1@gmail.com','patpoynter@yahoo.com', 'sherrythompsonharrold@gmail.com', 'tamiekaufman@hotmail.com',
                 'pflagyumasecretary@yahoo.com', 'cztwins@hotmail.com', 'hughes1985@hotmail.com', 'taramitchell@gmail.com']
-                
+
   DEADLINE = Date::strptime("30-04-2014","%d-%m-%Y")
 
   def is?(role)
