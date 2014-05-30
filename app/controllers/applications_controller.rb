@@ -34,7 +34,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.json
   def show
     @application = Application.find(params[:id])
-    @reference = @application.references.first
+    @reference = @application.references.completed.first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @application }
