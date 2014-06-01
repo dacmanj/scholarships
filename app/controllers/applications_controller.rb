@@ -173,6 +173,7 @@ class ApplicationsController < ApplicationController
   def filter_applications
     @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
     @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
+    @applications = User.find(params[:user_id]).applications if params[:user_id].present?
     @applications = @applications.has_transcript if params[:transcript] == '1'
     @applications = @applications.is_signed if params[:signed] == '1'
     @applications = @applications.has_essay if params[:essay] == '1'
