@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def filter_users
     @users = @users.where("name ILIKE ?","%#{params[:name]}%") if params[:name].present?
     @users = @users.where("email ILIKE ?","%#{params[:email]}%") if params[:email].present?
-
+    @users = @users.with_role(params[:role]) if params[:role].present?
     @users = @users.order("created_at desc") if params[:order] == 'registered_desc'
     @users = @users.order("created_at asc") if params[:order] == 'registered_asc'
     @users = @users.order("name asc") if params[:order] == 'name_asc'
