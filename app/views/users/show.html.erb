@@ -5,6 +5,10 @@
 <% @user.applications.each do |a| %>
 	<%= link_to a.id, application_path(a.id) %>&nbsp;
 <% end %>
+<p>References:
+<% @user.references.each do |r| %>
+	<%= link_to r.id, references_path(r.id) %>&nbsp;
+<% end %>
 
 
 </p>

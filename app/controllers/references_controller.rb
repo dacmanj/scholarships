@@ -4,6 +4,7 @@ class ReferencesController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => [:edit, :update]
   skip_authorization_check :only => [:edit, :update]
+  before_filter :filter_references, :only => :index
 
   def index
     @references = Reference.accessible_by(current_ability)
@@ -129,4 +130,11 @@ class ReferencesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+  def filter_references
+    @references = @references.where(application_id: params[:application_id])
+    @references = @references.where(user_id: params[:user_id])
+
+  end
+
 end

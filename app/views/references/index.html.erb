@@ -2,10 +2,12 @@
 <p>You may send more than one reference request, but only one reference will be accepted.</p><p>You may cancel a reference request by clicking the <%=glyph("trash")%> icon.</p>
 <table class="table table-striped">
   <tr>
+    <% if current_user.has_role? :admin %>
+    <th>Applicant</th>
+    <% end %>
     <th>Email</th>
     <th>Name</th>
     <th>Completed</th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -13,16 +15,23 @@
 
 <% @references.each do |reference| %>
   <tr>
+    <% if current_user.has_role? :admin %>
+    <td><%= link_to reference.user.name, user_path(reference.user) unless reference.name.blank? %></td>
+    <% end %>
     <td><%= link_to reference.email, "mailto:#{reference.email}" %></td>
     <td><%= reference.name %></td>
     <td><% if reference.completed %>
             <%=glyph("ok") %>
           <% else %>
-            <%=glyph("exclamation-sign") %>
+            <%=glyph("exclamation-sign") %>&nbsp;
+            <%= (link_to glyph("send"), reference, action: :resend, method: :resend) unless reference.completed.present? %>
           <% end %>
     </td>
-    <td><%= (link_to glyph("send"), reference, action: :resend, method: :resend) unless reference.completed.present? %></td>
-    <td><%= link_to glyph("trash"), reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+    <%= link_to glyph("trash"), reference, method: :delete, data: { confirm: 'Are you sure?' } %> 
+    <% if can? :edit, reference %>&nbsp;
+      <%= link_to glyph("pencil"), edit_reference_path(reference)  %><% end %></td>
+
   </tr>
 <% end %>
 </table>

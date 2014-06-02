@@ -22,6 +22,7 @@ Showing <%= @users.count %> records
   <thead>
     <tr>
       <th><%= link_to "Name", :order => (params[:order] == 'name_asc' ? 'name_desc' : "name_asc") %></th>
+      <th></th>
       <th>Email</th>
       <th><%= link_to "Registered", :order => (params[:order] == 'registered_desc' ? 'registered_asc' : "registered_desc") %></th>
       <th># of Apps</th>
@@ -33,6 +34,7 @@ Showing <%= @users.count %> records
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.name, user %></td>
+      <td><%= link_to glyph("pencil"), edit_user_path(user) %></td>      
       <td><%= link_to user.email, "mailto:" + user.email %></td>
       <td><%= user.created_at.to_date %></td>
       <td><%= link_to user.applications.count, applications_path(:user_id => user.id) %></td>
