@@ -2,11 +2,12 @@
 
 <p>
   <b>Application:</b>
-  <%= "#{@reference.application.user.name} (#{@reference.application_id})" unless @reference.application.blank? or @reference.application.user.blank?%>
+	<% if can? :view, @reference.application%>
+	  <%= link_to "#{@reference.application.user.name}", application_path(@reference.application_id) unless @reference.application.blank? or @reference.application.user.blank? %>
+	<% else %>
+	  <%= "#{@reference.application.user.name} (#{@reference.application_id})" unless @reference.application.blank? or @reference.application.user.blank?%>
+	<% end %>
 </p>
-
-
-
 <%= render "fields" %>
 
 

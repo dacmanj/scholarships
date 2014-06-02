@@ -38,4 +38,8 @@ class Reference < ActiveRecord::Base
   	self.email = self.email.downcase
   end
 
+  def token_url
+    "/references/token/#{self.token}"
+  end
+
 end

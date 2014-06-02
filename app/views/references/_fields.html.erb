@@ -5,10 +5,12 @@
 
 
 <% if current_user.is? :admin %>
-
+<p><b><%= link_to "Private Edit Link", @reference.token_url %></b>
+  
+</p>
 <p>
   <b>Email:</b>
-  <%= @reference.email %>
+  <%= link_to @reference.email, "mailto:#{@reference.email}"%>
 </p>
 
 <p>
