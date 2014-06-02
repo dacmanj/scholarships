@@ -54,7 +54,12 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% if current_user.is? :admin %>
     <td><%= check_box_tag 'application_ids[]', application.id, false %></td>
     <%end%>
-    <td><%=link_to glyph("file"), application_path(application) %><%= application.applicant.name unless application.applicant.blank? %>
+    <td><%=link_to glyph("file"), application_path(application) %>
+     <% if can? :show, :user %>
+      <%= link_to application.applicant.name, application.applicant unless application.applicant.blank? %>
+     <% else %>
+      <%= application.applicant.name unless application.applicant.blank? %>
+     <% end %>
     </td>
 
     <% if current_user.has_role? :admin %>

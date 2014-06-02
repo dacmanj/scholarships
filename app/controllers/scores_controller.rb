@@ -1,10 +1,10 @@
 class ScoresController < ApplicationController
   # GET /scores
   # GET /scores.json
+  before_filter :filter_scores, :only => :index
   load_and_authorize_resource
 
   def index
-    @scores = Score.accessible_by(current_ability)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -94,5 +94,12 @@ class ScoresController < ApplicationController
       format.html { redirect_to scores_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def filter_scores
+    @scores = Score.accessible_by(current_ability)
+    @scores = @scores.where(user_id: params[:user_id]) if params[:user_id].present?
+
   end
 end
