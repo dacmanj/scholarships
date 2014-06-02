@@ -7,7 +7,7 @@
 <% end %>
 <p>References:
 <% @user.references.each do |r| %>
-	<%= link_to r.id, references_path(r.id) %>&nbsp;
+	<%= link_to r.id, reference_path(r.id) %>&nbsp;
 <% end %>
 
 
