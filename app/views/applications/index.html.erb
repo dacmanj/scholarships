@@ -74,12 +74,16 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <td><%= application.transcript? ? 
           (link_to glyph("ok"), edit_application_path(application, :anchor => "transcript")) : 
           glyph("remove") %> </td>
-    <td><%= application.references.select{|s| s.completed.present? }.count  %></td>
+    <td>
+      <%= glyph("exclamation-sign") if application.references.completed.count > 1 %>
+      <%= link_to glyph("ok"), edit_reference_path(application.references.completed.first) unless application.references.blank? || application.references.completed.blank?  %>
+    </td>
     <td><span title="<%=application.blank_fields.join(", ") %>"><%= application.blank_fields_count %></span></td>
     <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
     <td><%= application.scores.count %></td>
     <% end %>
     <td><% application.scores.accessible_by(current_ability).each do |s| %>
+      <%= glyph("ok") unless current_user.is? :admin%>
       <%= link_to glyph("pencil"), edit_score_path(s.id) %>
       <% end %>
       <% if application.scores.accessible_by(current_ability).count == 0 %>

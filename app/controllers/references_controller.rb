@@ -38,8 +38,10 @@ class ReferencesController < ApplicationController
   # GET /references/1/edit
   def edit
     @reference = Reference.find_by_token(params[:token])
-    if @reference.nil? 
+    if @reference.nil? and !current_user.is? :admin
       redirect_to root_url, error: "Invalid Reference"
+    elsif current_user.is? :admin
+      @reference = Reference.find(params[:id])
     end
   end
 
