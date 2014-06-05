@@ -75,6 +75,8 @@
   </div>
 </div>
   <div class="form-actions">
-    <%= f.button :submit, "Submit Score", :class => "btn btn-primary" %>
+    <%= f.button :submit, "Submit Score", :class => "btn btn-primary" %> <%= link_to "Delete", f.object, class: 'btn btn-danger', data: {method: 'DELETE'}, confirm: "Are you sure you want to delete the score?"  if can? :delete, f.object %>
+
   </div>
 <% end %>
+
