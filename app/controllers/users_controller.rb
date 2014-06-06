@@ -7,7 +7,17 @@ class UsersController < ApplicationController
   
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @users = @users.paginate(:page => params[:page]) 
+
+    if request.format.to_sym == :html
+      @users = @users.paginate(:page => params[:page]) 
+    else
+      @users = User.all
+    end
+
+    respond_to do |format|
+      format.html #{ render action: "index", notice: @message}
+      format.csv
+    end
 
   end
 

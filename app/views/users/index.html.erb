@@ -52,3 +52,6 @@ Showing <%= @users.count %> records
 <%= will_paginate @applications, renderer: BootstrapPagination::Rails %>
 
 </div>
+<% if current_user.has_role? :admin %>
+    <%= link_to "Download CSV", users_path(:format => :csv), :class => 'btn btn-primary'  %>
+<%end%>
