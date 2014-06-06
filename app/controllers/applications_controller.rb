@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
   # GET /applications.json
   skip_authorization_check :only => [:new, :create]
   load_and_authorize_resource
-#  before_filter :filter_applications, :only => :index
+  before_filter :filter_applications, :only => :index
 
 
   def index
@@ -171,14 +171,18 @@ class ApplicationsController < ApplicationController
 
   private
   def filter_applications
-    @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
-    @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
-    @applications = User.find(params[:user_id]).applications if params[:user_id].present?
-    @applications = @applications.has_transcript if params[:transcript] == '1'
-    @applications = @applications.is_signed if params[:signed] == '1'
-    @applications = @applications.has_essay if params[:essay] == '1'
-    @applications = @applications.has_reference if params[:reference] == '1'
-    @applications = @applications.select{|d| d.blank_fields_count == 0} if params[:completed] == '1'
+    if params[:sort_score] == '1'
+      @applications = @applications.with_score
+    else
+      @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
+      @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
+      @applications = User.find(params[:user_id]).applications if params[:user_id].present?
+      @applications = @applications.has_transcript if params[:transcript] == '1'
+      @applications = @applications.is_signed if params[:signed] == '1'
+      @applications = @applications.has_essay if params[:essay] == '1'
+      @applications = @applications.has_reference if params[:reference] == '1'
+      @applications = @applications.select{|d| d.blank_fields_count == 0} if params[:completed] == '1'
+    end
   end
 
 end

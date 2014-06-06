@@ -13,7 +13,7 @@
   No Blanks <%= f.check_box :completed, :checked => (params[:completed] == '1') %> &nbsp;
   <%= f.button :submit, 'Search', :class => "btn btn-primary" %>
 <p><br>
-Showing <%= @applications.count %> records
+Showing <%= @applications.count.is_a?(Integer) ? @applications.count : @applications.count.length %> records
 </p>
 
 </div>
@@ -44,6 +44,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <th>Reference?</th>
     <th>Blank<br>Fields?</th>
     <th>Reviewers</th>
+    <th><%= link_to "Average Score", applications_path(:sort_score => '1') %></th>
     <th>Scores<br>Submitted</th>
     <% end %>
     <th>Scored?</th>
@@ -75,11 +76,12 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
           (link_to glyph("ok"), edit_application_path(application, :anchor => "transcript")) : 
           glyph("remove") %> </td>
     <td>
-      <%= glyph("exclamation-sign") if application.references.completed.count > 1 %>
+      <%= glyph("exclamation-sign",:title => "Multiple References") if application.references.completed.count > 1 %>
       <%= link_to glyph("ok"), edit_reference_path(application.references.completed.first) unless application.references.blank? || application.references.completed.blank?  %>
     </td>
     <td><span title="<%=application.blank_fields.join(", ") %>"><%= application.blank_fields_count %></span></td>
     <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
+    <td><%= application.average_score %></td>
     <td><%= application.scores.count %></td>
     <% end %>
     <td><% application.scores.accessible_by(current_ability).each do |s| %>
@@ -87,7 +89,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
       <%= link_to glyph("pencil"), edit_score_path(s.id) %>
       <% end %>
       <% if application.scores.accessible_by(current_ability).count == 0 %>
-        <%= glyph("exclamation-sign") %>
+        <%= glyph("exclamation-sign",:title => "Needs Scoring") %>
         <%= link_to "New Score", new_score_path(:application_id => application.id) %>
       <% end %>
     </td>

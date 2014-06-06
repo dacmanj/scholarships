@@ -5,9 +5,10 @@ class ScoresController < ApplicationController
   load_and_authorize_resource
 
   def index
-
+    @scores = @scores.order("total DESC")
     respond_to do |format|
       format.html # index.html.erb
+      format.csv
       format.json { render json: @scores }
     end
   end

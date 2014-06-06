@@ -135,8 +135,12 @@ def us_states
     flash_html.html_safe
   end
 
-  def glyph(g)
-    content_tag(:i,"",:class=>"glyphicon glyphicon-"+g)
+  def glyph(g,*opts)
+    options = {:class => "glyphicon glyphicon-"+g}
+    opts.each do |o|
+      options[o.keys[0]] = o.values[0]
+    end
+    content_tag(:i,"",options)
   end
 
   def rating_row (field,f)

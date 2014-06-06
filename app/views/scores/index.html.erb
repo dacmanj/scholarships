@@ -20,3 +20,8 @@
   </tr>
 <% end %>
 </table>
+
+
+<% if current_user.has_role? :admin %>
+    <%= link_to "Download CSV", scores_path(:format => :csv), :class => 'btn btn-primary'  %>
+<%end%>
