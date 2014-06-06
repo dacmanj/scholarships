@@ -82,7 +82,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <td><span title="<%=application.blank_fields.join(", ") %>"><%= application.blank_fields_count %></span></td>
     <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
     <td><%= application.average_score %></td>
-    <td><%= application.scores.count %></td>
+    <td><span title="<%= application.scores.map{|h| h.user.name unless h.user.blank?}.join(", ") unless application.scores.empty? %>"><%= application.scores.count %></span></td>
     <% end %>
     <td><% application.scores.accessible_by(current_ability).each do |s| %>
       <%= glyph("ok") unless current_user.is? :admin%>
