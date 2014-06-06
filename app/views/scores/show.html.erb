@@ -33,28 +33,73 @@
 <p>
   <b>Essay:</b>
   <%= @score.essay %>
+  <p>
+    <%=@score.essay_comment%>
+  </p>
+</p>
+
+<p>
+  <b>Reference:</b>
+  <%= @score.reference %>
+  <p>
+    <%= @score.reference_comment %>
+  </p>
 </p>
 
 <p>
   <b>Academics:</b>
   <%= @score.academics %>
+  <p>
+    <%= @score.academics_comment %>
+  </p>
 </p>
 
 <p>
   <b>Activities:</b>
   <%= @score.activities %>
+  <p>
+    <%= @score.activities_comment %>
+  </p>
 </p>
 
 <p>
   <b>Lgbt advocacy:</b>
   <%= @score.lgbt_advocacy %>
+  <p>
+    <%= @score.lgbt_advocacy_comment %>
+  </p>
 </p>
 
 <p>
   <b>Discretionary:</b>
   <%= @score.discretionary %>
+  <p>
+    <%= @score.discretionary_comment %>
+  </p>
 </p>
 
+
+<% if current_user.is? :admin%>
+
+<table class="table table-striped">
+<thead>
+<tr><th>Section</th><th>Score</th><th>Weight</th><th>Weighted Score</th></tr>
+</thead>
+<tbody>
+<% Score::MULTIPLIERS.each do |k,v| %>
+<tr><td><%=k.to_s.humanize%></td><td><%=@score[k]%></td><td><%=v%></td><td><%=@score[k].to_d * v %></td></tr>
+<% end %>
+
+<tr><td>Total</td><td><%=@score.raw_score %></td><td>1.0</td><td><%= @score.total %></td></tr>
+</tbody>
+</table>
+<p>
+  <b>
+  Total Score (weighted): <%= @score.total %>
+  </b>
+
+</p>
+<% end %>
 <div style="margin-top: 20px;">
 <%= link_to 'Edit', edit_score_path(@score), :class=>"btn" %> <%= link_to 'Back', scores_path, :class=>"btn btn-default" %>
 </div>

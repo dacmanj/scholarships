@@ -33,17 +33,28 @@ class Score < ActiveRecord::Base
   attr_accessible :academics, :activities, :ally, :application_id, :community_college, :discretionary, :essay, :lgbt, :lgbt_advocacy, :reference, :essay_comment, :academics_comment, :activities_comment, :lgbt_advocacy_comment, :discretionary_comment, :reference_comment, :stem, :user_id
   before_save :set_total
 
+  WEIGHTS = { :essay => 6.0, :reference => 3.0, :academics => 4.0, :activities => 3.0, :lgbt_advocacy => 5.0, :discretionary => 4.0  }
+  BASE = Score::WEIGHTS.map{|k,v| v}.inject(:+) #sum of the values of the above
+  MULTIPLIERS = {}
+  Score::WEIGHTS.each{|k,v| MULTIPLIERS[k] = v/BASE}
+
   def normalized_score
-	scores = [self.essay,self.reference,self.academics,self.activities,self.lgbt_advocacy,self.discretionary]
-  	multipliers = [6.0,3.0,4.0,3.0,5.0,4.0]
-  	base = 25.0
-  	sum = 0.0
-  	i = 0 
-  	scores.each do |score|
-  	  sum += (score.to_d||0.0) * multipliers[i] / base
-  	  i += 1
-	end
-	sum
+    base = 0
+    score = 0
+
+  	Score::MULTIPLIERS.each do |k,v|
+  	  score += (self[k].to_d || 0.0) * v
+  	end
+	 score
+  end
+
+  def raw_score
+    score = 0
+    Score::MULTIPLIERS.each do |k,v|
+      score += (self[k].to_d || 0.0)
+    end
+   score
+
   end
 
   protected

@@ -45,7 +45,6 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <th>Blank<br>Fields?</th>
     <th>Reviewers</th>
     <th><%= link_to "Average Score", applications_path(:sort_score => '1') %></th>
-    <th>Scores<br>Submitted</th>
     <% end %>
     <th>Scored?</th>
   </tr>
@@ -80,9 +79,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
       <%= link_to glyph("ok"), edit_reference_path(application.references.completed.first) unless application.references.blank? || application.references.completed.blank?  %>
     </td>
     <td><span title="<%=application.blank_fields.join(", ") %>"><%= application.blank_fields_count %></span></td>
-    <td><%= application.reviewers.map{|r| r.name}.join(", ") unless application.reviewers.blank? %></td>
+    <td><%= application.reviewers.map{|r| a = application.scores.find_by_user_id(r.id); "#{r.name}"+ ((" (#{a.total})" unless a.blank?) or "")}.join(", ") unless application.reviewers.blank? %></td>
     <td><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></td>
-    <td><span title="<%= application.scores.map{|h| h.user.name unless h.user.blank?}.join(", ") unless application.scores.empty? %>"><%= application.scores.count %></span></td>
     <% end %>
     <td><% application.scores.accessible_by(current_ability).each do |s| %>
       <%= glyph("ok") unless current_user.is? :admin%>

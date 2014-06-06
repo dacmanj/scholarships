@@ -1,3 +1,26 @@
 <h1>Scoring Form</h1>
 
 <%= render 'form' %>
+
+
+<% if current_user.is? :admin%>
+
+<table class="table table-striped">
+<thead>
+<tr><th>Section</th><th>Score</th><th>Weight</th><th>Weighted Score</th></tr>
+</thead>
+<tbody>
+<% Score::MULTIPLIERS.each do |k,v| %>
+<tr><td><%=k.to_s.humanize%></td><td><%=@score[k]%></td><td><%=v%></td><td><%=@score[k].to_d * v %></td></tr>
+<% end %>
+
+<tr><td>Total</td><td><%=@score.raw_score %></td><td>1.0</td><td><%= @score.total %></td></tr>
+</tbody>
+</table>
+<p>
+  <b>
+  Total Score (weighted): <%= @score.total %>
+  </b>
+
+</p>
+<% end %>
