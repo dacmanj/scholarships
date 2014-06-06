@@ -3,6 +3,7 @@
 <table class="table table-striped">
   <tr>
     <th>Application</th>
+    <th>Reviewer</th>
     <th>Score</th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <% score_blank = score.application.blank? or score.application.user.blank? %>
     <td><%= score.application.user.name unless score_blank %></td>
+    <td><%= score.user.name unless score_blank %></td>
     <td><%= number_with_precision score.total, :precision => 2 unless score_blank %></td>
     <td><%= link_to 'Show', score %></td>
     <td><%= link_to glyph("pencil"), edit_score_path(score) %></td>
