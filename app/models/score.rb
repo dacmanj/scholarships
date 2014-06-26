@@ -33,7 +33,7 @@ class Score < ActiveRecord::Base
   attr_accessible :academics, :activities, :ally, :application_id, :community_college, :discretionary, :essay, :lgbt, :lgbt_advocacy, :reference, :essay_comment, :academics_comment, :activities_comment, :lgbt_advocacy_comment, :discretionary_comment, :reference_comment, :stem, :user_id
   before_save :set_total
 
-  WEIGHTS = { :essay => 6.0, :reference => 3.0, :academics => 4.0, :activities => 3.0, :lgbt_advocacy => 5.0, :discretionary => 4.0  }
+  WEIGHTS = { :essay => 5.0, :reference => 3.0, :academics => 6.0, :activities => 3.0, :lgbt_advocacy => 7.0, :discretionary => 8.0  }
   BASE = Score::WEIGHTS.map{|k,v| v}.inject(:+) #sum of the values of the above
   MULTIPLIERS = {}
   Score::WEIGHTS.each{|k,v| MULTIPLIERS[k] = v/BASE}
