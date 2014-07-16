@@ -1,0 +1,4 @@
+"name","email","student?","reviewer?","admin?"
+<% @users.each do |u| %>"
+<%= u.name %>","<%=u.email %>","<%= u.has_role? :student %>","<%= u.has_role? :reviewer %>","<%= u.has_role? :admin %>"
+<% end %>
