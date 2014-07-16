@@ -1,4 +1,4 @@
-"score id", "application_id","applicant","scorer name","scorer email","lgbt","ally","stem","community_college","essay","academics","activities","lgbt_advocacy","discretionary","total","link to application",created_at","updated"
+"score id", "application_id","applicant","scorer name","scorer email","lgbt","ally","stem","community_college","essay","academics","activities","lgbt_advocacy","discretionary","total","link to application","created_at","updated"
 <% @scores.each do |s| %>
 <% @app = s.application %>
 "<%= s.id %>","<%= @app.id unless @app.blank? %>","<%= @app.name unless @app.blank? %>","<%= s.user.name unless s.user.blank? %>","<%= s.user.email unless s.user.blank? %>","<%=s.lgbt%>","<%=s.ally%>","<%= s.stem %>","<%= s.community_college %>","<%= s.essay %>","<%= s.academics %>","<%= s.activities %>","<%= s.lgbt_advocacy %>","<%= s.discretionary %>","<%= s.total %>","<%= application_url(@app.id) unless @app.blank? %>","<%= s.created_at %>","<%= s.updated_at %>"
