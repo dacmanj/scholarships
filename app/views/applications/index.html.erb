@@ -37,7 +37,10 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%end %>
     <th>Name</th>
     <% if current_user.is? :admin %>
-    <th></th>
+        <th></th>
+    <% end %>
+
+    <% if current_user.is? :admin and params[:sort_score].blank? %>
     <th>Complete?</th>
     <th>Signed?</th>
     <th>Transcript?</th>
@@ -45,6 +48,14 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <th>Blank<br>Fields?</th>
     <th>Reviewers</th>
     <th><%= link_to "Average Score", applications_path(:sort_score => '1') %></th>
+    <% end %>
+    <% if current_user.is? :admin and params[:sort_score].present? %>
+    <th>STEM?</th>
+    <th>First Gen</th>
+    <th>State</th>
+
+    <th><%= link_to "Average Score", applications_path(:sort_score => '1') %></th>
+
     <% end %>
     <th>Scored?</th>
   </tr>
@@ -68,6 +79,9 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <%= link_to glyph("pencil"), edit_application_path(application) if can? :edit, application %>
     <%= link_to glyph("trash"), application, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, application %>
     </td>
+    <%end %>
+
+    <% if current_user.is? :admin and params[:sort_score].blank? %>
 
     <td><%= application.incomplete? ? glyph("remove") : glyph("ok") %></td>
     <td><%= application.signed? ? glyph("ok") : glyph("remove") %></td>
@@ -82,6 +96,14 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <td><%= application.reviewers.map{|r| a = application.scores.find_by_user_id(r.id); "#{r.name}"+ ((" (#{a.total})" unless a.blank?) or "")}.join(", ") unless application.reviewers.blank? %></td>
     <td><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></td>
     <% end %>
+    <% if current_user.is? :admin and params[:sort_score].present? %>
+    <td><%= application.stem ? glyph("remove") : glyph("ok") %></td>
+    <td><%= application.first_generation ? glyph("remove") : glyph("ok") %></td>
+    <td><%= application.state %></td>
+    <td><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></td>
+
+    <% end %>
+
     <td><% application.scores.accessible_by(current_ability).each do |s| %>
       <%= glyph("ok") unless current_user.is? :admin%>
       <%= link_to glyph("pencil"), edit_score_path(s.id) %>
