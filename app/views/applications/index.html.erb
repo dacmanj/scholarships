@@ -53,6 +53,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <th>STEM?</th>
     <th>First Gen</th>
     <th>State</th>
+    <th>Score Std Dev.</th>
 
     <th><%= link_to "Average Score", applications_path(:sort_score => '1') %></th>
 
@@ -100,6 +101,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <td><%= application.stem ? glyph("remove") : glyph("ok") %></td>
     <td><%= application.first_generation ? glyph("remove") : glyph("ok") %></td>
     <td><%= application.state %></td>
+    <td><%= number_with_precision application.scores_standard_deviation, :precision => 2 unless application.scores.blank? %></td>
     <td><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></td>
 
     <% end %>

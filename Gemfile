@@ -13,6 +13,7 @@ end
 
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'descriptive-statistics'
 
 gem 'tinymce-rails'
 gem 'jquery-rails'
