@@ -99,7 +99,7 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% end %>
     <% if current_user.is? :admin and params[:sort_score].present? %>
     <td><%= application.stem ? glyph("remove") : glyph("ok") %></td>
-    <td><%= application.first_generation ? glyph("remove") : glyph("ok") %></td>
+    <td><%= application.first_generation ? glyph("ok") : glyph("remove") %></td>
     <td><%= application.state %></td>
     <td><%= number_with_precision application.scores_standard_deviation, :precision => 2 unless application.scores.blank? %></td>
     <td><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></td>
