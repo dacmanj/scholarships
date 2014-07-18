@@ -193,6 +193,16 @@ class Application < ActiveRecord::Base
     (n/d unless d == 0) || 0
   end
 
+
+  def scores_range
+    if self.scores.present?
+      stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})
+      stats.range
+    else
+      0
+    end
+  end
+
   def scores_standard_deviation
     if self.scores.present?
       stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})

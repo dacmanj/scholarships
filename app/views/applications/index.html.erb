@@ -54,7 +54,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <th><%= link_to "First Gen", params[:sort] == 'first_generation' ? applications_path(:sort => 'score') : applications_path(:sort => 'first_generation') %></th>
 
     <th>State</th>
-    <th>Score Std Dev.</th>
+    <th>Std Dev.</th>
+    <th>Range</th>
 
     <th><%= link_to "Average Score", applications_path(:sort_score => '1') %></th>
 
@@ -103,7 +104,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <td><%= application.first_generation ? glyph("ok") : glyph("remove") %></td>
     <td><%= application.state %></td>
     <td><%= number_with_precision application.scores_standard_deviation, :precision => 2 unless application.scores.blank? %></td>
-    <td><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></td>
+    <td><%= number_with_precision application.scores_range, :precision => 2 unless application.scores.blank? %></td>
+    <td><span title="<%= application.scores.map{|h| number_with_precision h.total, :precision => 2}.join(", ")  %>"><%= number_with_precision application.average_score, :precision => 2 unless application.average_score.blank? %></span></td>
 
     <% end %>
 
