@@ -171,12 +171,16 @@ class ApplicationsController < ApplicationController
 
   private
   def filter_applications
-    if params[:sort_score] == '1'
-      if params[:sort_fg] == '1'
-        @applications = @applications.with_score_by_first_generation
-      else
-        @applications = @applications.with_score
-      end
+    sort = params[:sort]
+    @review = params[:sort].in? ['score','stem','first_generation']
+
+    case sort
+    when 'score'
+      @applications = @applications.with_score
+    when 'first_generation'
+      @applications = @applications.with_score_by_first_generation
+    when 'stem'    
+      @applications = @applications.with_score_by_stem
     else
       @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
       @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
