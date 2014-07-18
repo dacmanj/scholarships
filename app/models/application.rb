@@ -192,13 +192,21 @@ class Application < ActiveRecord::Base
   end
 
   def scores_standard_deviation
-    stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})
-    stats.standard_deviation
+    if self.scores.present?
+      stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})
+      stats.standard_deviation
+    else
+      0
+    end
   end
 
   def scores_variance
-    stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})
-    stats.variance
+    if self.scores.present?
+      stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})
+      stats.variance
+    else
+      0
+    end
   end
 
 
