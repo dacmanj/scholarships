@@ -51,7 +51,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% end %>
     <% if current_user.is? :admin and params[:sort_score].present? %>
     <th>STEM?</th>
-    <th>First Gen</th>
+    <th><%= link_to "First Gen", params[:sort_fg] ? applications_path(:sort_score => '1') : applications_path(:sort_score => '1', :sort_fg => '1') %></th>
+
     <th>State</th>
     <th>Score Std Dev.</th>
 
