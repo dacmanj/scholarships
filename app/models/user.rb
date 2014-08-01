@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
     domain = /@(.+$)/.match(self.email)[1]
     admin = domain.casecmp("pflag.org") != 0 ? false : true
 #    admin = false #no auto admin
-    reviewer = self.email.downcase.in? User::REVIEWERS || domain.casecmp("pflag.org") == 0 # add PFLAG.org as reviewers
+    reviewer = self.email.downcase.in? User::REVIEWERS #|| domain.casecmp("pflag.org") == 0 # add PFLAG.org as reviewers
 
     if reviewer
       remove_role :student
