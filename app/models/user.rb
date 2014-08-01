@@ -72,8 +72,8 @@ class User < ActiveRecord::Base
   private
   def default_role_and_create_blank_application
     domain = /@(.+$)/.match(self.email)[1]
-#    admin = domain.casecmp("pflag.org") != 0 ? false : true
-    admin = false #no auto admin
+    admin = domain.casecmp("pflag.org") != 0 ? false : true
+#    admin = false #no auto admin
     reviewer = self.email.downcase.in? User::REVIEWERS || domain.casecmp("pflag.org") == 0 # add PFLAG.org as reviewers
 
     if reviewer
