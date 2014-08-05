@@ -52,7 +52,8 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% if current_user.is? :admin and @review %>
     <th><%= link_to "STEM?", params[:sort] == 'stem' ? applications_path(:sort => 'score') : applications_path(:sort => 'stem') %></th>
     <th><%= link_to "First Gen", params[:sort] == 'first_generation' ? applications_path(:sort => 'score') : applications_path(:sort => 'first_generation') %></th>
-
+    <th>LGBT?</th>
+    <th>Supporter?</th>
     <th>State</th>
     <th>Std Dev.</th>
     <th>Range</th>
@@ -102,6 +103,10 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
     <% if current_user.is? :admin and @review %>
     <td><%= application.stem ? glyph("ok") : glyph("remove") %></td>
     <td><%= application.first_generation ? glyph("ok") : glyph("remove") %></td>
+    <td><%= application.identify_lgbt ? glyph("ok") : glyph("remove") %></td>
+    <td><%= application.identify_supporter ? glyph("ok") : glyph("remove") %></td>
+
+
     <td><%= application.state %></td>
     <td><%= number_with_precision application.scores_standard_deviation, :precision => 2 unless application.scores.blank? %></td>
     <td><%= number_with_precision application.scores_range, :precision => 2 unless application.scores.blank? %></td>
