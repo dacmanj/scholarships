@@ -3,7 +3,7 @@ module ApplicationsHelper
       display = "No Response"
 	  case  type
 	  when :boolean
-	  	display = t value unless value.blank?
+	  	display = t(value.to_s) unless value.nil?
 	  when :text
 	  	display = "<div class='well'>" + (value || "") + "</div>" unless value.blank?
 	  	display = display.html_safe
