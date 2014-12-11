@@ -32,22 +32,6 @@ var admin = <%=current_user.has_role? :admin %>;
         <%= f.input :email, required: true, :readonly => true %>
         <%= f.input :phone, required: true %>
         <%= f.input :date_of_birth, start_year: Date.today.year - 40, end_year: Date.today.year - 15, required: false %>
-        
-        <div class="row">
-            <div class="col-md-6">
-            <% if @application.photo? %>
-                <p><strong>Photo</strong></p>
-                <img src="<%=@application.photo.url%>" height="50"/>
-                <%= hidden_field_tag(:delete_photo, "0") %>
-                <%= f.button :submit, "Delete Photo", :class => "btn btn-primary", :id=>"delete_photo_button", confirm: "Are you sure you want to delete the photo?" %>
-
-            <% else %>
-                <%= f.input :photo, required: false %>
-                <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>                
-            <% end %>
-            </div>
-
-        </div>
         <%= f.input :biography, as: :tinymce, required: true %>
         
     </div>
@@ -150,11 +134,29 @@ var admin = <%=current_user.has_role? :admin %>;
 
     <div class="well">
     <h2>Waiver and Personal Information Releases</h2>
+    <p>In the event that you are selected as a winner, we would like to include a photo and your biography in our announcements.</p>
+    
         <%= f.input :release_high_school, :as => :radio_buttons, required: true  %>
         <%= f.input :release_local_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_national_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_local_chapter, :as => :radio_buttons, required: true  %>
         <%= f.input :release_application_to_chapter, :as => :radio_buttons, required: true  %>
+            <div class="row">
+            <div class="col-md-6">
+            <% if @application.photo? %>
+                <p><strong>Photo</strong></p>
+                <img src="<%=@application.photo.url%>" height="50"/>
+                <%= hidden_field_tag(:delete_photo, "0") %>
+                <%= f.button :submit, "Delete Photo", :class => "btn btn-primary", :id=>"delete_photo_button", confirm: "Are you sure you want to delete the photo?" %>
+
+            <% else %>
+                <%= f.input :photo, required: false %>
+                <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>                
+            <% end %>
+            </div>
+
+        </div>
+        
         <%= f.input :release_photograph, :as => :radio_buttons, required: true  %>
         <%= f.input :release_essay_collection, :as => :radio_buttons, required: true  %>
         <%= f.input :release_picture_bio_on_website, :as => :radio_buttons, required: true  %>
