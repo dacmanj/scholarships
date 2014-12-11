@@ -75,6 +75,15 @@ $ ->
       $('#upload_transcript_button').removeAttr("disabled")
   $("#application_transcript").bind "change", enable_upload_button
 
+  enable_upload_button = (e) ->
+    if $("#application_photo").val() != ""
+      $('#upload_photo_button').removeAttr("disabled")
+  $("#application_photo").bind "change", enable_upload_button        
+
+        
+  $('#delete_photo_button').click (e) ->
+    $("#delete_photo").val(1)
+
   save_application = ->    
     tinyMCE.triggerSave()
     if $("#application_transcript").val() != ""

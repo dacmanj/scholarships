@@ -38,6 +38,8 @@ en:
         stem_description: 'Identifying your interest in studying science, technology, engineering, and/or math (STEM) will give you additionally enhanced eligible for scholarship funding from Gays, Lesbians, and Allies at Dow (GLAD). Successful candidates will demonstrate a particular interest and expertise in the STEM fields and is supported by donations from employees of the Dow Chemical Company.'
         first_generation: 'Are you the first generation in your family to attend college?'
         date_of_birth: 'Date of Birth'
+        photo: 'Please submit a 300 dpi photo for use in scholarship program announcements'
+        biography: 'Please submit a 100-125 word biography'
         date_of_graduation: 'Date of Graduation'
         name_of_high_school: 'Name of High School'
         hs_street_address: 'Street Address'

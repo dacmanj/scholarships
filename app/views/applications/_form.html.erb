@@ -32,7 +32,25 @@ var admin = <%=current_user.has_role? :admin %>;
         <%= f.input :email, required: true, :readonly => true %>
         <%= f.input :phone, required: true %>
         <%= f.input :date_of_birth, start_year: Date.today.year - 40, end_year: Date.today.year - 15, required: false %>
+        
+        <div class="row">
+            <div class="col-md-6">
+            <% if @application.photo? %>
+                <p><strong>Photo</strong></p>
+                <img src="<%=@application.photo.url%>" height="50"/>
+                <%= hidden_field_tag(:delete_photo, "0") %>
+                <%= f.button :submit, "Delete Photo", :class => "btn btn-primary", :id=>"delete_photo_button", confirm: "Are you sure you want to delete the photo?" %>
+
+            <% else %>
+                <%= f.input :photo, required: false %>
+                <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>                
+            <% end %>
+            </div>
+
         </div>
+        <%= f.input :biography, as: :tinymce, required: true %>
+        
+    </div>
     <div class="well">
       <h2>Address Information</h2>
         <%= f.input :street_address, :as => :text, :input_html => {rows: "3", cols: "100"}, required: true %>

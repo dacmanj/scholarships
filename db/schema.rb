@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140521164408) do
+ActiveRecord::Schema.define(:version => 20141211010310) do
 
   create_table "applications", :force => true do |t|
     t.string   "phone"
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(:version => 20140521164408) do
     t.boolean  "first_generation"
     t.boolean  "release_application_to_chapter"
     t.text     "why_do_you_want"
+    t.text     "biography"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "applications_users", :force => true do |t|

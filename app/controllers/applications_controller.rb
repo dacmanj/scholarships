@@ -118,6 +118,13 @@ class ApplicationsController < ApplicationController
       @application.save
     end
 
+      
+    if (params[:delete_photo] == "1")
+      @application.photo.destroy
+      @application.photo.clear
+      notice = "Photo deleted."
+      @application.save
+    end
     respond_to do |format|
       if @application.update_attributes(params[:application])
         format.html { redirect_to edit_application_path, notice: (notice || t("application.message.save_success")) }
