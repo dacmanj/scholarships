@@ -13,6 +13,30 @@
 
 ActiveRecord::Schema.define(:version => 20141211010310) do
 
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.string   "default_account_ar_account"
+    t.integer  "contact_id"
+    t.integer  "address_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "database_id"
+    t.integer  "primary_contact_id"
+  end
+
+  create_table "addresses", :force => true do |t|
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "fax"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "contact_id"
+    t.text     "address_lines"
+  end
+
   create_table "applications", :force => true do |t|
     t.string   "phone"
     t.date     "date_of_birth"
@@ -71,6 +95,105 @@ ActiveRecord::Schema.define(:version => 20141211010310) do
   create_table "applications_users", :force => true do |t|
     t.integer "application_id"
     t.integer "user_id"
+  end
+
+  create_table "codes", :force => true do |t|
+    t.string   "category"
+    t.string   "code"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "account_id"
+    t.integer  "address_id"
+    t.boolean  "active"
+    t.string   "database_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "title"
+    t.boolean  "suppress_account_name"
+    t.boolean  "suppress_contact_name"
+  end
+
+  create_table "contacts_invoices", :id => false, :force => true do |t|
+    t.integer "contact_id"
+    t.integer "invoice_id"
+  end
+
+  create_table "email_records", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "invoice_id"
+    t.string   "email"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "cc"
+    t.string   "bcc"
+  end
+
+  create_table "email_templates", :force => true do |t|
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
+  end
+
+  create_table "invoices", :force => true do |t|
+    t.integer  "contact_id"
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.date     "date"
+    t.integer  "primary_contact_id"
+    t.string   "ar_account"
+    t.boolean  "void",               :default => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.text     "description"
+    t.string   "revenue_gl_code"
+    t.decimal  "quantity"
+    t.decimal  "unit_price"
+    t.string   "item_image_url"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "notes"
+    t.boolean  "recurring"
+    t.string   "expensify_id"
+    t.integer  "invoice_id"
+    t.integer  "account_id"
+    t.integer  "line_id"
+  end
+
+  create_table "lines", :force => true do |t|
+    t.text     "description"
+    t.integer  "item_id"
+    t.decimal  "quantity"
+    t.decimal  "unit_price"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "invoice_id"
+    t.boolean  "hidden"
+    t.string   "notes"
+    t.integer  "position"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "invoice_id"
+    t.integer  "account_id"
+    t.date     "payment_date"
+    t.string   "payment_type"
+    t.string   "reference_number"
+    t.decimal  "amount"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "references", :force => true do |t|
@@ -142,6 +265,16 @@ ActiveRecord::Schema.define(:version => 20141211010310) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "settings", :force => true do |t|
+    t.string   "key"
+    t.text     "category"
+    t.text     "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "settings", ["key"], :name => "index_settings_on_key", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -169,5 +302,17 @@ ActiveRecord::Schema.define(:version => 20141211010310) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",      :null => false
+    t.integer  "item_id",        :null => false
+    t.string   "event",          :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
 end

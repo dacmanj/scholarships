@@ -63,7 +63,10 @@ class Application < ActiveRecord::Base
   validates_attachment_content_type :transcript, :content_type => /^(application\/pdf|image\/(jpg|jpeg|pjpeg|png|x-png|gif|pdf|tif|tiff))$/, :message => 'file type is not allowed (only pdf/tif/jpeg/png/gif images)'
 
   has_attached_file :photo
+#  before_photo_post_process :validate_photo_dimensions
   validates_attachment_content_type :photo, :content_type => /^(image\/(jpg|jpeg|pjpeg|png|x-png|gif|pdf|tif|tiff))$/, :message => 'file type is not allowed (only tif/jpeg/png/gif images)'
+
+  
 
   scope :is_scored, joins(:scores)
   scope :has_transcript, where("transcript_content_type IS NOT NULL and transcript_content_type != ?","")
@@ -223,6 +226,21 @@ class Application < ActiveRecord::Base
       0
     end
   end
+  private 
+      
+  def validate_photo_dimensions
+    width = 0
+    height = 0
 
+    begin
+        # I'm not sure about this:
+        dimensions = Paperclip::Geometry.from_file(photo.queued_for_write[:original].path)
+
+        record.errors[attribute] << "Width must be at least #{width}px" unless dimensions.width >= width
+        record.errors[attribute] << "Height must be at least #{height}px" unless dimensions.height >= height
+    end
+
+    dimensions     
+  end
 
 end
