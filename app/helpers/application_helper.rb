@@ -157,4 +157,7 @@ def us_states
     html.html_safe
   end
 
+  def deadline_passed?
+    Time.now.to_date > Date::strptime(ENV["DEADLINE"],"%m-%d-%Y")
+  end
 end

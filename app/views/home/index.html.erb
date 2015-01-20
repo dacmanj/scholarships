@@ -13,17 +13,20 @@
 <p>
 <% if current_user.present? && current_user.application.present? %>
 	<%= link_to "Go To Application", edit_application_path(current_user.application.id), :class=>"btn btn-primary btn-lg col-md-12 col-xs-12" %>
-<% elseif false %>
+<% elsif deadline_passed? %>
+    <p style="font-style: italic"><%= t("application.message.deadline_already_passed") %></p>
+<% else %>
 	<%= link_to "Begin Application", new_user_session_path, :class=>"btn btn-primary btn-lg col-md-12 col-xs-12", :role => "button" %>
 <% end %>
-The application has closed for 2014.
+    <br>
+    <br>
+    <br>
 
 </p>
 </div>
+
 <div class="col-md-offset-2 col-md-8" style="text-align: center">
-	<br>
-	<p style="font-style: italic"><%= t("application.message.deadline") %></p>
-	<br>
+    <p style="font-style: italic"><%= t("application.message.deadline") %></p>
 </div>
 
 <div class="col-md-offset-2 col-md-8">
@@ -48,7 +51,7 @@ The application has closed for 2014.
 	<li>Self-identify as a member or ally of the LGBTQ community</li>
 	<li>Demonstrate an interest in service to the LGBTQ community.</li>
 	<li>Have applied to an accredited U.S. higher education institution.</li>
-	<li>Cannot be receiving full tuition remission from other sources to fund the education (e.g., other full-tuition scholarships, established college trust fund, etc.)</li>
+	<li>Cannot be receiving full tuition from other sources to fund the education (e.g., other full-tuition scholarships, established college trust fund, etc.)</li>
 	</ul>
 	<strong style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">See all of 2013 PFLAG National Scholarship recipients in the current issue of the&nbsp;<a href="http://community.pflag.org/file/pflagpole/PFLAGPOLE_Fall-2013.pdf">PFLAGPole</a>!</strong>
 	<p>&nbsp;</p>
