@@ -31,9 +31,10 @@ var admin = <%=current_user.has_role? :admin %>;
         <%= f.input :name, required: true %>
         <%= f.input :email, required: true, :readonly => true %>
         <%= f.input :phone, required: true %>
-        <%= f.input :date_of_birth, start_year: Date.today.year - 40, end_year: Date.today.year - 15, required: false %>
-        <%= f.input :biography, as: :tinymce, required: true %>
-        
+        <%= f.input :date_of_birth, start_year: Date.today.year - 40, end_year: Date.today.year - 15, required: true, include_blank: true %>
+        <% if ENV['BIO'] == "true" %>
+            <%= f.input :biography, as: :tinymce, required: true %>
+        <% end %>
     </div>
     <div class="well">
       <h2>Address Information</h2>
@@ -58,7 +59,7 @@ var admin = <%=current_user.has_role? :admin %>;
     <div class="well">
         <h2>Academic Status And High School Information</h2>
         <%= f.input :name_of_high_school, required: true %>
-        <%= f.input :date_of_graduation, start_year: Date.today.year-2, end_year: Date.today.year + 2, required: false %>
+        <%= f.input :date_of_graduation, start_year: Date.today.year-2, end_year: Date.today.year + 2, required: true, include_blank: true %>
         <%= f.input :are_you_a_graduating_high_school_senior, :as => :radio_buttons, required: true %>
         <%= f.input :hs_street_address, :as => :text,  :input_html => {rows: "3", cols: "100"}, required: true  %>
         <%= f.input :hs_city, :label => "City", required: true %>
@@ -141,22 +142,22 @@ var admin = <%=current_user.has_role? :admin %>;
         <%= f.input :release_national_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_local_chapter, :as => :radio_buttons, required: true  %>
         <%= f.input :release_application_to_chapter, :as => :radio_buttons, required: true  %>
+        <% if ENV['PHOTO'] == "true" %> 
             <div class="row">
-            <div class="col-md-6">
-            <% if @application.photo? %>
-                <p><strong>Photo</strong></p>
-                <img src="<%=@application.photo.url%>" height="50"/>
-                <%= hidden_field_tag(:delete_photo, "0") %>
-                <%= f.button :submit, "Delete Photo", :class => "btn btn-primary", :id=>"delete_photo_button", confirm: "Are you sure you want to delete the photo?" %>
+                <div class="col-md-6">
+                <% if @application.photo? %>
+                    <p><strong>Photo</strong></p>
+                    <img src="<%=@application.photo.url%>" height="50"/>
+                    <%= hidden_field_tag(:delete_photo, "0") %>
+                    <%= f.button :submit, "Delete Photo", :class => "btn btn-primary", :id=>"delete_photo_button", confirm: "Are you sure you want to delete the photo?" %>
 
-            <% else %>
-                <%= f.input :photo, required: false %>
-                <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>                
-            <% end %>
+                <% else %>
+                    <%= f.input :photo, required: false %>
+                    <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>                
+                <% end %>
+                </div>
             </div>
-
-        </div>
-        
+        <% end %>
         <%= f.input :release_photograph, :as => :radio_buttons, required: true  %>
         <%= f.input :release_essay_collection, :as => :radio_buttons, required: true  %>
         <%= f.input :release_picture_bio_on_website, :as => :radio_buttons, required: true  %>
