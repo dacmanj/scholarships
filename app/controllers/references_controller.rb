@@ -40,7 +40,7 @@ class ReferencesController < ApplicationController
     @reference = Reference.find_by_token(params[:token])
     if @reference.nil? and !current_user.is? :admin
       redirect_to root_url, error: "Invalid Reference"
-    elsif current_user.is? :admin
+    elsif current_user.present? and current_user.is? :admin
       @reference = Reference.find(params[:id])
     end
   end
