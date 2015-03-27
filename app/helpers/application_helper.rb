@@ -65,7 +65,8 @@ def us_states
       ['WA', 'WA'],
       ['WI', 'WI'],
       ['WV', 'WV'],
-      ['WY', 'WY']
+      ['WY', 'WY'],
+      ['ZZ', 'ZZ']
     ]
   end
 
@@ -123,7 +124,8 @@ def us_states
       ['Washington', 'WA'],
       ['West Virginia', 'WV'],
       ['Wisconsin', 'WI'],
-      ['Wyoming', 'WY']
+      ['Wyoming', 'WY'],
+      ['Non-US', 'ZZ']
     ]
   end
 
