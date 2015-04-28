@@ -60,7 +60,7 @@ en:
         signature_ip: 'IP Address of Signer'
         why_do_you_want_html: 'Why do you want/need this scholarship?<br><br>Note: Some of our scholarship donors support scholarships based on financial need of the recipient due to individual circumstances.'
         employment_history: 'What jobs, if any, have you held? Please list both volunteer and paid positions as appropriate.'
-        essay: 'Please submit a one-page essay on your involvement in the LGBTQ community as a member or ally. Please be sure to include any leadership role you have played or what obstacles you have had to overcome in order to be an active member of the LGBTQ or ally community.'
+        essay: 'Please submit a essay on your involvement in the LGBTQ community as a member or ally. Please be sure to include any leadership role you have played or what obstacles you have had to overcome in order to be an active member of the LGBTQ or ally community. The essay should not exceed 1,050 words (based on the word count below).'
       reference:
         how_long_have_you_known: 'How long have you known the student?'
         relationship: 'What is your relationship with this student? (teacher, advisor, minister, school counselor, school administrator, coach, etc.):'
