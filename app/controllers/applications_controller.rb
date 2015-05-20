@@ -8,6 +8,8 @@ class ApplicationsController < ApplicationController
 
 
   def index
+      
+    params[:page] = '1' unless params[:page].present?
     if (current_user.is? :admin and params.count == 2)
       params[:essay]='1'
       params[:reference]='1'
@@ -19,7 +21,7 @@ class ApplicationsController < ApplicationController
 
     filter_applications
     if request.format.to_sym == :html
-      @applications = @applications.paginate(:page => params[:page], :per_page => (params[:per_page] || 15))
+      @applications = @applications.paginate(:page => params[:page] || 1, :per_page => (params[:per_page] || 15))
 #      @applications = Application.search(params)
     end
 
@@ -140,6 +142,7 @@ class ApplicationsController < ApplicationController
     @applications = Application.find_all_by_id(params[:application_ids])
     errors = Array.new
     reviewer = nil
+      page = params[:page].present? ? params[:page] : 1
     if params[:reviewer].blank? && params[:replace_reviewers] == '1'
       errors.push "Reviewers removed."
     else
@@ -160,7 +163,7 @@ class ApplicationsController < ApplicationController
       a.save!
     end
     message =  (errors.length > 0) ? errors.join(", ") : "Applications successfully updated."
-    redirect_to applications_path({essay: '1', reference: '1', page: params[:page]}), notice: message
+      redirect_to applications_path({essay: '1', reference: '1', page: page }), notice: message
 
   end
 
