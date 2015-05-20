@@ -23,7 +23,7 @@ Showing <%= @applications.count.is_a?(Integer) ? @applications.count : @applicat
 <%= simple_form_for '', :url => edit_multiple_applications_path, :html => { :class => "form-inline", :role => "form" } do |f| %>
 <% if current_user.is? :admin %>
 <div class="well">
-  <%= f.input :reviewer, :collection => User.with_role(:reviewer), required: true, :label_html => {:style => "display: none;"}, :wrapper_html => {:class=> "col-md-3"}, prompt: "Assign reviewer..." %>
+    <%= f.input :reviewer, :collection => User.with_role(:reviewer).order('LOWER(users.name)'), required: true, :label_html => {:style => "display: none;"}, :wrapper_html => {:class=> "col-md-3"}, prompt: "Assign reviewer..." %>
 Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
   <%= f.button :submit, 'Apply', :class => "btn btn-primary" %>
 </div>
