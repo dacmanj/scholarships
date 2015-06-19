@@ -43,7 +43,7 @@ class Score < ActiveRecord::Base
     score = 0
 
   	Score::MULTIPLIERS.each do |k,v|
-  	  score += (self[k].to_d || 0.0) * v
+  	  score += ((self[k] || 0).to_d || 0.0) * v
   	end
 	 score
   end
@@ -51,7 +51,7 @@ class Score < ActiveRecord::Base
   def raw_score
     score = 0
     Score::MULTIPLIERS.each do |k,v|
-      score += (self[k].to_d || 0.0)
+      score += ((self[k] || 0).to_d || 0.0)
     end
    score
 
