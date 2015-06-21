@@ -12,7 +12,11 @@ class ApplicationController < ActionController::Base
       end
     end
     if current_user.is? :admin
-      redirect_path = applications_path
+        if Time.now.to_date > Date::strptime(ENV["DEADLINE"],"%m-%d-%Y")
+            redirect_path = applications_path(:transcript => 1, :signed => 1, :reference => 1, :essay => 1)
+        else
+            redirect_path = applications_path
+        end
     elsif current_user.is? :reviewer
       redirect_path = applications_path
     end
