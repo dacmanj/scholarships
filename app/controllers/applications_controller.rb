@@ -163,7 +163,7 @@ class ApplicationsController < ApplicationController
       a.save!
     end
     message =  (errors.length > 0) ? errors.join(", ") : "Applications successfully updated."
-      redirect_to applications_path({essay: '1', reference: '1', page: page }), notice: message
+      redirect_to applications_path(filtered_params), notice: message
 
   end
 
@@ -192,6 +192,9 @@ class ApplicationsController < ApplicationController
     when 'stem'    
       @applications = @applications.with_score_by_stem
     else
+      if @applications.empty? 
+          return
+      end
       @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
       @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
       @applications = User.find(params[:user_id]).applications if params[:user_id].present?
@@ -199,8 +202,11 @@ class ApplicationsController < ApplicationController
       @applications = @applications.is_signed if params[:signed] == '1'
       @applications = @applications.has_essay if params[:essay] == '1'
       @applications = @applications.has_reference if params[:reference] == '1'
-      @applications = @applications.select{|d| d.blank_fields_count == 0} if params[:completed] == '1'
+      @applications = @applications.completed if params[:completed] == '1'
     end
+  end
+  def filtered_params
+      params.slice(:completed, :reference, :transcript, :signed, :essay, :page)    
   end
 
 end

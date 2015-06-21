@@ -73,6 +73,7 @@ class Application < ActiveRecord::Base
   scope :has_essay, where("essay IS NOT NULL and essay != ?","")
   scope :is_signed, where("signature_stamp IS NOT NULL","")
   scope :has_reference, -> { joins(:references).where("completed IS NOT NULL") }
+  scope :completed, joins(:references).where("completed IS NOT NULL").where("transcript_content_type IS NOT NULL and transcript_content_type != ? and essay IS NOT NULL and essay != ? and signature_stamp IS NOT NULL","","")
   scope :with_score, select('applications.*').joins(:scores).select('AVG(scores.total) "score"').group('applications.id').order("score DESC")
   scope :with_score_by_first_generation, select('applications.*').joins(:scores).select('AVG(scores.total) "score"').group('applications.id').order("first_generation DESC, score DESC")
   scope :with_score_by_stem, select('applications.*').joins(:scores).select('AVG(scores.total) "score"').group('applications.id').order("stem DESC, score DESC")
@@ -180,7 +181,7 @@ class Application < ActiveRecord::Base
     @essay = @application.essay?
     @blank_fields = self.blank_fields
     @blank_fields_count =  self.blank_fields_count
-    @user.has_role? :student and (@references ==0 or !@signed or !@transcript or !@essay or @blank_fields_count > 0) unless @user.blank?
+    @user.has_role? :student and (@references ==0 or !@signed or !@transcript or !@essay or @blank_fields_count > 10) unless @user.blank?
   end
 
   def self.search(params)

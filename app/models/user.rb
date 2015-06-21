@@ -83,7 +83,8 @@ class User < ActiveRecord::Base
       add_role :admin
     else
       add_role :student
-      self.applications.push Application.new({:applicant_user_id => self.id})
+      self.applications.push Application.new({:applicant_user_id => self.id}) unless Time.now.to_date > Date::strptime(ENV["DEADLINE"],"%m-%d-%Y")
+
     end 
   end
     

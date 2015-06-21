@@ -10,12 +10,11 @@
   Signed <%= f.check_box :signed, :checked => (params[:signed] == '1') %> &nbsp;
   Essay <%= f.check_box :essay, :checked => (params[:essay] == '1') %> &nbsp;
   Reference <%= f.check_box :reference, :checked => (params[:reference] == '1') %> &nbsp;
-  No Blanks <%= f.check_box :completed, :checked => (params[:completed] == '1') %> &nbsp;
+<!--  Completed <%= f.check_box :completed, :checked => (params[:completed] == '1') %> &nbsp;-->
   <%= f.button :submit, 'Search', :class => "btn btn-primary" %>
 <p><br>
 Showing <%= @applications.count.is_a?(Integer) ? @applications.count : @applications.count.length %> records
 </p>
-
 </div>
 
 <%end%>
@@ -26,6 +25,12 @@ Showing <%= @applications.count.is_a?(Integer) ? @applications.count : @applicat
     <%= f.input :reviewer, :collection => User.with_role(:reviewer).order('LOWER(users.name)'), required: true, :label_html => {:style => "display: none;"}, :wrapper_html => {:class=> "col-md-3"}, prompt: "Assign reviewer..." %>
 Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
   <%= f.button :submit, 'Apply', :class => "btn btn-primary" %>
+    <%= f.input :transcript, as: :hidden, :input_html => {value: params['transcript']}%>
+    <%= f.input :reference, as: :hidden, :input_html => {value: params['reference'] }%>
+    <%= f.input :completed, as: :hidden, :input_html => {value: params['completed'] }%>
+    <%= f.input :signed, as: :hidden, :input_html => {value: params['signed'] }%>
+    <%= f.input :essay, as: :hidden, :input_html => {value: params['essay'] }%>
+
 </div>
 <% end %>
 <%= will_paginate @applications, renderer: BootstrapPagination::Rails %>

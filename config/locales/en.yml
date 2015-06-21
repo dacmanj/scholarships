@@ -24,6 +24,7 @@ en:
         zip: 'Zip'
         residency_status: 'Residency Status'
         residency_status_other: 'If other, please explain'
+        admission_status: 'Admission Status'
         are_you_a_graduating_high_school_senior: 'Are you a graduating high school senior?'
         identify_lgbt: 'Do you identify as a member of the LGBTQ community?'
         out_and_open: 'If yes, are you "out and open in the community?"'

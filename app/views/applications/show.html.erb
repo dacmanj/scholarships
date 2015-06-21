@@ -27,7 +27,9 @@
 
 <% applications_fields_for_reviewers.each do |name| %>
 <div style="margin-top: 15px;">
-  <b><%= t "simple_form.labels.application.#{name}" %></b>
+  <b> <%=
+        I18n.translate("simple_form.labels.application.#{name}_html", :default => t("simple_form.labels.application.#{name}")).html_safe
+    %></b>
 </div>
 <div>
 	<% if name.eql? "transcript_file_name" %>
