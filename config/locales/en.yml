@@ -88,7 +88,7 @@ en:
         discretionary_comment: "Comment"
   application:
     message:
-      deadline: 'All application materials must be completed and submitted by April 30, 2015.'
+      deadline: 'All application materials must be completed and submitted by May 31, 2015.'
       save_success: Application saved successfully! Don't forget to complete your application.
       save_failed: 'Application save failed!'
       sign_success: 'Application signed. You can no longer make changes. You must unsign your application before making edits.'
