@@ -1,4 +1,5 @@
-"user id","application url","name","average","scores","scores_variance"
+"user id","application 
+url","name","average","scores","scores_variance"
 <% @applications.each do |a| %>
-"<%= a.user.id unless a.user.blank? %>","pflag-scholarship.herokuapp.com/applications/<%= a.id %>","<%= a.name %>","<%= a.average_score %>","<%= a.scores.select { |k| !k.blank? }.join(", ") %>","<%= a.scores_variance%>"
-<% end %>
+"<%= a.user.id unless a.user.blank? %>","pflag-scholarship.herokuapp.com/applications/<%= a.id %>","<%= a.name %>","<%= a.average_score %>","<%= a.scores.collect { |k| k.normalized_score.to_s }.join(", ") %>","<%= a.scores_variance%>"
+<% end %> 

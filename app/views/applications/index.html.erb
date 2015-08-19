@@ -140,6 +140,6 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
 
 
 <% if current_user.has_role? :admin %>
-    <%= link_to "Download CSV", applications_path(:format => :csv), :class => 'btn btn-primary'  %>
+    <%= link_to "Download CSV", applications_path(params.merge(:format => "csv")), :class => 'btn btn-primary'  %>
 <%end%>
 
