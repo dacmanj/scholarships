@@ -1,4 +1,4 @@
-"user id","application id","name","email","signed","references","transcript?","essay?","blank fields","blank field count","incomplete_application?"
+"user id","application url","name","average","scores","scores_variance"
 <% @applications.each do |a| %>
-"<%= a.user.id unless a.user.blank? %>","<%= a.id %>","<%= a.name %>","<%= a.user.email unless a.user.blank? %>","<%= a.signature_stamp.present? %>","<%=a.references.count%>","<%=a.transcript.present?%>","<%= a.essay.present? %>","<%= a.attributes.select { |k,v| v.blank? }.keys.join(" ") %>","<%= a.attributes.select { |k,v| v.blank? }.count%>","<%= a.user.incomplete_application? unless a.user.blank?%>"
+"<%= a.user.id unless a.user.blank? %>","pflag-scholarship.herokuapp.com/applications/<%= a.id %>","<%= a.name %>","<%= a.average_score %>","<%= a.scores.select { |k| !k.blank? }.join(", ") %>","<%= a.scores_variance%>"
 <% end %>
