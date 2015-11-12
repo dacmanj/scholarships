@@ -220,11 +220,11 @@ class Application < ActiveRecord::Base
   end
 
   def scores_variance
-    if self.scores.present?
+    if self.scores.present? && self.scores.count > 1
       stats = DescriptiveStatistics::Stats.new(self.scores.map{|h| h.total})
       stats.variance
     else
-      0
+        (self.scores.present? && self.scores.count == 1) ? "Only one score" : 0
     end
   end
   private 

@@ -1,5 +1,5 @@
 "user id","application 
-url","name","average","scores","scores_variance"
+url","name","average","scores","scores_variance","first_generation","identify_lgbt","score_count"
 <% @applications.each do |a| %>
-"<%= a.user.id unless a.user.blank? %>","pflag-scholarship.herokuapp.com/applications/<%= a.id %>","<%= a.name %>","<%= a.average_score %>","<%= a.scores.collect { |k| k.normalized_score.to_s }.join(", ") %>","<%= a.scores_variance%>"
+"<%= a.user.id unless a.user.blank? %>","http://pflag-scholarship.herokuapp.com/applications/<%= a.id %>","<%= a.name %>","<%= a.average_score %>","<%= a.scores.collect { |k| k.normalized_score.to_s }.join(", ") %>","<%= a.scores_variance%>",<%=a.first_generation%>,<%=a.identify_lgbt%>,<%=a.scores.count if a.scores.present?%>
 <% end %> 
