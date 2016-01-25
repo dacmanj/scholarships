@@ -36,8 +36,10 @@ en:
         please_lists_schools_where_you_will_be_applying: 'Where are you applying?'
         major: 'If you have selected a major, what do you plan to study?'
         stem: 'Do you plan to study a Science, Technology, Engineering or Math (STEM) field?'
-        stem_description: 'Identifying your interest in studying science, technology, engineering, and/or math (STEM) will give you additionally enhanced eligible for scholarship funding from Gays, Lesbians, and Allies at Dow (GLAD). Successful candidates will demonstrate a particular interest and expertise in the STEM fields and is supported by donations from employees of the Dow Chemical Company.'
+        stem_description: 'Identifying your interest in studying science, technology, engineering, and/or math (STEM) will give you additionally enhanced eligible for scholarship funding from Gays, Lesbians, and Allies at Dow (GLAD) and Lockheed Martin. Successful candidates will demonstrate a particular interest and expertise in the STEM fields and is supported by donations from employees of the Dow Chemical Company.'
         first_generation: 'Are you the first generation in your family to attend college?'
+        first_generation_american: 'Are you a first generation American?'
+        first_generation_american_description: 'Identifying your status as a first generation American will give you additional enhanced eligibility for scholarship funding from the Walmart Foundation.'
         date_of_birth: 'Date of Birth'
         photo: 'Please submit a 300 dpi photo for use in scholarship program announcements'
         biography: 'Please submit a 100-125 word biography'
@@ -88,7 +90,7 @@ en:
         discretionary_comment: "Comment"
   application:
     message:
-      deadline: 'All application materials must be completed and submitted by May 31, 2015.'
+      deadline: 'All application materials must be completed and submitted by April 15, 2016.'
       save_success: Application saved successfully! Don't forget to complete your application.
       save_failed: 'Application save failed!'
       sign_success: 'Application signed. You can no longer make changes. You must unsign your application before making edits.'
@@ -102,5 +104,5 @@ en:
     failure:
       deadline_has_already_passed: "Sorry. The deadline has already passed."
     omniauth_providers:
-      google_oauth2: 
+      google_oauth2:
         name: 'Google'
