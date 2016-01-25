@@ -22,4 +22,12 @@ module ApplicationsHelper
     display
 	end
 
+	def reset_database
+		Application.all.each{|a| a.destroy}
+		Reference.all.each{|r| r.destroy }
+		Score.all.each{|s| s.destroy }
+		User.with_role(:student).each{|u| u.destroy }
+		puts "Done. Don't forget to update the application date ENV['DEADLINE']"
+	end
+
 end
