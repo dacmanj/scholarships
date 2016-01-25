@@ -303,7 +303,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   sqlite3
-  test-unit (~> 3.0)
+  test-unit
   thin
   tinymce-rails
   uglifier (>= 1.0.3)

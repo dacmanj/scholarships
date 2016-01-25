@@ -40,7 +40,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'test-unit', '~> 3.0'
+  gem 'test-unit'
 end
 group :production do
   gem 'thin'
