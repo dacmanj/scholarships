@@ -25,12 +25,12 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :applications
   has_many :references
   has_many :scores
-  
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
+         :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
   after_create :default_role_and_create_blank_application
@@ -44,12 +44,12 @@ class User < ActiveRecord::Base
                 'laurie.mayers@gmail.com','thom3308@msn.com','arthurfreeheart1@gmail.com','patpoynter@yahoo.com', 'sherrythompsonharrold@gmail.com', 'tamiekaufman@hotmail.com',
                 'pflagyumasecretary@yahoo.com', 'cztwins@hotmail.com', 'hughes1985@hotmail.com', 'taramitchell@gmail.com']
 
-  DEADLINE = Date::strptime("30-04-2015","%d-%m-%Y")
+  DEADLINE = Date::strptime(ENV['DEADLINE'],"%m-%d-%Y")
 
   def is?(role)
     self.has_role?(role)
   end
-  
+
   def application
     if self.has_role? :student
       Application.find_by_uid(self.id)
@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   def inactive_message
     Date.today <= DEADLINE ? super : :deadline_has_already_passed
   end
-  
+
   private
   def default_role_and_create_blank_application
     domain = /@(.+$)/.match(self.email)[1]
@@ -85,9 +85,9 @@ class User < ActiveRecord::Base
       add_role :student
       self.applications.push Application.new({:applicant_user_id => self.id}) unless Time.now.to_date > Date::strptime(ENV["DEADLINE"],"%m-%d-%Y")
 
-    end 
+    end
   end
-    
+
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first
