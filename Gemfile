@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.3.0'
 gem 'rails', '3.2.22'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -11,9 +11,10 @@ group :assets do
 end
 
 
-gem 'paperclip'
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 gem 'aws-sdk'
 gem 'descriptive-statistics'
+gem 'test-unit'
 
 gem 'tinymce-rails'
 gem 'jquery-rails'
@@ -51,5 +52,4 @@ group :test do
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
   gem 'launchy'
-  gem 'test-unit', '~> 3.0'
 end

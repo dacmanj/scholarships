@@ -59,7 +59,7 @@ var admin = <%=current_user.has_role? :admin %>;
     <div class="well">
         <h2>Academic Status And High School Information</h2>
         <%= f.input :name_of_high_school, required: true %>
-        <%= f.input :date_of_graduation, start_year: Date.today.year-2, end_year: Date.today.year + 2, required: true, include_blank: true %>
+        <%= f.input :date_of_graduation, start_year: Date.today.year-5, end_year: Date.today.year + 2, required: true, include_blank: true %>
         <%= f.input :are_you_a_graduating_high_school_senior, :as => :radio_buttons, required: true %>
         <%= f.input :hs_street_address, :as => :text,  :input_html => {rows: "3", cols: "100"}, required: true  %>
         <%= f.input :hs_city, :label => "City", required: true %>
@@ -76,10 +76,12 @@ var admin = <%=current_user.has_role? :admin %>;
         <%= f.input :major, required: true %>
         <%= f.input :admission_status, :collection => Application::ADMISSION_STATUS, required: true %>
         <%= f.input :first_generation, :as => :radio_buttons, required: true %>
+        <%= f.input :first_generation_american, :as => :radio_buttons, required: true %>
+        <p><%= t("simple_form.labels.application.first_generation_american_description")%><p>
         <%= f.input :stem, :as => :radio_buttons, required: true %>
         <p><%= t("simple_form.labels.application.stem_description")%><p>
 
-        
+
     </div>
 
     <div class="well">
@@ -136,13 +138,13 @@ var admin = <%=current_user.has_role? :admin %>;
     <div class="well">
     <h2>Waiver and Personal Information Releases</h2>
     <p>In the event that you are selected as a winner, we would like to include a photo and your biography in our announcements.</p>
-    
+
         <%= f.input :release_high_school, :as => :radio_buttons, required: true  %>
         <%= f.input :release_local_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_national_media, :as => :radio_buttons, required: true  %>
         <%= f.input :release_local_chapter, :as => :radio_buttons, required: true  %>
         <%= f.input :release_application_to_chapter, :as => :radio_buttons, required: true  %>
-        <% if ENV['PHOTO'] == "true" %> 
+        <% if ENV['PHOTO'] == "true" %>
             <div class="row">
                 <div class="col-md-6">
                 <% if @application.photo? %>
@@ -153,7 +155,7 @@ var admin = <%=current_user.has_role? :admin %>;
 
                 <% else %>
                     <%= f.input :photo, required: false %>
-                    <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>                
+                    <%= f.button :submit, "Upload Photo", :class => "btn btn-primary", :id=> "upload_photo_button", :disabled => true %>
                 <% end %>
                 </div>
             </div>
@@ -179,7 +181,7 @@ var admin = <%=current_user.has_role? :admin %>;
             <dd id="signature_status">
             <% if signed %>
                 Signed: <%= @application.signature_stamp.getlocal.strftime "%r" %><br>
-                <%=glyph("ok") %>   
+                <%=glyph("ok") %>
             <% else %><p style="color: red">
                 You must complete all parts of the application, attach your transcript, obtain your references and sign electronically in order for it to be considered for the scholarship.<br>
                 Before you sign, you must click "Validate Application" to make sure that you have completed all required fields.</p>
@@ -191,7 +193,7 @@ var admin = <%=current_user.has_role? :admin %>;
 
         <p id="application_glyph">
             <% if signed %>
-                You application is complete. Congratulations! We'll notify all applicants of their status in the fall. If you need to make changes, you must "unsign" your application, make the changes, revalidate it and sign it again.   
+                You application is complete. Congratulations! We'll notify all applicants of their status in the fall. If you need to make changes, you must "unsign" your application, make the changes, revalidate it and sign it again.
             <% else %>
                 Application has not been validated <%=glyph("exclamation-sign")%>.
                 <p style="font-style: italic"><%= t("application.message.deadline") %></p>
