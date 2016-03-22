@@ -66,7 +66,7 @@ class Application < ActiveRecord::Base
 #  before_photo_post_process :validate_photo_dimensions
   validates_attachment_content_type :photo, :content_type => /^(image\/(jpg|jpeg|pjpeg|png|x-png|gif|pdf|tif|tiff))$/, :message => 'file type is not allowed (only tif/jpeg/png/gif images)'
 
-  
+
 
   scope :is_scored, joins(:scores)
   scope :has_transcript, where("transcript_content_type IS NOT NULL and transcript_content_type != ?","")
@@ -79,7 +79,7 @@ class Application < ActiveRecord::Base
   scope :with_score_by_stem, select('applications.*').joins(:scores).select('AVG(scores.total) "score"').group('applications.id').order("stem DESC, score DESC")
 
 #  accepts_nested_attributes_for :user
-  attr_accessible :name, :email, :applicant_user_id, :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :identify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip, :honors_or_awards, :stem, :major, :admission_status, :employment_history, :how_did_you_learn_explanation, :user_attributes, :first_generation, :why_do_you_want, :release_application_to_chapter, :biography
+  attr_accessible :name, :email, :applicant_user_id, :are_you_a_graduating_high_school_senior, :city, :cumulative_gpa, :date_of_birth, :date_of_graduation, :describe_community_service_activities, :essay, :how_did_you_learn_about_the_scholarship, :hs_city, :hs_state, :hs_street_address, :hs_zip, :identify_supporter, :identify_lgbt, :name_of_high_school, :out_and_open, :phone, :please_list_an_honors_or_awards, :please_lists_schools_where_you_will_be_applying, :reference_id, :release_essay_collection, :release_high_school, :release_local_chapter, :release_local_media, :release_national_media, :release_photograph, :release_picture_bio_on_website, :signature_ip, :signature_stamp, :state, :street_address, :supportive_parents, :user_id, :zip, :honors_or_awards, :stem, :major, :admission_status, :employment_history, :how_did_you_learn_explanation, :user_attributes, :first_generation, :first_generation_american, :why_do_you_want, :release_application_to_chapter, :biography
   ADMISSION_STATUS = ['Planning to apply', 'Waiting for reponse', 'Admitted']
   HOW_DID_YOU_LEARN_ABOUT_THE_SCHOLARSHIP = ['Internet (please provide url)', 'PFLAG Chapter (please list)', 'GSA', 'Counselor', 'Friend', 'Other (please list)' ]
   RESIDENCY_STATUS = ['US Citizen','Permanent Resident', 'Deferred Action for Childhood Arrivals (DACA)', 'Other']
@@ -165,7 +165,7 @@ class Application < ActiveRecord::Base
   end
 
   def reference?
-    self.references.completed.count > 0 
+    self.references.completed.count > 0
   end
 
   def incomplete?
@@ -176,7 +176,7 @@ class Application < ActiveRecord::Base
     @id = @application.id
     @user = @application.user
     @signed = @application.signed?
-    @references = self.references.completed.count 
+    @references = self.references.completed.count
     @transcript = @application.transcript?
     @essay = @application.essay?
     @blank_fields = self.blank_fields
@@ -227,8 +227,8 @@ class Application < ActiveRecord::Base
         (self.scores.present? && self.scores.count == 1) ? "Only one score" : 0
     end
   end
-  private 
-      
+  private
+
   def validate_photo_dimensions
     width = 0
     height = 0
@@ -241,7 +241,7 @@ class Application < ActiveRecord::Base
         record.errors[attribute] << "Height must be at least #{height}px" unless dimensions.height >= height
     end
 
-    dimensions     
+    dimensions
   end
 
 end
