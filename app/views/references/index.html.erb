@@ -16,7 +16,7 @@
 <% @references.each do |reference| %>
   <tr>
     <% if current_user.has_role? :admin %>
-    <td><%= link_to reference.user.name, user_path(reference.user) unless reference.name.blank? %></td>
+    <td><%= link_to reference.application.user.name, user_path(reference.user) unless reference.application.blank? || reference.application.user.blank? %></td>
     <% end %>
     <td><%= link_to reference.email, "mailto:#{reference.email}" %></td>
     <td><%= reference.name %></td>
@@ -28,7 +28,7 @@
           <% end %>
     </td>
     <td>
-    <%= link_to glyph("trash"), reference, method: :delete, data: { confirm: 'Are you sure?' } %> 
+    <%= link_to glyph("trash"), reference, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% if can? :edit, reference %>&nbsp;
       <%= link_to glyph("pencil"), edit_reference_path(reference)  %><% end %></td>
 
@@ -39,6 +39,7 @@
 <% if (@references.select{|s| s.completed.present? }.count == 0 or current_user.has_role? :admin ) %>
   <div class="well">
   <%= simple_form_for :reference, :url => references_send_email_path, :method => :post do |f| %>
+    <%= (f.input :user_id, :collection => User.order(:name), :label_method => :name,:value_method => :id) if current_user.has_role? :admin %>
     <%= f.input :email %>
     <%= f.submit "Send Reference Request", :class => "btn btn-primary" %>
   <% end %>
