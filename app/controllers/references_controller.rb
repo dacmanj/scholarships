@@ -41,7 +41,7 @@ class ReferencesController < ApplicationController
     if @reference.nil? and !current_user.is? :admin
       redirect_to root_url, error: "Invalid Reference"
     elsif current_user.present? and current_user.is? :admin
-      @reference = Reference.find(params[:id])
+      @reference = (Reference.find(params[:id]) unless(params[:id].blank?)) || Reference.find_by_token(params[:token])
     end
   end
 
@@ -97,13 +97,13 @@ class ReferencesController < ApplicationController
   end
 
   def send_reference_request
-    @reference = Reference.find_by_user_id_and_email(current_user.id,params[:reference]["email"]) || Reference.new
+    @reference = Reference.find_by_user_id_and_email(params[:reference][:user_id] || current_user.id,params[:reference][:email]) || Reference.new
 
     if @reference.token.blank?
       @reference.token = Array.new(32){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
-      @reference.user = current_user
-      @reference.email = params[:reference]["email"]
-      @reference.application = Application.find_by_applicant_user_id(current_user.id)
+      @reference.user = (User.find(params[:reference][:user_id]) unless params[:reference][:user_id].blank?) || current_user
+      @reference.email = params[:reference][:email]
+      @reference.application = Application.find_by_applicant_user_id(params[:reference][:user_id] || current_user)
     end
 
     respond_to do |format|
