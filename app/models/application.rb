@@ -73,6 +73,7 @@ class Application < ActiveRecord::Base
   scope :has_essay, where("essay IS NOT NULL and essay != ?","")
   scope :is_signed, where("signature_stamp IS NOT NULL","")
   scope :has_reference, -> { joins(:references).where("completed IS NOT NULL") }
+  scope :missing_reference, -> { joins(:references).where("completed IS NULL") }
   scope :completed, joins(:references).where("completed IS NOT NULL").where("transcript_content_type IS NOT NULL and transcript_content_type != ? and essay IS NOT NULL and essay != ? and signature_stamp IS NOT NULL","","")
   scope :with_score, select('applications.*').joins(:scores).select('AVG(scores.total) "score"').group('applications.id').order("score DESC")
   scope :with_score_by_first_generation, select('applications.*').joins(:scores).select('AVG(scores.total) "score"').group('applications.id').order("first_generation DESC, score DESC")

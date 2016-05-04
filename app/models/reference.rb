@@ -34,6 +34,7 @@ class Reference < ActiveRecord::Base
   RATING_SCALE = [['Excellent',4],['Above Average',3],['Average',2], ['Below Average',1], ['Inadequate Opportunity to Observe',0]]
   RATINGS_HASH = {4=>"Excellent", 3=>"Above Average", 2=>"Average", 1=>"Below Average", 0=>"Inadequate Opportunity to Observe"}
   scope :completed, where("completed IS NOT NULL")
+  scope :incomplete, where("completed IS NULL")
   def downcase_email
   	self.email = self.email.downcase
   end
