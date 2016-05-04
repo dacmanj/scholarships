@@ -1,5 +1,5 @@
-"user id","application 
-url","name","average","scores","scores_variance","first_generation","identify_lgbt","stem","score_count"
+"user id","email","application
+url","name","average","scores","scores_variance","first_generation","identify_lgbt","stem","score_count","completed references","reference_email","signed?","blank_fields"
 <% @applications.each do |a| %>
-"<%= a.user.id unless a.user.blank? %>","http://pflag-scholarship.herokuapp.com/applications/<%= a.id %>","<%= a.name %>","<%= a.average_score %>","<%= a.scores.collect { |k| k.normalized_score.to_s }.join(", ") %>","<%= a.scores_variance%>",<%=a.first_generation%>,<%=a.identify_lgbt%>,<%= a.stem? %>,<%=a.scores.count if a.scores.present?%>
-<% end %> 
+<%= "#{a.user.id},#{a.user.email}" unless a.user.blank? %>,http://pflag-scholarship.herokuapp.com/applications/<%= a.id %>,"<%= a.name %>",<%= a.average_score %>,<%= a.scores.collect { |k| k.normalized_score.to_s }.join(", ") %>,<%= a.scores_variance%>,<%=a.first_generation%>,<%=a.identify_lgbt%>,<%= a.stem? %>,<%=a.scores.count if a.scores.present?%>,<%=a.references.completed.count %>,<%=a.references.first.email if a.references.first.present? %>,<%= a.signed?%>,<%= a.blank_fields_count %>
+<% end %>
