@@ -5,7 +5,7 @@
     <div>
       <b>Student Name: </b><%= @reference.user.name unless @reference.user.blank? %>
     </div>
-    <% if current_user.present? && current_user.is? :admin %>
+    <% if current_user.present? and current_user.is? :admin %>
     <p><b><%= link_to "Private Edit Link", @reference.token_url %></b>
 
     </p>
