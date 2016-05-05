@@ -100,7 +100,11 @@ Replace Reviewers <%= f.check_box :replace_reviewers %> &nbsp;
           glyph("remove") %> </td>
     <td>
       <%= glyph("exclamation-sign",:title => "Multiple References") if application.references.completed.count > 1 %>
-      <%= link_to glyph("ok"), edit_reference_path(application.references.completed.first) unless application.references.blank? || application.references.completed.blank?  %>
+      <% reference = application.references.completed.first %>
+      <%= link_to glyph("ok"), edit_reference_path(reference) unless reference.blank?  %>
+      <% if current_user.is? :admin %>
+      <%= link_to glyph("lock"), reference.token_url, title: "Private Reference Link for Manually emailing to reference" unless reference.blank? %>
+      <% end %>
     </td>
     <td><span title="<%=application.blank_fields.join(", ") %>"><%= application.blank_fields_count %></span></td>
     <td><%= application.reviewers.map{|r| a = application.scores.find_by_user_id(r.id); "#{r.name}"+ ((" (#{a.total})" unless a.blank?) or "")}.join(", ") unless application.reviewers.blank? %></td>
