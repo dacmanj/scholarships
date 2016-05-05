@@ -5,6 +5,20 @@
     <div>
       <b>Student Name: </b><%= @reference.user.name unless @reference.user.blank? %>
     </div>
+    <% if current_user.is? :admin %>
+    <p><b><%= link_to "Private Edit Link", @reference.token_url %></b>
+
+    </p>
+    <p>
+      <b>Email:</b>
+      <%= link_to @reference.email, "mailto:#{@reference.email}"%>
+    </p>
+
+    <p>
+      <b>Phone number:</b>
+      <%= @reference.phone_number %>
+    </p>
+    <% end %>
     <%= f.input :name %>
     <%= f.input :email %>
     <%= f.input :phone_number %>
