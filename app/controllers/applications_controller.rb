@@ -8,7 +8,7 @@ class ApplicationsController < ApplicationController
 
 
   def index
-      
+
     params[:page] = '1' unless params[:page].present?
     if (current_user.is? :admin and params.count == 2)
       params[:essay]='1'
@@ -47,7 +47,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/new.json
   def new
     @application = Application.new({:applicant_user_id => current_user.id})
-    
+
     current_user.applications.push @application
 
     respond_to do |format|
@@ -100,7 +100,7 @@ class ApplicationsController < ApplicationController
     respond_to do |format|
       if @application.save
         flash[:notice] = t("application.message.unsign_success")
-        format.js 
+        format.js
       else
         flash[:danger] = t("application.message.unsign_failed")
         format.js
@@ -120,7 +120,7 @@ class ApplicationsController < ApplicationController
       @application.save
     end
 
-      
+
     if (params[:delete_photo] == "1")
       @application.photo.destroy
       @application.photo.clear
@@ -149,12 +149,12 @@ class ApplicationsController < ApplicationController
       reviewer = User.find(params[:reviewer])
     end
     replace = params[:replace_reviewers] == '1'
-    @applications.each do |a| 
+    @applications.each do |a|
       params[:reviewers]
       if replace
         a.replace_reviewers reviewer
       else
-        if params[:reviewer].blank? 
+        if params[:reviewer].blank?
            errors.push "No reviewer selected. Check replace if you meant to remove all reviewers assigned."
         else
           a.add_reviewer reviewer
@@ -189,14 +189,15 @@ class ApplicationsController < ApplicationController
       @applications = @applications.with_score
     when 'first_generation'
       @applications = @applications.with_score_by_first_generation
-    when 'stem'    
+    when 'stem'
       @applications = @applications.with_score_by_stem
     else
-      if @applications.empty? 
+      if @applications.empty?
           return
       end
       @applications = @applications.includes(:users).where("users.id = applications.applicant_user_id").order("LOWER(users.name)")
       @applications = @applications.where("users.name ILIKE ?","%#{params[:name]}%")if params[:name].present?
+      @applications = @applications.where("users.email ILIKE ?","%#{params[:email]}%")if params[:email].present?
       @applications = User.find(params[:user_id]).applications if params[:user_id].present?
       @applications = @applications.has_transcript if params[:transcript] == '1'
       @applications = @applications.is_signed if params[:signed] == '1'
@@ -206,7 +207,7 @@ class ApplicationsController < ApplicationController
     end
   end
   def filtered_params
-      params.slice(:completed, :reference, :transcript, :signed, :essay, :page)    
+      params.slice(:completed, :reference, :transcript, :signed, :essay, :page)
   end
 
 end

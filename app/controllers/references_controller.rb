@@ -1,10 +1,10 @@
 class ReferencesController < ApplicationController
   # GET /references
   # GET /references.json
-  before_filter :filter_references, :only => :index
   load_and_authorize_resource
   skip_authorize_resource :only => [:edit, :update]
   skip_authorization_check :only => [:edit, :update]
+  before_filter :filter_references, :only => :index
 
   def index
     respond_to do |format|
@@ -132,9 +132,10 @@ class ReferencesController < ApplicationController
   end
   private
   def filter_references
-    @references = Reference.accessible_by(current_ability)
+    @references = @references.accessible_by(current_ability)
     @references = @references.where(application_id: params[:application_id]) if params[:application_id].present?
     @references = @references.where(user_id: params[:user_id]) if params[:user_id].present?
+    @references = @references.where("email ILIKE ?","%#{params[:email]}%")if params[:email].present?
 
   end
 
