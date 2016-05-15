@@ -1,0 +1,308 @@
+74de75e68906816f373185ff55d8eacf6cfcd6e6		branch '0-8-stable' of https://github.com/bundler/bundler
+6b60c6054b8ee4ca0b6e1bff1331684f547eee18		branch '0-9-stable' of https://github.com/bundler/bundler
+43a74f9cbad794438d935ee28dcdfd331c238c62		branch '1-0-stable' of https://github.com/bundler/bundler
+bbce58591a9c8f1575ae19707b55aa472cf50255		branch '1-1-stable' of https://github.com/bundler/bundler
+cea53edb643d458ff44a739444f997dd7c24623a		branch '1-10-stable' of https://github.com/bundler/bundler
+1b021b2b77378779f53bbd658194a0c2e298885e		branch '1-11-stable' of https://github.com/bundler/bundler
+a2326af81bba06a0cbc079ba9b33491a285945bc		branch '1-12-stable' of https://github.com/bundler/bundler
+50ce456ea9332770b0f7514bb9ee017a9ea426f5		branch '1-2-stable' of https://github.com/bundler/bundler
+2df02a3030be70b910e4064e4eb24f259b345104		branch '1-3-stable' of https://github.com/bundler/bundler
+7235f9e2c5a74f65f6b060850adb3946ae08e1df		branch '1-5-stable' of https://github.com/bundler/bundler
+7e67be51b2ba4c15e8a3757abe7b0836563be7fc		branch '1-6-stable' of https://github.com/bundler/bundler
+26cb8f8f11b11ccef1f5deb2ce5c8c9a783645f5		branch '1-7-stable' of https://github.com/bundler/bundler
+e10618fb506a38a3cf42760b4ffb166e90b6b4a7		branch '1-8-stable' of https://github.com/bundler/bundler
+0aec2b1af5ea45d1c9635054ea8ab9b547d3ed4d		branch '1-9-stable' of https://github.com/bundler/bundler
+50c9389c077ca4026b478dec1e812abdafe1118d		branch '1-99-dev' of https://github.com/bundler/bundler
+ef9e90f59ea82d3397cf9a7bbf9d90ddb92d655c		branch '171' of https://github.com/bundler/bundler
+614939a38179fdd39857744db88557fca4de12cc		branch '2-0-dev' of https://github.com/bundler/bundler
+b909438e5884838096085d039c9d506bd16d8e5e		branch '2-0-dev-archived' of https://github.com/bundler/bundler
+5973b093063f492aa2dd2b8e20b9d34fa5cbc19f		branch '2-0-dev-update' of https://github.com/bundler/bundler
+b88481eec885cc05c952774d05ae036048fc8eef		branch '2813-fix-self-dependency-bug' of https://github.com/bundler/bundler
+3ae70bb74e290b94875732a30e5de379279e5bf9		branch '3982-clean-rubylib' of https://github.com/bundler/bundler
+d08f95df2ac7594ba4da928637b4b11d20338a62		branch '4064' of https://github.com/bundler/bundler
+000a8f4d239a5de4864e6a61b37f728e6e399400		branch 'align-hash' of https://github.com/bundler/bundler
+8d3eb4aa0a3286d219c78a05bf1ab47c784fc25c		branch 'auto' of https://github.com/bundler/bundler
+7cec62abb7fc6ad5da2a65677f6c09f9dbfbff0e		branch 'autobundle' of https://github.com/bundler/bundler
+d695cb41ee180f1191fa141298a55d7214e91cc5		branch 'avoid-tag-or-id-refs-in-commits' of https://github.com/bundler/bundler
+7dd7e49f0d831c804b1db9aa3a0459f43387efa7		branch 'checksum' of https://github.com/bundler/bundler
+eaa91b9c088187c76d802c44005afc0225e4142f		branch 'dont_run_git_commands_during_runtime' of https://github.com/bundler/bundler
+8bbd5b7b9d2b78c312f66312e1d34e29de35ab04		branch 'execless' of https://github.com/bundler/bundler
+20f628c9d17db32027baaa7f2d37e08ab0c8f259		branch 'fetchers_fetchers_everywhere' of https://github.com/bundler/bundler
+7a98d5dee816a34ae898a840023334f7d2bdc466		branch 'fix-backtracking-from-child' of https://github.com/bundler/bundler
+a4ee812fcb13de0d2b0cc846e69b6166c2a93142		branch 'fix-bug-with-bundle-cache-erroring' of https://github.com/bundler/bundler
+6578473f2c459d7e396b49e7512337f4dbb5387d		branch 'fix-path-caching-3900' of https://github.com/bundler/bundler
+487862b3b777f50d4fa34451783b3deb78c22b3b		branch 'fix-thread-safety-parallel-install' of https://github.com/bundler/bundler
+b6f0a56bc932845b71b2c8dba0fd9a40b21a8d7e		branch 'fix-worker-cleanup-error' of https://github.com/bundler/bundler
+d4fb9f9895aeba5b588565ba83e4774ac861bcf7		branch 'fix-worker-index-jruby' of https://github.com/bundler/bundler
+2f62ac536d41c46609018ff55666b6e71cdfaf19		branch 'fix_missing_gem_dir' of https://github.com/bundler/bundler
+e46a40c9dff5f8608887255b7c55215233342c3c		branch 'further_disablement' of https://github.com/bundler/bundler
+a3c2fd87150a9cce7dac4d60846f00ec5ab8dcf3		branch 'gem_tasks' of https://github.com/bundler/bundler
+3d88ab9e3dab9c524c0f1b5561af2cbb92ac791a		branch 'gemfile_hashing' of https://github.com/bundler/bundler
+6d2c01628bbf0318361ceb999ed9f7e285f156b2		branch 'gh-pages' of https://github.com/bundler/bundler
+9ed886f19009a2aa82ad3c00d7b5f8f28a46cb0b		branch 'issue-3671' of https://github.com/bundler/bundler
+59b2ea2b1c486e1c283544b2dfc1ba5d63870533		branch 'issue-4534' of https://github.com/bundler/bundler
+57d8890bf71081a76cdf3a14bcf4b0e820933ede		branch 'make-paralle-fetch-jruby' of https://github.com/bundler/bundler
+8d3eb4aa0a3286d219c78a05bf1ab47c784fc25c		branch 'master' of https://github.com/bundler/bundler
+bc14d0c7654af020690330944a8414bc03875d0d		branch 'merge-1-12-rc' of https://github.com/bundler/bundler
+178247b80d92b4c9d9d45f078aea5b482a5e9f20		branch 'molinillo' of https://github.com/bundler/bundler
+aaad34184e4e15f3117dbca6c89dc50bfd34ecb5		branch 'new-index' of https://github.com/bundler/bundler
+5df697b8e400bfdf2c77762ae207c1a1b92bfa0b		branch 'old-gem-version' of https://github.com/bundler/bundler
+b1e7b7b8954620c8392a81d78a9687172d32d162		branch 'parallel_threads' of https://github.com/bundler/bundler
+c3b003ccf26ef29ed2acd09e5106ac0a4bf79456		branch 'platforms' of https://github.com/bundler/bundler
+1c121ea4d860b47efc13340e07e80c9e4de5a5d1		branch 'refactor-resolver' of https://github.com/bundler/bundler
+5b7f69566a10369ef1cc6c100f58a0631e74bdc3		branch 'removing_the_spec_gil' of https://github.com/bundler/bundler
+1f1f748cccf4e7cae9773f96e105a2ac75ea472f		branch 'reraise-orig-exception' of https://github.com/bundler/bundler
+f96d84f8bbcf427fbd4db3e7581d8d3fc8aa73f1		branch 'resolve-running-ruby' of https://github.com/bundler/bundler
+833b69c467f23e12148433e1c2add53dcbaa4668		branch 'retry_network' of https://github.com/bundler/bundler
+6cefe6f233eb120d9fc754050058fc15f7e72d68		branch 'rgb-manpage-additions' of https://github.com/bundler/bundler
+9007c941b4cb1fb03cbb188f23105e798d2736cf		branch 'rubygems22_exts' of https://github.com/bundler/bundler
+e2e8aa7d78b76cfb49404fa4226572df76fe0946		branch 'seg-enotsup' of https://github.com/bundler/bundler
+2ffdd2f0de1afae45703f2d0383070763e82a009		branch 'seg-exec-file--zsh' of https://github.com/bundler/bundler
+85ade93f06247a83c5f6f25177b83c3566ce107c		branch 'seg-fix-dash-pre' of https://github.com/bundler/bundler
+9d978da7471f3269cdc60f58704a09d0ed156d02		branch 'seg-gemspec-allow-conflicts' of https://github.com/bundler/bundler
+c3eb3708b8f8351d0b073f6657d6db9358c423b0		branch 'seg-gemspec-ruby' of https://github.com/bundler/bundler
+1ea0ad17c3813bff84f7b1a41b1439a6b428a2f9		branch 'seg-index-platform-ruby-default' of https://github.com/bundler/bundler
+0cb61b6f09c3ea00becc45eb8ff98e8b59bde385		branch 'seg-no-eval-gemfile-twice' of https://github.com/bundler/bundler
+4c4a0094d187b89be530fc564a898bb8fac35c87		branch 'seg-parallel-travis' of https://github.com/bundler/bundler
+b87558094d8d87d05874d69c50f779ca0c9f7a32		branch 'seg-postit-trampoline' of https://github.com/bundler/bundler
+e3e05e14c94c3c5839717d716bfe2ebc6e3a61fa		branch 'seg-rubocop-0.39' of https://github.com/bundler/bundler
+94ad497b81bb05f8739f17e48d0eae88513304d2		branch 'seg-rubygems-2.6.1' of https://github.com/bundler/bundler
+faf7b5aa038451304b376d72a39e08f7f73a6859		branch 'seg-speed-up-path' of https://github.com/bundler/bundler
+d4faf61a3a8a7655a9765596e1e811053f93ef8c		branch 'seg-speed-up-specs-update-repo' of https://github.com/bundler/bundler
+5cc4e87315bb2f8e2242d75395ee152852b8ddaf		branch 'seg-updater-read-comment' of https://github.com/bundler/bundler
+ec289da56e5fcda48d40ac18b31b2fd39f9eb295		branch 'segseparate-lockfile-sources' of https://github.com/bundler/bundler
+eefe9c68ab4f2afa56a8809fc7f731fef7e20e56		branch 'sources' of https://github.com/bundler/bundler
+f4942051e73909b0d51ad2ed02140734e2b3c697		branch 'spec-for-3896' of https://github.com/bundler/bundler
+e2cf0b1548b50e73a8cabc934364d3d0de37c7f0		branch 'test_default_gems' of https://github.com/bundler/bundler
+f4265482d0328f3bd464acd8c38851c99b5dd698		branch 'travis-docker' of https://github.com/bundler/bundler
+fbf237435929145e2e68219ced7d287979feae5a		branch 'travis-new-setup' of https://github.com/bundler/bundler
+8939173479d762b9167a46166a5ce04e2d108422		branch 'travis-trusty-env' of https://github.com/bundler/bundler
+39e7f6eafa44546e1cb207aee37d496147ba12a8		branch 'unsupported_sources' of https://github.com/bundler/bundler
+8b1d376ea586423bc0d234d1f0bc6205b6bd0a90		branch 'user_agent' of https://github.com/bundler/bundler
+2441ff1951344756235037d5fe18f980ca136cb3		branch 'user_agent2' of https://github.com/bundler/bundler
+0785b65f3ebfb14498acd84f4d0b9e4ee7419006	not-for-merge	tag '0.3.1' of https://github.com/bundler/bundler
+d2656c2f8aa70657aa3bd80a474069293338fab1	not-for-merge	tag '0.4.0' of https://github.com/bundler/bundler
+da4afe8d27f7dd37e9b0bd6221b20bab00224c6b	not-for-merge	tag '0.4.1' of https://github.com/bundler/bundler
+5f538aa76afe2443506a14690ab3a71f2c5d9c60	not-for-merge	tag '0.5.0' of https://github.com/bundler/bundler
+9fd36d4d4f4bed5aa42488b221dd319a6ce16e44	not-for-merge	tag '0.6.0' of https://github.com/bundler/bundler
+90d826b3b71495f2d7ea58a2ecaa3427f944524d	not-for-merge	tag '0.7.0' of https://github.com/bundler/bundler
+9bf2601c173bf12fc9c22d784334ec58f206ec4b	not-for-merge	tag '0.7.2' of https://github.com/bundler/bundler
+ce155f0f51c8e1fece48784ef11b5e0e719e876c	not-for-merge	tag '0.8.0' of https://github.com/bundler/bundler
+2690a1a8a09d9ab2dc1ce7cf6398bdf1b0140f19	not-for-merge	tag '0.8.2' of https://github.com/bundler/bundler
+d8c19de9b239b029fb174a1ae83326dce46ba2e1	not-for-merge	tag '0.8.5' of https://github.com/bundler/bundler
+665f606d430e1c4490472416c4a8ab333fb33c92	not-for-merge	tag '0.9.10' of https://github.com/bundler/bundler
+ee055d8cd495b42efeaa3601be6512e39a2042e1	not-for-merge	tag '0.9.11' of https://github.com/bundler/bundler
+77cd7d63995ddd6ecd91a641f4070031cd70760d	not-for-merge	tag '0.9.12' of https://github.com/bundler/bundler
+61c3eee2cee84276fb7572b52a7993595127e77f	not-for-merge	tag '0.9.13' of https://github.com/bundler/bundler
+4cb1f423758b931294894e34eda3be1a61a7d017	not-for-merge	tag '0.9.14' of https://github.com/bundler/bundler
+99f67e056b2d92c18de0347c709c494a73f01d9f	not-for-merge	tag '0.9.15' of https://github.com/bundler/bundler
+3e2eb050cb1c5d0418c92d985428453f237b3cbc	not-for-merge	tag '0.9.16' of https://github.com/bundler/bundler
+48520bf33cb283eabc57470ca32a9548e28579ee	not-for-merge	tag '0.9.17' of https://github.com/bundler/bundler
+4ecf43d73c5b7c5bc682ac645859cfcf68841a29	not-for-merge	tag '0.9.18' of https://github.com/bundler/bundler
+bfd6b1bc1ac7ced407ccfe7f1bc314a0e9a31f90	not-for-merge	tag '0.9.19' of https://github.com/bundler/bundler
+e2f378f9be9e517c21014d1a5b6cde50cd0555f8	not-for-merge	tag '0.9.2' of https://github.com/bundler/bundler
+7ecb452d641f014d2d51be864074f99ba0efb615	not-for-merge	tag '0.9.20' of https://github.com/bundler/bundler
+b6bb348d3b31f18b9b8125e85cde1c8d0b0ee0ba	not-for-merge	tag '0.9.21' of https://github.com/bundler/bundler
+a7ddc347a2d8b755d8344e7b7006b1b946da37cd	not-for-merge	tag '0.9.22' of https://github.com/bundler/bundler
+af1a80e59eae77946fbc0197489aeac366694e88	not-for-merge	tag '0.9.23' of https://github.com/bundler/bundler
+bba10f5cbf5fff3e1e1e2b4b3e87766c15039acd	not-for-merge	tag '0.9.24' of https://github.com/bundler/bundler
+0f0d456bb4e86f17d365094f5cfb7e76255ef79b	not-for-merge	tag '0.9.25' of https://github.com/bundler/bundler
+0221de6b992d3ec69a751ffd8bc08b0a11251fb1	not-for-merge	tag '0.9.26' of https://github.com/bundler/bundler
+2b2d3f2dd229d9ea5c2220199c3858377a4f5d61	not-for-merge	tag '0.9.3' of https://github.com/bundler/bundler
+ec0206001de970295bf30a06e9deaf2632856553	not-for-merge	tag '0.9.4' of https://github.com/bundler/bundler
+310083df2f5907aab9f2ee9cecf9305227fed145	not-for-merge	tag '0.9.5' of https://github.com/bundler/bundler
+06aede577bf60b2d91c63cd9e68ddcc85ac71490	not-for-merge	tag '0.9.6' of https://github.com/bundler/bundler
+81c5eadde8ad340291d14a46761985ef895be70c	not-for-merge	tag '0.9.7' of https://github.com/bundler/bundler
+21fdc836d96ee93cce086912e14ea7140a301582	not-for-merge	tag '0.9.8' of https://github.com/bundler/bundler
+940bc8964770113336f9d45112677e1a34ea26fc	not-for-merge	tag '0.9.9' of https://github.com/bundler/bundler
+948e43c2a5ca876889195e439dee07f5714b0536	not-for-merge	tag '1.0.0' of https://github.com/bundler/bundler
+e7e6ddc1d80fa725f9c1b0c8adf4f86c96cf9603	not-for-merge	tag '1.0.0.beta.1' of https://github.com/bundler/bundler
+215c900dad63896460628622096d66fa73d27019	not-for-merge	tag '1.0.0.beta.10' of https://github.com/bundler/bundler
+b7c0a512124cb8f518a71fe60244af520b9ae4dc	not-for-merge	tag '1.0.0.beta.2' of https://github.com/bundler/bundler
+b078098212de02f1505b4c73de0a2e8e68ee3d65	not-for-merge	tag '1.0.0.beta.3' of https://github.com/bundler/bundler
+ed89e4487486de69b524f68e9b0f1610f080947e	not-for-merge	tag '1.0.0.beta.4' of https://github.com/bundler/bundler
+c5985e429785062a6556c1dd67b31828fd481ba2	not-for-merge	tag '1.0.0.beta.5' of https://github.com/bundler/bundler
+ab3173ebc1b2657de4309b3eaadb3038dea4bc4c	not-for-merge	tag '1.0.0.beta.6' of https://github.com/bundler/bundler
+0cd087b4565d720a20b5c5a1bf27c33cef753aaa	not-for-merge	tag '1.0.0.beta.7' of https://github.com/bundler/bundler
+362eb5068d00319eff6a11c335d098ab78be3141	not-for-merge	tag '1.0.0.beta.8' of https://github.com/bundler/bundler
+afff44903af0ab5ebd75ac84e1b81f6aec3c8af3	not-for-merge	tag '1.0.0.beta.9' of https://github.com/bundler/bundler
+4cb1214924ee1e94bb8aa748d95bd4a204464cf1	not-for-merge	tag '1.0.0.rc.1' of https://github.com/bundler/bundler
+bd9e9484dcd8aea9c94149938df84d207b745ad3	not-for-merge	tag '1.0.0.rc.2' of https://github.com/bundler/bundler
+ea7d5b9a537a7b146c48f444c65f270a3349069a	not-for-merge	tag '1.0.0.rc.3' of https://github.com/bundler/bundler
+23e45e2970c37ec846df3da4ce94fcfeebd3c8e3	not-for-merge	tag '1.0.0.rc.4' of https://github.com/bundler/bundler
+f173649cb22fbc27c2cd244bd5ca6fa821396e8e	not-for-merge	tag '1.0.0.rc.5' of https://github.com/bundler/bundler
+afffef211f38f0d30f61e853caee64e80f1353dd	not-for-merge	tag '1.0.0.rc.6' of https://github.com/bundler/bundler
+b98469f158370520baa21703d9dbb0a62d098ae8	not-for-merge	tag 'v0.9.0' of https://github.com/bundler/bundler
+de65328a3f4edba97ac187765886c0cd1a268fff	not-for-merge	tag 'v0.9.0.pre3' of https://github.com/bundler/bundler
+2ea98280db69d412fc8bd54931329a3b524aef92	not-for-merge	tag 'v0.9.0.pre4' of https://github.com/bundler/bundler
+353f4086d681427fe86b428ab7096d1a1cc65d6e	not-for-merge	tag 'v0.9.0.pre5' of https://github.com/bundler/bundler
+7b2cbaef01b6f91aaee416540f5070fa3da4e3b9	not-for-merge	tag 'v1.0.0' of https://github.com/bundler/bundler
+29db1fbf5a036da883abf2f6bd68e75f4c679cc8	not-for-merge	tag 'v1.0.1' of https://github.com/bundler/bundler
+49858143639570c7f1bbeb57a4abc947920ae72f	not-for-merge	tag 'v1.0.10' of https://github.com/bundler/bundler
+d30550a690fb44167b398249a78216eadc9faef6	not-for-merge	tag 'v1.0.11' of https://github.com/bundler/bundler
+ea9f8b286530232b8208c4bf8e262b09535dc5f8	not-for-merge	tag 'v1.0.12' of https://github.com/bundler/bundler
+d39a7d861f6696542a2fd0d3e2e1ded81255f309	not-for-merge	tag 'v1.0.13' of https://github.com/bundler/bundler
+057c88c48cad4cd33ba5f9d1dc67ad0dee1e20dd	not-for-merge	tag 'v1.0.14' of https://github.com/bundler/bundler
+f6772d298eea5ca6a5a0f3fae955f9e39787dd0d	not-for-merge	tag 'v1.0.15' of https://github.com/bundler/bundler
+e63132c3f140ce4e1a8e7b559a32a860f89a31ce	not-for-merge	tag 'v1.0.16' of https://github.com/bundler/bundler
+764f12de8aca97eee35950d4cfe4a13c518387ad	not-for-merge	tag 'v1.0.17' of https://github.com/bundler/bundler
+bd0977b11c7f4332368cf0d6599ac0a748ec79a7	not-for-merge	tag 'v1.0.18' of https://github.com/bundler/bundler
+cbe6bc02a58e90731b4917f74ccc88ade80819d6	not-for-merge	tag 'v1.0.19.rc' of https://github.com/bundler/bundler
+be55625ff7cdd52dd903bf2381db29cd266fba6e	not-for-merge	tag 'v1.0.2' of https://github.com/bundler/bundler
+f3b49722d6d447805ed32dc5c9e6dc56b654e927	not-for-merge	tag 'v1.0.20' of https://github.com/bundler/bundler
+eb10389684821828bf1c4558157e6176fc46b7ee	not-for-merge	tag 'v1.0.20.rc' of https://github.com/bundler/bundler
+29f1f7fd7701b35d14806753bb5471d7b835e71c	not-for-merge	tag 'v1.0.21' of https://github.com/bundler/bundler
+a5c4bed4500bb353d67c802266703b6320821ca1	not-for-merge	tag 'v1.0.21.1' of https://github.com/bundler/bundler
+f1d504613fa520c4c87e2b0a13c8c6ece9fa0cca	not-for-merge	tag 'v1.0.21.rc' of https://github.com/bundler/bundler
+80afcad9d5d302f5d12057f0e8dded3988771fa9	not-for-merge	tag 'v1.0.22' of https://github.com/bundler/bundler
+0254cb060438ad57b76feb230c82bf84e40e6a5d	not-for-merge	tag 'v1.0.3' of https://github.com/bundler/bundler
+700d66c49cd039ed6b7fb53633fea0c1bd69afdf	not-for-merge	tag 'v1.0.4' of https://github.com/bundler/bundler
+978cad0bb6a820c13b272aa75a340cb021ef6bf6	not-for-merge	tag 'v1.0.5' of https://github.com/bundler/bundler
+e7878385dd3db3ede29a4bfe6815df1d7cee4147	not-for-merge	tag 'v1.0.6' of https://github.com/bundler/bundler
+b9536b7e3108ecb6738db1a825ca6b2f2924202e	not-for-merge	tag 'v1.0.7' of https://github.com/bundler/bundler
+87e18b35c9b0d328ce48718662e57faad29fa54d	not-for-merge	tag 'v1.0.8' of https://github.com/bundler/bundler
+f756817197533c4a15715583f75301aab0fc4b3f	not-for-merge	tag 'v1.0.9' of https://github.com/bundler/bundler
+f8c039410f9884eb54ac7bb1a67f10646a593462	not-for-merge	tag 'v1.1.0' of https://github.com/bundler/bundler
+f96acc40ccade004b9a10dd9eabd1c75b496a127	not-for-merge	tag 'v1.1.1' of https://github.com/bundler/bundler
+a43158c32981a7216da4eb7c0158074a4b805d52	not-for-merge	tag 'v1.1.2' of https://github.com/bundler/bundler
+0ea7d1b49438334ad502d177367a595c7cdec241	not-for-merge	tag 'v1.1.3' of https://github.com/bundler/bundler
+48cffdf5755f7ff6b702ab44259e7c7beeeddc26	not-for-merge	tag 'v1.1.4' of https://github.com/bundler/bundler
+fbf6aff8adc22923e218b8ba0fa91e4e1bcc090a	not-for-merge	tag 'v1.1.5' of https://github.com/bundler/bundler
+4714932003f0ba38b56510d114ca71c7f2143056	not-for-merge	tag 'v1.1.pre' of https://github.com/bundler/bundler
+f5837d7c650191d37af3daba8db48f5aca3d0a78	not-for-merge	tag 'v1.1.pre.1' of https://github.com/bundler/bundler
+23ef7cbcc1028a8fe7ee257d120c97ceeffad6ba	not-for-merge	tag 'v1.1.pre.1-chef' of https://github.com/bundler/bundler
+399cc0da871958c795deb824d3d93549cd15bd52	not-for-merge	tag 'v1.1.pre.10' of https://github.com/bundler/bundler
+dc5af5a99c0986fe3e29d7fa546d9a00c9bc4a84	not-for-merge	tag 'v1.1.pre.2' of https://github.com/bundler/bundler
+21be4306cbb10450b46c6ebd523ae3e3c86ab80f	not-for-merge	tag 'v1.1.pre.3' of https://github.com/bundler/bundler
+f81801c58d1c21a0b0da13932eac2e64714c9003	not-for-merge	tag 'v1.1.pre.4' of https://github.com/bundler/bundler
+77a628907ffa453915d62242d37936fe8e618c87	not-for-merge	tag 'v1.1.pre.5' of https://github.com/bundler/bundler
+cda72bc859a7026ebb8e8c0c6e92af6aa7ff6988	not-for-merge	tag 'v1.1.pre.6' of https://github.com/bundler/bundler
+2ef476e0c57ca1a67b1acca8970a223013c528c8	not-for-merge	tag 'v1.1.pre.7' of https://github.com/bundler/bundler
+360cd3941bfe78b2671d498f1ebcdc699c11e968	not-for-merge	tag 'v1.1.pre.8' of https://github.com/bundler/bundler
+fd7a284eb599e447ba8952e9f61759300c27d2e3	not-for-merge	tag 'v1.1.pre.9' of https://github.com/bundler/bundler
+f95a784be87a72e9cbdbd03075a0e8396140afc4	not-for-merge	tag 'v1.1.rc' of https://github.com/bundler/bundler
+8378b829c8ee89b6ac3bfb91e58bd21464eb4bbe	not-for-merge	tag 'v1.1.rc.2' of https://github.com/bundler/bundler
+148d1349eff5c4865cb36412db8aff41e549649e	not-for-merge	tag 'v1.1.rc.3' of https://github.com/bundler/bundler
+fdf3bbe20eb525dd880a85e788bfb79a397b5a92	not-for-merge	tag 'v1.1.rc.4' of https://github.com/bundler/bundler
+03c79c43adecff1e01096c691df8b4b5832d47bc	not-for-merge	tag 'v1.1.rc.5' of https://github.com/bundler/bundler
+a7d6c61f94e9674ca0fb2134df073d39150f6885	not-for-merge	tag 'v1.1.rc.6' of https://github.com/bundler/bundler
+be58eb7e52ac2a3a03c37cc4cf095d9ff946d12d	not-for-merge	tag 'v1.1.rc.7' of https://github.com/bundler/bundler
+c5247af8bc4a30d05210efc6836d4b78d3ebf518	not-for-merge	tag 'v1.1.rc.8' of https://github.com/bundler/bundler
+b0cd4c6db5f85ec3c2cf4b5e91534cc715189ab4	not-for-merge	tag 'v1.10.0' of https://github.com/bundler/bundler
+fdbf44bd9bf8b1103903fcb7f930c4a581db27f1	not-for-merge	tag 'v1.10.0.pre' of https://github.com/bundler/bundler
+2ba9dad3c739839c69cfecd24489203690c8a244	not-for-merge	tag 'v1.10.0.pre.1' of https://github.com/bundler/bundler
+2c19e4123574d7a89e43716afcf1c2a894a7bbb4	not-for-merge	tag 'v1.10.0.pre.2' of https://github.com/bundler/bundler
+79b973e5fe153462cd785a30c1e524db3731b237	not-for-merge	tag 'v1.10.0.rc' of https://github.com/bundler/bundler
+68a0808b9c7c34bbc6a63db1d7efb2e5a8707482	not-for-merge	tag 'v1.10.1' of https://github.com/bundler/bundler
+4b257c79a7517ef6a27c33294f090efc3096d2e5	not-for-merge	tag 'v1.10.2' of https://github.com/bundler/bundler
+fccd113d8c6506abc18e6e677c6d23cbb9e73142	not-for-merge	tag 'v1.10.3' of https://github.com/bundler/bundler
+729b008c57dbba986c8d4314904fb5a36997e39d	not-for-merge	tag 'v1.10.4' of https://github.com/bundler/bundler
+fc32d6afe5e447118145c1ba4331cd62274ddb83	not-for-merge	tag 'v1.10.5' of https://github.com/bundler/bundler
+bed96cbfe8bd733194e753535e10689f4714a629	not-for-merge	tag 'v1.10.6' of https://github.com/bundler/bundler
+ae7e4a693da71c3208eb916533fbb8ca20fd3c91	not-for-merge	tag 'v1.11.0' of https://github.com/bundler/bundler
+1cf71bdc33288846dedf35fc374246be2ff84af6	not-for-merge	tag 'v1.11.0.pre.1' of https://github.com/bundler/bundler
+9edfb5e4410b2a42b3d78f4892b7f500dd75c1a0	not-for-merge	tag 'v1.11.0.pre.2' of https://github.com/bundler/bundler
+85cf122dd120de152a710d212e86e9b6cdc02ec3	not-for-merge	tag 'v1.11.1' of https://github.com/bundler/bundler
+04f0d0d7570493d4b2e92dd976db678bff2adc50	not-for-merge	tag 'v1.11.2' of https://github.com/bundler/bundler
+8db5f3f95bcf95f3090db334acb2c3bf2b972836	not-for-merge	tag 'v1.12.0' of https://github.com/bundler/bundler
+ef8b71fd344722160829689823ac6c26e3e0f131	not-for-merge	tag 'v1.12.0.pre.1' of https://github.com/bundler/bundler
+cef06150b29ffad46576452704e450df70a126bc	not-for-merge	tag 'v1.12.0.pre.2' of https://github.com/bundler/bundler
+a677a1df2568a043c61419c1f57e54e6aad8b3aa	not-for-merge	tag 'v1.12.0.rc' of https://github.com/bundler/bundler
+040e163f1a1acd6eb32f2656d67fdd6c9e20dc2a	not-for-merge	tag 'v1.12.0.rc.2' of https://github.com/bundler/bundler
+f00c18838f0bdd1d1afbf31ba470a50da766958e	not-for-merge	tag 'v1.12.0.rc.3' of https://github.com/bundler/bundler
+07493ae269468e29e6b4bb5eb45bd90401adbde2	not-for-merge	tag 'v1.12.0.rc.4' of https://github.com/bundler/bundler
+a4f8e1164e5e189e75a21efb763eaaab2d9e7b5e	not-for-merge	tag 'v1.12.1' of https://github.com/bundler/bundler
+af77cdd6bf7d9d37d73c17977c5c9e65ddb1c94e	not-for-merge	tag 'v1.12.2' of https://github.com/bundler/bundler
+aec81dc4aa2778e16e130cd2415885b207af14fb	not-for-merge	tag 'v1.12.3' of https://github.com/bundler/bundler
+17165d7ac5a1c697cdba0d704fff816d0573d833	not-for-merge	tag 'v1.2.0' of https://github.com/bundler/bundler
+ae44c58c9a2d0810b629aa625899883dca131bd4	not-for-merge	tag 'v1.2.0.pre' of https://github.com/bundler/bundler
+e9a324bf9a76ef2c8bc55f85630763cb46e8aecd	not-for-merge	tag 'v1.2.0.pre.1' of https://github.com/bundler/bundler
+03579e3ced27d504ea465ccb2b76c02b3813a266	not-for-merge	tag 'v1.2.0.rc' of https://github.com/bundler/bundler
+450fc853e233a543239130a590a08357a1667a7d	not-for-merge	tag 'v1.2.0.rc.2' of https://github.com/bundler/bundler
+ea9a46bfbb0caaff6c221f5ca0a78b9fe0fe3acd	not-for-merge	tag 'v1.2.1' of https://github.com/bundler/bundler
+ffc4193b0f9668e7551cd5d943887330c4cdb718	not-for-merge	tag 'v1.2.2' of https://github.com/bundler/bundler
+75f05fbe51b7803f786248a3a02a300fd932029a	not-for-merge	tag 'v1.2.3' of https://github.com/bundler/bundler
+4567660f7d38940432fc75e8b08942eb9255cac0	not-for-merge	tag 'v1.2.4' of https://github.com/bundler/bundler
+a93d69307186d9272fb1d1b8775cf485850b5c2e	not-for-merge	tag 'v1.2.5' of https://github.com/bundler/bundler
+bdbaf71555c3899d55a60ab17fa7874f6846998c	not-for-merge	tag 'v1.3.0' of https://github.com/bundler/bundler
+e357789710bd546939d2a474301ab7f1e8d53f82	not-for-merge	tag 'v1.3.0.pre' of https://github.com/bundler/bundler
+253a3077d1549a2bd353219027a8ec3c75403c43	not-for-merge	tag 'v1.3.0.pre.2' of https://github.com/bundler/bundler
+a8f9eff75dfe231299e201c32c7a3faf8660b661	not-for-merge	tag 'v1.3.0.pre.3' of https://github.com/bundler/bundler
+5877f3b8cb78be2ba0f193aa795e5bbbeb029107	not-for-merge	tag 'v1.3.0.pre.4' of https://github.com/bundler/bundler
+d6109f9a297d636a972a09a4e52cf7fb7e2a9ffb	not-for-merge	tag 'v1.3.0.pre.5' of https://github.com/bundler/bundler
+f8042c608c90d961e085fa710d5c85120e97b5f4	not-for-merge	tag 'v1.3.0.pre.6' of https://github.com/bundler/bundler
+86b556bde6e39c497f2d3e5116f761d45367cde6	not-for-merge	tag 'v1.3.0.pre.7' of https://github.com/bundler/bundler
+5e016139ae35d31f450c683f8f5a9f1572fda4dd	not-for-merge	tag 'v1.3.0.pre.8' of https://github.com/bundler/bundler
+01e2482b18bdb587e84eb1de3a5b9b1842eaa072	not-for-merge	tag 'v1.3.1' of https://github.com/bundler/bundler
+d2ccb635a2aae9e08536996b5b9c20348b24bc13	not-for-merge	tag 'v1.3.2' of https://github.com/bundler/bundler
+4a5df76cfd5328b3802ccf1dbddf95269445d5d6	not-for-merge	tag 'v1.3.3' of https://github.com/bundler/bundler
+40e71577e978b64a92438303f9f5ffefc6c5d1c1	not-for-merge	tag 'v1.3.4' of https://github.com/bundler/bundler
+bc07df764205ec6279efd6330ab765293a6fb059	not-for-merge	tag 'v1.3.5' of https://github.com/bundler/bundler
+1cb156afa5d460128bbaf10f3c272d9127820d83	not-for-merge	tag 'v1.3.6' of https://github.com/bundler/bundler
+ad38e3f3d42c55f4d7d04a151e63ed4651c7c9a5	not-for-merge	tag 'v1.4.0.pre.1' of https://github.com/bundler/bundler
+d896ce63de188f2f8c400d8da9af41689768eaec	not-for-merge	tag 'v1.4.0.pre.2' of https://github.com/bundler/bundler
+5f4aef2eb3d642089b40f0d6afa38ece18b897e2	not-for-merge	tag 'v1.4.0.rc.1' of https://github.com/bundler/bundler
+91ce49dc12bce82ecb90945c6f68891177c245b3	not-for-merge	tag 'v1.5.0' of https://github.com/bundler/bundler
+1b2f5d19f92dedc00fec4faf07cfb3b2f45f3822	not-for-merge	tag 'v1.5.0.rc.1' of https://github.com/bundler/bundler
+5f036e98dabf9af8200fb58869023ef7a6d0bc66	not-for-merge	tag 'v1.5.0.rc.2' of https://github.com/bundler/bundler
+6e217aaefa4601f8bde59a0284799f0abf8d59b8	not-for-merge	tag 'v1.5.1' of https://github.com/bundler/bundler
+df530dcdc4f029e0c2034631a17ee8f6d17cdb51	not-for-merge	tag 'v1.5.2' of https://github.com/bundler/bundler
+79048b533adec769ec9fa65a4d047b32cecf1943	not-for-merge	tag 'v1.5.3' of https://github.com/bundler/bundler
+1c35bca3030f5bba7581e9c6203498ae68fefd6f	not-for-merge	tag 'v1.6.0' of https://github.com/bundler/bundler
+7c47fbf2d1aeb3485edaf77b27b914f9142e1f46	not-for-merge	tag 'v1.6.0.pre.1' of https://github.com/bundler/bundler
+c43f1bd6d1430a04c5fd7ad2fe4701bbc3163457	not-for-merge	tag 'v1.6.0.pre.2' of https://github.com/bundler/bundler
+60963be517cd0c817c7afe8d848858f532a901ac	not-for-merge	tag 'v1.6.0.rc' of https://github.com/bundler/bundler
+18c590b55fed0af695a8f872bf22ce1425f3f938	not-for-merge	tag 'v1.6.0.rc2' of https://github.com/bundler/bundler
+059f350ff3298c7392684968c693ccbc95cdeb1c	not-for-merge	tag 'v1.6.1' of https://github.com/bundler/bundler
+4b49c89484ce000798af8e20935bb948a4fa1f1e	not-for-merge	tag 'v1.6.2' of https://github.com/bundler/bundler
+d01263260fabb968a32890fb948e9ddebdcdd9ad	not-for-merge	tag 'v1.6.3' of https://github.com/bundler/bundler
+e90aa3849dec6bd4caead0ece8b0770183399450	not-for-merge	tag 'v1.6.4' of https://github.com/bundler/bundler
+3158c55547fde50a1de6aa92797bd40c233ee760	not-for-merge	tag 'v1.6.5' of https://github.com/bundler/bundler
+1dafcbc500a29a89cf04c90aac351da4357a607e	not-for-merge	tag 'v1.6.6' of https://github.com/bundler/bundler
+03f1fe7ee084f3c71cadc44d5ebc83419e74e45b	not-for-merge	tag 'v1.6.7' of https://github.com/bundler/bundler
+e562ecd52eea6754e5572540bfbe9a6857b9a262	not-for-merge	tag 'v1.6.8' of https://github.com/bundler/bundler
+d67c4238052d3d58852590f99c52dd8c2a4f4d5a	not-for-merge	tag 'v1.6.9' of https://github.com/bundler/bundler
+22cbebf34d44172e76462d811f9c77835428b4c0	not-for-merge	tag 'v1.7.0' of https://github.com/bundler/bundler
+3ee7e95e5d45c71cfc005806d1d249de31beac7f	not-for-merge	tag 'v1.7.1' of https://github.com/bundler/bundler
+2edf16e987012910646af745138485dc4414ee4f	not-for-merge	tag 'v1.7.1.pre' of https://github.com/bundler/bundler
+be3f5ccdf1684cf644ce2aa4833f261b0f41c6a2	not-for-merge	tag 'v1.7.1.pre.2' of https://github.com/bundler/bundler
+f1fe877db6f71c041a107763297e426c5a4d115a	not-for-merge	tag 'v1.7.1.pre.3' of https://github.com/bundler/bundler
+05fe84caf613fdf9c0c9f5604e629ff30a798d00	not-for-merge	tag 'v1.7.10' of https://github.com/bundler/bundler
+6595717953669abc1511bbfc357d11d5a5f34837	not-for-merge	tag 'v1.7.11' of https://github.com/bundler/bundler
+542c0edb9383a234b121d5b67eb536e74658e9d9	not-for-merge	tag 'v1.7.12' of https://github.com/bundler/bundler
+a57ed4cce5978022a6dc61a67b3b7b3fa800292f	not-for-merge	tag 'v1.7.13' of https://github.com/bundler/bundler
+fc835863f7f23794138aa80f397aed7640b38340	not-for-merge	tag 'v1.7.14' of https://github.com/bundler/bundler
+e35d622d6553d1062687c45d43b33d871d1f5677	not-for-merge	tag 'v1.7.15' of https://github.com/bundler/bundler
+705db0b49c12f4b12e82ca60bcc589f2bb004427	not-for-merge	tag 'v1.7.2' of https://github.com/bundler/bundler
+5595cc75f1aba083304b90372d58a579960c7044	not-for-merge	tag 'v1.7.3' of https://github.com/bundler/bundler
+32e77c21b2578d8c2b972c107922b4df478a9edb	not-for-merge	tag 'v1.7.4' of https://github.com/bundler/bundler
+e58fbbe9fd6a120b6b84822845724bc25b9e2e8c	not-for-merge	tag 'v1.7.5' of https://github.com/bundler/bundler
+dedf922e3c14ce548797095b51c07351f3b1e415	not-for-merge	tag 'v1.7.6' of https://github.com/bundler/bundler
+7f4a36b2f5b396ac07fbcafd39e08d26ba7f0d3e	not-for-merge	tag 'v1.7.7' of https://github.com/bundler/bundler
+c990859a7f471f09936beda022cc2de615194273	not-for-merge	tag 'v1.7.8' of https://github.com/bundler/bundler
+376638db8597010a8602e8c972cecb1fa92f5041	not-for-merge	tag 'v1.7.9' of https://github.com/bundler/bundler
+25e30aaa5e4aebdc93dcfb26e86bb07c9e7ff118	not-for-merge	tag 'v1.8.0' of https://github.com/bundler/bundler
+3930cccfa31cac62c618766920f9c78538855240	not-for-merge	tag 'v1.8.0.pre' of https://github.com/bundler/bundler
+12edaff2d54debe791f065b96adbc32cd19021bf	not-for-merge	tag 'v1.8.1' of https://github.com/bundler/bundler
+629365b273011277ffb74f48df17c4ef87545d95	not-for-merge	tag 'v1.8.2' of https://github.com/bundler/bundler
+86fbeb7c981fab62549bbaa8f7f47aca17a996e8	not-for-merge	tag 'v1.8.3' of https://github.com/bundler/bundler
+047c93566280dd4afe0557462515a85042358716	not-for-merge	tag 'v1.8.4' of https://github.com/bundler/bundler
+94abab8fb4a823e1d46afc7b832de6fef80a4e5f	not-for-merge	tag 'v1.8.5' of https://github.com/bundler/bundler
+8bc00cb129da93a442dff1c6189af9604d286b55	not-for-merge	tag 'v1.8.6' of https://github.com/bundler/bundler
+5247b43bf251480c2d812bad5b60e10619ac5457	not-for-merge	tag 'v1.8.7' of https://github.com/bundler/bundler
+72a0f2c316a85c383eafe15cde286c8bd11b9027	not-for-merge	tag 'v1.8.8' of https://github.com/bundler/bundler
+cddab743394c0de6af36cf27105d9e6f4270e0f9	not-for-merge	tag 'v1.8.9' of https://github.com/bundler/bundler
+34922d2a0fae482ae743e50c4bf07b9e5dcc4970	not-for-merge	tag 'v1.9.0' of https://github.com/bundler/bundler
+8765197178c4b4937c40561880750c7605744c4b	not-for-merge	tag 'v1.9.0.pre' of https://github.com/bundler/bundler
+b49e03c8967637b84ad54c22a8494f78a0fe731e	not-for-merge	tag 'v1.9.0.pre.1' of https://github.com/bundler/bundler
+554f40e7667085af204cf1d0782fc4ca10074e28	not-for-merge	tag 'v1.9.0.rc' of https://github.com/bundler/bundler
+a4bc7ec49c9b23d8506a11bd705dd6bfa1c6c1ad	not-for-merge	tag 'v1.9.1' of https://github.com/bundler/bundler
+25d45a745296d016dfea21543cc2c32bbe4fb81a	not-for-merge	tag 'v1.9.10' of https://github.com/bundler/bundler
+63730351473e5a4a7e4e531033e6296eccb72f7c	not-for-merge	tag 'v1.9.2' of https://github.com/bundler/bundler
+9421a080b65a2552773f702ceb5c9d3ee6a901dc	not-for-merge	tag 'v1.9.3' of https://github.com/bundler/bundler
+c52f49fad16b43515948a8792d2f7741c39b199e	not-for-merge	tag 'v1.9.4' of https://github.com/bundler/bundler
+2f0654af65bf588fdee961df43e393684c76ada2	not-for-merge	tag 'v1.9.5' of https://github.com/bundler/bundler
+b27e8145d38fca1afa1deb2c61dd1a8ec39f8641	not-for-merge	tag 'v1.9.6' of https://github.com/bundler/bundler
+8e3abbbbad3277c97c6a2f1f3cf92d893d521943	not-for-merge	tag 'v1.9.7' of https://github.com/bundler/bundler
+86982a6db78d8a38e6466226f099e6b7ea6a56d3	not-for-merge	tag 'v1.9.8' of https://github.com/bundler/bundler
+bf1239b3e39f1da0ade2a21a310f915fe0ab366e	not-for-merge	tag 'v1.9.9' of https://github.com/bundler/bundler
